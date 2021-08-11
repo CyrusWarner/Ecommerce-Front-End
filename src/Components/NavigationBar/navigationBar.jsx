@@ -10,11 +10,12 @@ const NavigationBar = () => {
     <Nav
       className="mr-auto my-2 my-lg-0"
       style={{ maxHeight: '100px' }}
-    //   navbarScroll
+        navbarScroll
     >
       <Nav.Link href="#action1">Home</Nav.Link>
       <Nav.Link href="#action2">Link</Nav.Link>
-
+      <Nav.Link href="#action2">Link</Nav.Link>
+      <Nav.Link href="#action2">Link</Nav.Link>
     </Nav>
     <Form className="d-flex">
       <FormControl
