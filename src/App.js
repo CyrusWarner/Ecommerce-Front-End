@@ -1,10 +1,12 @@
 import React from 'react';  
-import {BroswerRouter as Router, Switch, Route} from 'react-router-dom'
-
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import NavigationBar from './Components/NavigationBar/navigationBar';
 function App() {
   return (
     <Router>
       <div>
+        <NavigationBar />
+
       <Switch>
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}}></Route> */}
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}}></Route> */}
