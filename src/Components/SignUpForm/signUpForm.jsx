@@ -1,6 +1,8 @@
 import React, {useState} from 'react';  
 import axios from 'axios';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useHistory} from 'react-router-dom';
+
 const SignUpForm = () => {
     const initialUserInfo = {
         firstname: "",
@@ -10,6 +12,7 @@ const SignUpForm = () => {
         password: "",
         phonenumber: ""
     }
+    const history = useHistory()
     const [eachEntry, setEachEntry] = useState(initialUserInfo)
 
     const handleSubmit = (event) => {
@@ -26,6 +29,10 @@ const SignUpForm = () => {
         let userData = eachEntry;
         let response = await axios.post("https://localhost:44394/api/authentication", userData);
         console.log(response)
+        if (response.data.length !== 0){
+            console.log("hello");
+            history.push("/Login")
+          }
     }
     return (
         

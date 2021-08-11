@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useHistory} from 'react-router-dom';
 
-const LoginForm = () => {
+
+const LoginForm = (props) => {
   const logInValues = {
     username: "",
     password: ""
 }
+  const history = useHistory()
   const [logInInfo, setLogInInfo] = useState(logInValues);
   
 
@@ -22,6 +25,11 @@ const logIn = async () => {
   let userData = logInInfo;
   let response = await axios.post("https://localhost:44394/api/authentication/login", userData);
   console.log(response)
+  props.setUserToken(response.data.token)
+  if (response.data.length !== 0){
+    console.log("hello");
+    history.push("/")
+  }
 }
   
   
@@ -35,7 +43,7 @@ const logIn = async () => {
                     <form onSubmit={handleSubmit}>
                     <input name="username" placeholder="Username..." onChange={handleChange}></input>
                     <input  name="password" placeholder="Password..." onChange={handleChange}></input>
-                    <button >Sign Up</button>
+                    <button>Sign Up</button>
                     </form>
                     </div>
                 </Col>
