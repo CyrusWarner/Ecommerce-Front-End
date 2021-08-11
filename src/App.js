@@ -1,5 +1,6 @@
 import React from 'react';  
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import LoginForm from './Components/LoginForm/loginForm';
 import NavigationBar from './Components/NavigationBar/navigationBar';
 import SignUpForm from './Components/SignUpForm/signUpForm';
 function App() {
@@ -10,7 +11,8 @@ function App() {
 
       <Switch>
          {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} />  */}
-        <Route path="/Login" exact render={props => <SignUpForm {...props} />} />
+        <Route path="/Signup" exact render={props => <SignUpForm {...props} />} />
+        <Route path="/Login" exact render={props => <LoginForm {...props} />} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
