@@ -1,6 +1,6 @@
 import React from 'react';  
+import { Link } from 'react-router-dom';
 import { Navbar,Nav, FormControl, Form, Button, NavDropdown  } from 'react-bootstrap';
-
 const NavigationBar = () => {
     return (
         <Navbar bg="light" expand="lg">
@@ -12,10 +12,11 @@ const NavigationBar = () => {
       style={{ maxHeight: '100px' }}
         navbarScroll
     >
-      <Nav.Link href="#action1">Home</Nav.Link>
-      <Nav.Link href="#action2">Link</Nav.Link>
-      <Nav.Link href="#action2">Link</Nav.Link>
-      <Nav.Link href="#action2">Link</Nav.Link>
+      <Nav.Link as={Link} to="/" >home</Nav.Link>
+      <Nav.Link as={Link} to="/products">View Products</Nav.Link>
+      <Nav.Link as={Link} to="/user/shoppingcart">Shopping Cart</Nav.Link>
+      <Nav.Link as={Link} to="/user/createproduct">Sell A Product</Nav.Link>
+      <Nav.Link as={Link} to="logout">Logout</Nav.Link>
     </Nav>
     <Form className="d-flex">
       <FormControl
