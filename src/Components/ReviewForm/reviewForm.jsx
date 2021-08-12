@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Container, Col, Row } from 'react-bootstrap';
 const ReviewForm = (props) => {
     const currentToken = props.currentToken;
     const currentProductId = props.currentProduct.productId;
@@ -24,18 +25,29 @@ const ReviewForm = (props) => {
         let review = eachEntry
         let intRating = Number(`${review.rating}`)
         review.rating = intRating
-        debugger
         await axios.post("https://localhost:44394/api/reviews/", review, { headers: {Authorization: 'Bearer ' + currentToken}})
         getProductReviews(currentProductId)
     }
     return ( 
-        <div>
+        <Container>
+            <Row>
+            <Col sm={8}>
+            <div>
         <form onSubmit={handleSubmit}>
+            <div>
         <input type="text" name="description" placeholder="Review Comment" onChange={handleChange} />
+        </div>
         <input  type="text" name="rating" placeholder="1-5" onChange={handleChange} />
+        <div>
         <button type="submit"> submit </button>
+        </div>
         </form>
-    </div>
+        </div>
+            </Col>
+            <Col sm={4}></Col>
+        
+    </Row>
+    </Container>
      );
 }
  

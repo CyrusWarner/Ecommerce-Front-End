@@ -12,22 +12,15 @@ const ShowProduct = (props) => {
     <React.Fragment>
       <Container>
         <Row>
-          <Col sm={4}>
+          <Col sm={8}>
             <h1>{name}</h1>
             <p>{description}</p>
           </Col>
-          <Col sm={8}></Col>
+          <Col sm={4}></Col>
         </Row>
       </Container>
-      <Container>
-          <Row>
-              <Col sm={8}>
-                  <ReviewForm getProductReviews={getProductReviews} currentToken={currentToken} currentUser={currentUser} currentProduct={props.currentProduct}/>
-                  <ShowAllReviews productReviews={productReviews}/>
-              </Col>
-              <Col sm={4}></Col>
-          </Row>
-      </Container>
+        <ReviewForm getProductReviews={getProductReviews} currentToken={currentToken} currentUser={currentUser} currentProduct={props.currentProduct}/>
+        <ShowAllReviews productReviews={productReviews} currentUser={currentUser}/>
     </React.Fragment>
   );
 };
