@@ -5,7 +5,7 @@ const NavigationBar = () => {
     //CHANGE LINE 20 TO A ONCLICK EVENT TO LOG A USER OUT
     return (
         <Navbar bg="light" expand="lg">
-  <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+  <Navbar.Brand className="ms-2">Star Wars Ecommerce</Navbar.Brand>
   <Navbar.Toggle aria-controls="navbarScroll" />
   <Navbar.Collapse id="navbarScroll">
     <Nav
@@ -13,7 +13,7 @@ const NavigationBar = () => {
       style={{ maxHeight: '100px' }}
         navbarScroll
     >
-      <Nav.Link as={Link} to="/" >home</Nav.Link>
+      <Nav.Link as={Link} to="/" >Home</Nav.Link>
       <Nav.Link as={Link} to="/products">View Products</Nav.Link>
       <Nav.Link as={Link} to="/user/shoppingcart">Shopping Cart</Nav.Link>
       <Nav.Link as={Link} to="/user/createproduct">Sell A Product</Nav.Link>

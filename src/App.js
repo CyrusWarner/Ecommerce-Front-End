@@ -5,6 +5,7 @@ import NavigationBar from './Components/NavigationBar/navigationBar';
 import SignUpForm from './Components/SignUpForm/signUpForm';
 import ShowAllProducts from './Components/ShowAllProducts/showAllProducts';
 import SellProductForm from './Components/SellProductForm/sellProductForm';
+import ShowProduct from './Components/ShowProduct/showProduct';
 import Home from './Components/Home/home';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
@@ -13,6 +14,7 @@ import axios from 'axios';
 function App() {
   const [currentUser, setCurrentUser] = useState();
   const [allProducts, setAllProducts] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState([]);
   const [token, setToken] = useState();
 
   useEffect( () =>{
@@ -38,6 +40,10 @@ function App() {
     }
     
   }
+  const createCurrentProduct = (product) => {
+    console.log(product)
+    setCurrentProduct(product)
+  }
 
   return (
     
@@ -48,9 +54,9 @@ function App() {
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
-        <Route path="/products"  render={props => <ShowAllProducts {...props} allProducts={allProducts}/>} /> 
+        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} />} /> 
         <Route path="/user/createproduct" render={props => <SellProductForm {...props} currentUser={currentUser} currentToken={token} getAllProducts={getAllProducts}/>} /> 
-        {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
+        <Route path="/viewproduct" render={props => <ShowProduct {...props} currentProduct={currentProduct}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
       </Switch>
       </div>

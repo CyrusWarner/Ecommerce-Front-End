@@ -41,8 +41,8 @@ const logIn = async () => {
                 <div>
                     <h1>Login</h1>
                     <form onSubmit={handleSubmit}>
-                    <input name="username" placeholder="Username..." onChange={handleChange}></input>
-                    <input  name="password" placeholder="Password..." onChange={handleChange}></input>
+                    <input className="form-control" name="username" placeholder="Username..." onChange={handleChange}></input>
+                    <input className="form-control" name="password" placeholder="Password..." onChange={handleChange}></input>
                     <button>Login</button>
                     </form>
                     </div>
