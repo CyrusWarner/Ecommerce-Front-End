@@ -18,7 +18,7 @@ function App() {
   const [token, setToken] = useState();
   const [productReviews, setProductReviews] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [currentCategoryId, setCurrentCategoryId] = useState();
+  const [currentCategoryId, setCurrentCategoryId] = useState(1);
 
   useEffect( () =>{
     const jwt = localStorage.getItem('token');
@@ -64,9 +64,9 @@ function App() {
   }
 
   const userCurrentCategoryId = (categoryId) => {
-    let intCategoryId = Number(`${categoryId.categoriesId}`)
-    categoryId.categoriesId = intCategoryId
-    console.log(typeof(categoryId.categoriesId))
+    let intCategoryId = Number(`${categoryId}`)
+    categoryId = intCategoryId
+
     setCurrentCategoryId(categoryId)
   }
 

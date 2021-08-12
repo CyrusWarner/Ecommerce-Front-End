@@ -45,7 +45,6 @@ const ReviewForm = (props) => {
         </div>
             </Col>
             <Col sm={4}></Col>
-        
     </Row>
     </Container>
      );

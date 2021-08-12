@@ -1,31 +1,22 @@
 import React, {useState} from 'react';
-import axios from 'axios';
-
+import { Container } from 'react-bootstrap';
 const Categories  = (props) => {
     let categories = props.categories
-    const [category, setCategory] = useState([]);
-  
-
-    const handleChange = (event) => {
-        event.persist();
-        setCategory({[event.target.name]: event.target.value});
-        props.userCurrentCategoryId(category);
-
+    const onChangeComboBox = (event) => {
+        const selectedId = event.target.value
+        props.userCurrentCategoryId(selectedId);
     }
-
     return(
         <React.Fragment>
-                <label>Categories</label>
-                    <select name="categoriesId" onChange={handleChange}>
-                        {categories.map((category, categoryId) => {
-                            <option key={categoryId}>{categoryId}</option>
-                            return (
-                                <option value={categoryId}>
-                                    {category.categoryName}
-                                </option>
-                            )
-                        })}
+                <Container>Categories
+                    <select className="custom-select" onChange={(event) => {onChangeComboBox(event);}} >
+                            {categories.map((category) => {
+                                return(
+                                <option key={category.categoryId} value={category.categoryId}>{category.categoryName}</option>
+                                )
+                            })}
                     </select>
+                    </Container>
         </React.Fragment>
     )
 }
