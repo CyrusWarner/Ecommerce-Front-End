@@ -14,6 +14,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState();
   const [allProducts, setAllProducts] = useState([]);
   const [token, setToken] = useState();
+  const [productReviews, setProductReviews] = useState([]);
 
   useEffect( () =>{
     const jwt = localStorage.getItem('token');
@@ -37,6 +38,15 @@ function App() {
       setAllProducts(response.data)
     }
     
+  }
+
+  const getProductReviews = async (productId) => {
+    let response = await axios.get(`https://localhost:44394/api/reviews/${productId}`)
+    if(response.data.length !== 0){
+      setProductReviews(response.data)
+      console.log(response)
+    }
+
   }
 
   return (
