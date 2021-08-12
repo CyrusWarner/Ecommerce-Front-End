@@ -5,6 +5,7 @@ import NavigationBar from './Components/NavigationBar/navigationBar';
 import SignUpForm from './Components/SignUpForm/signUpForm';
 import Home from './Components/Home/home';
 import jwtDecode from 'jwt-decode';
+import ShoppingCart from './Components/ShoppingCart/shoppingCart';
 
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
          <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken} />} />
-        {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
+        <Route path="/user/shoppingcart"  render={props => <ShoppingCart {...props} jwt={localStorage.token}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
       </Switch>
