@@ -6,7 +6,7 @@ const ShowAllReviews = (props) => {
     console.log(productReviews)
 
     return ( 
-        <div>Hello {console.log(productReviews)}
+        <div> {console.log(productReviews)}
         {productReviews.map((review) =>{
             return (
                 <div>
