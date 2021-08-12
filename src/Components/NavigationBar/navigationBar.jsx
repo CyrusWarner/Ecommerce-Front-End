@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar,Nav, FormControl, Form, Button } from 'react-bootstrap';
 const NavigationBar = () => {
+
+      const logout = () => {
+        localStorage.clear();
+    // you can also like localStorage.removeItem('Token');
+        window.location.href = "/login";
+      }
     //CHANGE LINE 20 TO A ONCLICK EVENT TO LOG A USER OUT
     return (
         <Navbar bg="light" expand="lg">
@@ -17,7 +23,7 @@ const NavigationBar = () => {
       <Nav.Link as={Link} to="/products">View Products</Nav.Link>
       <Nav.Link as={Link} to="/user/shoppingcart">Shopping Cart</Nav.Link>
       <Nav.Link as={Link} to="/user/createproduct">Sell A Product</Nav.Link>
-      <Nav.Link as={Link} to="/logout">Logout</Nav.Link> 
+      <Nav.Link as={Link} onClick={logout}>Logout</Nav.Link> 
     </Nav>
     <Form className="d-flex">
       <FormControl
