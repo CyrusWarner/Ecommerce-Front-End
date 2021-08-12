@@ -16,7 +16,6 @@ const ReviewForm = (props) => {
     const handleChange = (event) => {
         setEachEntry({ ...eachEntry, [event.target.name]: event.target.value });
       };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         submitReview();
@@ -29,12 +28,11 @@ const ReviewForm = (props) => {
         await axios.post("https://localhost:44394/api/reviews/", review, { headers: {Authorization: 'Bearer ' + currentToken}})
         getProductReviews(currentProductId)
     }
-
     return ( 
         <div>
         <form onSubmit={handleSubmit}>
         <input type="text" name="description" placeholer="Review Comment" onChange={handleChange} />
-        <input type="text" name="rating" placeholer="1-5" onChange={handleChange} />
+        <input  type="text" name="rating" placeholer="1-5" onChange={handleChange} />
         <button type="submit"> submit </button>
         </form>
     </div>

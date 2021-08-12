@@ -31,7 +31,7 @@ const ShowAllProducts = (props) => {
                               <Card.Text>{product.description}</Card.Text>
                               <Card.Text>Price: ${product.price}</Card.Text>
                               <Card.Text>Rating: {product.averageRating}</Card.Text>
-                              <Link to="/viewproduct"><Button onClick={() => [(createCurrentProduct(product),getProductReviews(product.productId))]}>View product</Button></Link>
+                              <Link to="/viewproduct"><Button onClick={() => [(createCurrentProduct(product), getProductReviews(product.productId))]}>View product</Button></Link>
                             </Card.Body>
                           </Card>
                         )
