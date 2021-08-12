@@ -1,6 +1,6 @@
 import React from 'react';  
 import { Link } from 'react-router-dom';
-import { Navbar,Nav, FormControl, Form, Button } from 'react-bootstrap';
+import { Navbar,Nav, Form  } from 'react-bootstrap';
 const NavigationBar = (props) => {
       let currentUser = props.currentUser
       const logout = () => {
@@ -33,13 +33,7 @@ const NavigationBar = (props) => {
       }
     </Nav>
     <Form className="d-flex">
-      <FormControl
-        type="search"
-        placeholder="Search"
-        className="mr-2"
-        aria-label="Search"
-      />
-      <Button variant="outline-success">Search</Button>
+
     </Form>
     <Nav>
    
