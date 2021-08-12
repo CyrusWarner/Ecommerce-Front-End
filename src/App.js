@@ -22,7 +22,6 @@ function App() {
     const jwt = localStorage.getItem('token');
     setToken(jwt)
     getAllProducts();
-    getProductReviews(14)
     
     try{
       const user = jwtDecode(jwt);
@@ -53,7 +52,7 @@ function App() {
     let response = await axios.get(`https://localhost:44394/api/reviews/${productId}`)
     if(response.data.length !== 0){
       setProductReviews(response.data)
-      console.log(response)
+      
     }
 
   }
@@ -66,7 +65,7 @@ function App() {
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
-        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} />} /> 
+        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} />} /> 
         <Route path="/user/createproduct" render={props => {
           if(!currentUser){
             return <Redirect to="/login" />;
@@ -75,7 +74,7 @@ function App() {
           }
           }
         />
-        <Route path="/viewproduct" render={props => <ShowProduct {...props} currentProduct={currentProduct}/>} />
+        <Route path="/viewproduct" render={props => <ShowProduct {...props} currentProduct={currentProduct} productReviews={productReviews}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
       </Switch>
       </div>
