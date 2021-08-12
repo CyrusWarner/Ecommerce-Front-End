@@ -12,6 +12,7 @@ const ShowAllReviews = (props) => {
                 </div>
             )
         })}
+
         </div>
      );
 } 

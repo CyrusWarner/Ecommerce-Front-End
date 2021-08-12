@@ -50,10 +50,8 @@ function App() {
 
   const getProductReviews = async (productId) => {
     let response = await axios.get(`https://localhost:44394/api/reviews/${productId}`)
-    if(response.data.length !== 0){
-      setProductReviews(response.data)
-      
-    }
+    setProductReviews(response.data)
+
 
   }
 
@@ -74,7 +72,7 @@ function App() {
           }
           }
         />
-        <Route path="/viewproduct" render={props => <ShowProduct {...props} currentProduct={currentProduct} productReviews={productReviews}/>} />
+        <Route path="/viewproduct" render={props => <ShowProduct {...props} currentToken={token} currentUser={currentUser} currentProduct={currentProduct} productReviews={productReviews} getProductReviews={getProductReviews}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
       </Switch>
       </div>
