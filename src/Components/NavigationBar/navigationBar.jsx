@@ -8,7 +8,6 @@ const NavigationBar = (props) => {
     // you can also like localStorage.removeItem('Token');
         window.location.href = "/login";
       }
-    //CHANGE LINE 20 TO A ONCLICK EVENT TO LOG A USER OUT
     return (
         <Navbar bg="light" expand="lg">
   <Navbar.Brand className="ms-2">Star Wars Ecommerce</Navbar.Brand>

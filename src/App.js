@@ -15,7 +15,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState();
   const [allProducts, setAllProducts] = useState([]);
   const [currentProduct, setCurrentProduct] = useState([]);
-  const [loading, setLoading] = useState(true)
   const [token, setToken] = useState();
   const [productReviews, setProductReviews] = useState([]);
 
@@ -28,7 +27,6 @@ function App() {
     try{
       const user = jwtDecode(jwt);
       setCurrentUser({user})
-      setLoading(false)
     }
     catch {}
   }, [])
@@ -63,7 +61,6 @@ function App() {
   return (
     <Router>
       <div>
-        {console.log(currentUser)}
         <NavigationBar currentUser={currentUser} />
       <Switch>
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
