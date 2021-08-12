@@ -24,10 +24,8 @@ const handleSubmit = (event) => {
 const logIn = async () => {
   let userData = logInInfo;
   let response = await axios.post("https://localhost:44394/api/authentication/login", userData);
-  console.log(response)
   props.setUserToken(response.data.token)
   if (response.data.length !== 0){
-    console.log("hello");
     history.push("/")
   }
 }

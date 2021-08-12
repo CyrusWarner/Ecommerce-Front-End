@@ -1,8 +1,8 @@
 import React from 'react';  
 import { Link } from 'react-router-dom';
 import { Navbar,Nav, FormControl, Form, Button } from 'react-bootstrap';
-const NavigationBar = () => {
-
+const NavigationBar = (props) => {
+      let currentUser = props.currentUser
       const logout = () => {
         localStorage.clear();
     // you can also like localStorage.removeItem('Token');
@@ -23,7 +23,15 @@ const NavigationBar = () => {
       <Nav.Link as={Link} to="/products">View Products</Nav.Link>
       <Nav.Link as={Link} to="/user/shoppingcart">Shopping Cart</Nav.Link>
       <Nav.Link as={Link} to="/user/createproduct">Sell A Product</Nav.Link>
+      {currentUser &&
       <Nav.Link as={Link} onClick={logout}>Logout</Nav.Link> 
+      }
+      {!currentUser &&
+      <Nav.Link as={Link} to="/Signup">Signup</Nav.Link>
+      }
+      {!currentUser &&
+      <Nav.Link as={Link} to="/Login">Login</Nav.Link>
+      }
     </Nav>
     <Form className="d-flex">
       <FormControl
