@@ -52,7 +52,7 @@ function App() {
     let response = await axios.get(`https://localhost:44394/api/reviews/${productId}`)
     if(response.data.length !== 0){
       setProductReviews(response.data)
-      console.log(response)
+      
     }
 
   }

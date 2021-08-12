@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import ShowAllReviews from './../ShowAllReviews/showAllReviews';
 const ShowProduct = (props) => {
   const { name, description } = props.currentProduct;
-  const { productReviews } = props.productReviews;
+  let productReviews = props.productReviews;
   return (
     <React.Fragment>
       <Container>
