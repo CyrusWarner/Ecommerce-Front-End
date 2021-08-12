@@ -6,6 +6,7 @@ const ShowProduct = (props) => {
   const { name, description } = props.currentProduct;
   const currentUser = props.currentUser;
   const currentToken = props.currentToken;
+  const getProductReviews = props.getProductReviews
   let productReviews = props.productReviews;
   return (
     <React.Fragment>
@@ -21,7 +22,7 @@ const ShowProduct = (props) => {
       <Container>
           <Row>
               <Col sm={8}>
-                  <ReviewForm currentToken={currentToken} currentUser={currentUser} currentProduct={props.currentProduct}/>
+                  <ReviewForm getProductReviews={getProductReviews} currentToken={currentToken} currentUser={currentUser} currentProduct={props.currentProduct}/>
                   <ShowAllReviews productReviews={productReviews}/>
               </Col>
               <Col sm={4}></Col>

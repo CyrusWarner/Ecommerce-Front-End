@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 const ReviewForm = (props) => {
     const currentToken = props.currentToken;
     const currentProductId = props.currentProduct.productId;
-    const userId = props.currentUser.id;
+    const userId = props.currentUser.user.id;
+    const getProductReviews = props.getProductReviews
     const initialReview = {
         description: "",
         rating: "",
@@ -22,7 +23,11 @@ const ReviewForm = (props) => {
     }  
     const submitReview = async () => {
         let review = eachEntry
+        let intRating = Number(`${review.rating}`)
+        review.rating = intRating
+        debugger
         await axios.post("https://localhost:44394/api/reviews/", review, { headers: {Authorization: 'Bearer ' + currentToken}})
+        getProductReviews(currentProductId)
     }
 
     return ( 
