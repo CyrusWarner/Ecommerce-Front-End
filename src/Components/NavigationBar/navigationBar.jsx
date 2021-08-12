@@ -1,7 +1,8 @@
 import React from 'react';  
 import { Link } from 'react-router-dom';
-import { Navbar,Nav, FormControl, Form, Button, NavDropdown  } from 'react-bootstrap';
+import { Navbar,Nav, FormControl, Form, Button } from 'react-bootstrap';
 const NavigationBar = () => {
+    //CHANGE LINE 20 TO A ONCLICK EVENT TO LOG A USER OUT
     return (
         <Navbar bg="light" expand="lg">
   <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
@@ -16,7 +17,7 @@ const NavigationBar = () => {
       <Nav.Link as={Link} to="/products">View Products</Nav.Link>
       <Nav.Link as={Link} to="/user/shoppingcart">Shopping Cart</Nav.Link>
       <Nav.Link as={Link} to="/user/createproduct">Sell A Product</Nav.Link>
-      <Nav.Link as={Link} to="logout">Logout</Nav.Link>
+      <Nav.Link as={Link} to="/logout">Logout</Nav.Link> 
     </Nav>
     <Form className="d-flex">
       <FormControl
@@ -27,6 +28,9 @@ const NavigationBar = () => {
       />
       <Button variant="outline-success">Search</Button>
     </Form>
+    <Nav>
+   
+    </Nav>
   </Navbar.Collapse>
 </Navbar>
     )

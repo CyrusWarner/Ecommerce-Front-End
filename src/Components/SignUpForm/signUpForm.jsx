@@ -49,7 +49,7 @@ const SignUpForm = () => {
                     <input  name="email" placeholder="Email..." onChange={handleChange}></input>
                     <input  name="password" placeholder="Password..." onChange={handleChange}></input>
                     <input  name="phonenumber" placeholder="Phone number..." onChange={handleChange}></input>
-                    <button >Sign Up</button>
+                    <button type="submit">Sign Up</button>
                     </form>
                     </div>
                 </Col>
