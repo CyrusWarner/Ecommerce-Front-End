@@ -1,18 +1,22 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import Categories from '../Categories/categories';
+
 const SellProductForm = (props) => {
     //CATEGORYID IS GOING TO CHANGE WHEN PROPS ARE TAKEN IN WHEN A CATEGORY IS SELECTED WE WILL REPLACE 1 WITH THAT SPECIFIC CATEGORIESID
     //ADD CONDITIONAL FOR IF A USER IS LOGGED IN AND ON SELL PRODUCT AND REFRESHES THE PAGE TO PREVENT WEBSITE FROM BREAKING
     let id;
     let currentToken = props.currentToken;
     let getAllProducts = props.getAllProducts;
+    let userCurrentCategoryId = props.userCurrentCategoryId;
+    let currentCategoryId = props.currentCategoryId;
     if(props.currentUser !== undefined) {
         id = props.currentUser.user.id;
     }
     const initialInput = {
         AverageRating: 1,
-        CategoryId: 1,
+        CategoryId: currentCategoryId,
         Description: "",
         Name: "",
         Price: 0,
@@ -64,6 +68,7 @@ const SellProductForm = (props) => {
                     <Form.Control onChange={handleChange} name="Price"placeholder ="Product Price"></Form.Control>
                     </Form.Label>
                     </div>
+                    <Categories categories={props.categories} userCurrentCategoryId={userCurrentCategoryId}/>
                     <Button type="submit">Submit New Product</Button>
                     </Form>
                 </Col>

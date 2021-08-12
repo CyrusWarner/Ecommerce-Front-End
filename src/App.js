@@ -17,11 +17,14 @@ function App() {
   const [currentProduct, setCurrentProduct] = useState([]);
   const [token, setToken] = useState();
   const [productReviews, setProductReviews] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [currentCategoryId, setCurrentCategoryId] = useState();
 
   useEffect( () =>{
     const jwt = localStorage.getItem('token');
     setToken(jwt)
     getAllProducts();
+    getCategories();
     
     try{
       const user = jwtDecode(jwt);
@@ -51,8 +54,20 @@ function App() {
   const getProductReviews = async (productId) => {
     let response = await axios.get(`https://localhost:44394/api/reviews/${productId}`)
     setProductReviews(response.data)
+  }
 
+  const getCategories = async () => {
+    let response = await axios.get("https://localhost:44394/api/category/")
+    if(response.data.length !== 0){
+      setCategories(response.data)
+    }
+  }
 
+  const userCurrentCategoryId = (categoryId) => {
+    let intCategoryId = Number(`${categoryId.categoriesId}`)
+    categoryId.categoriesId = intCategoryId
+    console.log(typeof(categoryId.categoriesId))
+    setCurrentCategoryId(categoryId)
   }
 
   return (
@@ -63,12 +78,12 @@ function App() {
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
-        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} />} /> 
+        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} />} /> 
         <Route path="/user/createproduct" render={props => {
           if(!currentUser){
             return <Redirect to="/login" />;
           } else {
-            return  <SellProductForm {...props} currentUser={currentUser} currentToken={token} getAllProducts={getAllProducts}/>} 
+            return  <SellProductForm {...props} currentUser={currentUser} currentToken={token} getAllProducts={getAllProducts} categories={categories} userCurrentCategoryId={userCurrentCategoryId} currentCategoryId={currentCategoryId} />} 
           }
           }
         />

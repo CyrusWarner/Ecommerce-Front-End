@@ -1,10 +1,13 @@
 import React from 'react';  
 import { Container, Row, Card, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Categories from '../Categories/categories';
+
 const ShowAllProducts = (props) => {
     let allProducts = props.allProducts
     let createCurrentProduct = props.createCurrentProduct 
     let getProductReviews = props.getProductReviews
+    let categories = props.categories
     
     return (
         <React.Fragment>
@@ -13,7 +16,7 @@ const ShowAllProducts = (props) => {
             <Row>
                 <Col sm={4}>
                 <h1>All Products</h1>
-            {/* ADD SHOW ALL CATEGORES HERE */}
+            <Categories categories={categories} />
                 </Col>
                 <Col sm={8}></Col>
             </Row>
