@@ -1,9 +1,7 @@
 import React from 'react';
 
 const ShowAllReviews = (props) => {
-
     let productReviews = props.productReviews
-
     return ( 
         <div> {console.log(productReviews)}
         {productReviews.map((review) =>{
@@ -14,12 +12,7 @@ const ShowAllReviews = (props) => {
                 </div>
             )
         })}
-        
-        
-        
         </div>
-        
      );
-}
- 
+} 
 export default ShowAllReviews;
