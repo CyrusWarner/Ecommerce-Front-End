@@ -20,6 +20,8 @@ function App() {
     const jwt = localStorage.getItem('token');
     setToken(jwt)
     getAllProducts();
+    getProductReviews(14)
+    
     try{
       const user = jwtDecode(jwt);
       setCurrentUser({user})
