@@ -3,7 +3,8 @@ import { Container, Row, Card, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const ShowAllProducts = (props) => {
     let allProducts = props.allProducts
-    let createCurrentProduct = props.createCurrentProduct
+    let createCurrentProduct = props.createCurrentProduct 
+    let getProductReviews = props.getProductReviews
     return (
         <React.Fragment>
 
@@ -29,7 +30,7 @@ const ShowAllProducts = (props) => {
                               <Card.Text>{product.description}</Card.Text>
                               <Card.Text>Price: ${product.price}</Card.Text>
                               <Card.Text>Rating: {product.averageRating}</Card.Text>
-                              <Link to="/viewproduct"><Button onClick={() => (createCurrentProduct(product))}>View product</Button></Link>
+                              <Link to="/viewproduct"><Button onClick={() => [(createCurrentProduct(product),getProductReviews(product.Id))]}>View product</Button></Link>
                             </Card.Body>
                           </Card>
                         )
