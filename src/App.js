@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';  
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import LoginForm from './Components/LoginForm/loginForm';
 import NavigationBar from './Components/NavigationBar/navigationBar';
 import SignUpForm from './Components/SignUpForm/signUpForm';
 import ShowAllProducts from './Components/ShowAllProducts/showAllProducts';
 import SellProductForm from './Components/SellProductForm/sellProductForm';
+import ShowProduct from './Components/ShowProduct/showProduct';
 import Home from './Components/Home/home';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
@@ -13,6 +14,8 @@ import axios from 'axios';
 function App() {
   const [currentUser, setCurrentUser] = useState();
   const [allProducts, setAllProducts] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState([]);
+  const [loading, setLoading] = useState(true)
   const [token, setToken] = useState();
   const [productReviews, setProductReviews] = useState([]);
 
@@ -25,6 +28,7 @@ function App() {
     try{
       const user = jwtDecode(jwt);
       setCurrentUser({user})
+      setLoading(false)
     }
     catch {}
   }, [])
@@ -32,6 +36,7 @@ function App() {
   const setUserToken = (token) => {
     localStorage.setItem('token', token);
     setToken(token)
+    window.location = ("/")
   }
 
   const getAllProducts = async () => {
@@ -40,6 +45,10 @@ function App() {
       setAllProducts(response.data)
     }
     
+  }
+  const createCurrentProduct = (product) => {
+    console.log(product)
+    setCurrentProduct(product)
   }
 
   const getProductReviews = async (productId) => {
@@ -52,17 +61,24 @@ function App() {
   }
 
   return (
-    
     <Router>
       <div>
-        <NavigationBar />
+        {console.log(currentUser)}
+        <NavigationBar currentUser={currentUser} />
       <Switch>
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
-        <Route path="/products"  render={props => <ShowAllProducts {...props} allProducts={allProducts}/>} /> 
-        <Route path="/user/createproduct" render={props => <SellProductForm {...props} currentUser={currentUser} currentToken={token} getAllProducts={getAllProducts}/>} /> 
-        {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
+        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} />} /> 
+        <Route path="/user/createproduct" render={props => {
+          if(!currentUser){
+            return <Redirect to="/login" />;
+          } else {
+            return  <SellProductForm {...props} currentUser={currentUser} currentToken={token} getAllProducts={getAllProducts}/>} 
+          }
+          }
+        />
+        <Route path="/viewproduct" render={props => <ShowProduct {...props} currentProduct={currentProduct}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
       </Switch>
       </div>
