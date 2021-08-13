@@ -83,6 +83,7 @@ function App() {
     setAllProducts(filteredProducts)
   };
 
+
   const setSearchFilteredProducts = (products) => {
     setAllProducts(products);
   };
@@ -93,6 +94,14 @@ function App() {
     });
     setShoppingCart(response.data);
   };
+
+  let response = await axios.get("https://localhost:44394/api/shoppingcart", {headers: {Authorization: 'Bearer ' + token}})
+    setShoppingCart(response.data)
+  }
+
+  const setFilteredCategories = (categoryId) => {
+    setCurrentCategoryId(categoryId)
+  }
 
   return (
     <Router>
@@ -183,6 +192,7 @@ function App() {
           {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         </Switch>
         <Footer />
+
       </div>
     </Router>
   );
