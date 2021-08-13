@@ -70,6 +70,10 @@ function App() {
     setCurrentCategoryId(categoryId)
   }
 
+  const setSearchFilteredProducts = (products) => {
+    setAllProducts(products)
+  }
+
   return (
     <Router>
       <div>
@@ -78,7 +82,7 @@ function App() {
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
-        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} />} /> 
+        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} setSearchFilteredProducts={setSearchFilteredProducts} getAllProducts={getAllProducts}/>} /> 
         <Route path="/user/createproduct" render={props => {
           if(!currentUser){
             return <Redirect to="/login" />;
