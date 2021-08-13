@@ -9,7 +9,7 @@ const ShoppingCart = (props) => {
   useEffect( async () =>{
     let response = await axios.get("https://localhost:44394/api/shoppingcart", {headers: {Authorization: 'Bearer ' + props.jwt}})
     console.log(response.data);
-    //left off here to fix back end methods.
+    //left off here to fix back end methods
   }, [])
   
 
