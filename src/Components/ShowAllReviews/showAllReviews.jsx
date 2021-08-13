@@ -1,4 +1,5 @@
 import React from "react";
+import './showAllReviews.css';
 import { Container, Col, Row } from "react-bootstrap";
 const ShowAllReviews = (props) => {
   let productReviews = props.productReviews;
@@ -12,9 +13,15 @@ const ShowAllReviews = (props) => {
           <Container>
             <Row>
               <Col sm={8}>
+                <div class="content-m">
                   <h5>{currentUser.username}</h5>
                 <p>{review.description}</p>
                 <p>Rating: {review.rating}</p>
+                <div class="rating">
+                  
+                </div>
+                {console.log(review.rating)}
+                </div>
               </Col>
               <Col sm={4}></Col>
             </Row>

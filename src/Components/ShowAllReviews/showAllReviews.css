@@ -1,0 +1,7 @@
+.content-m {
+    overflow:auto;
+    padding: 20px 20px 20px 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+}
