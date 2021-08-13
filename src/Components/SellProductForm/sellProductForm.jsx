@@ -7,7 +7,6 @@ const SellProductForm = (props) => {
     //CATEGORYID IS GOING TO CHANGE WHEN PROPS ARE TAKEN IN WHEN A CATEGORY IS SELECTED WE WILL REPLACE 1 WITH THAT SPECIFIC CATEGORIESID
     //ADD CONDITIONAL FOR IF A USER IS LOGGED IN AND ON SELL PRODUCT AND REFRESHES THE PAGE TO PREVENT WEBSITE FROM BREAKING
     let id;
-    console.log(props)
     let currentToken = props.currentToken;
     let getAllProducts = props.getAllProducts;
     let userCurrentCategoryId = props.userCurrentCategoryId;
@@ -38,7 +37,6 @@ const SellProductForm = (props) => {
         let intPriceProductData = Number(`${productData.Price}`)
         // if (intPriceProductdata == NaN || intPriceProductData == 0){} ADD LOGIC HERE FOR ALERTING A USER THAT THEY NEED TO ENTER AN INTEGER
         productData.Price = intPriceProductData
-        debugger
         await axios.post("https://localhost:44394/api/product", productData, { headers: {Authorization: 'Bearer ' + currentToken}}) //Creates a new product
         getAllProducts();
     }
