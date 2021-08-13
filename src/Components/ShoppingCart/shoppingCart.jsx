@@ -1,16 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import axios from 'axios';
 
 
-const ShoppingCart = (props) => {
-  const [shoppingCart, setshoppingCart] = useState();
+
+const ShoppingCart = (shoppingCart) => {
   
-  useEffect( async () =>{
-    let response = await axios.get("https://localhost:44394/api/shoppingcart", {headers: {Authorization: 'Bearer ' + props.jwt}})
-    console.log(response.data);
-    //left off here to fix back end methods
-  }, [])
+  
+    
   
 
   return ( 
@@ -18,7 +14,9 @@ const ShoppingCart = (props) => {
       <Row>
         <Col></Col>
         <Col>
-          Hellos
+          {shoppingCart.forEach(item => {
+            <h1>{item}</h1>
+          })}
         </Col>
         <Col></Col>
       </Row>

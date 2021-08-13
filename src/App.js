@@ -21,6 +21,7 @@ function App() {
   const [productReviews, setProductReviews] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentCategoryId, setCurrentCategoryId] = useState(1);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   useEffect( () =>{
     const jwt = localStorage.getItem('token');
@@ -77,6 +78,12 @@ function App() {
     setAllProducts(products)
   }
 
+  const getUsersCart = async () => {
+    let response = await axios.get("https://localhost:44394/api/shoppingcart", {headers: {Authorization: 'Bearer ' + token}})
+    setShoppingCart(response.data)
+  }
+
+
   return (
     <Router>
       <div>
@@ -85,7 +92,7 @@ function App() {
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken} />} />
-        <Route path="/user/shoppingcart"  render={props => <ShoppingCart {...props} jwt={localStorage.token}/>} />
+        <Route path="/user/shoppingcart"  render={props => <ShoppingCart {...props} shoppingCart={shoppingCart} allProducts={allProducts}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
         <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} setSearchFilteredProducts={setSearchFilteredProducts} getAllProducts={getAllProducts}/>} /> 
