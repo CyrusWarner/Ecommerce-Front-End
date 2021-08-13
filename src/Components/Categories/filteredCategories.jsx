@@ -7,6 +7,7 @@ const FilteredCategories  = (props) => {
     const [filteredProducts, setFilteredProducts] = useState(allProducts)
     let setFilteredCategories = props.setFilteredCategories
     let tempfilteredProducts = [];
+    let getAllProducts = props.getAllProducts;
     const onChangeComboBox = (event) => {
         const id = event.target.value
         let intSelectedId = Number(`${id}`)

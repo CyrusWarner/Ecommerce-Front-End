@@ -13,10 +13,10 @@ const ShowAllReviews = (props) => {
           <Container>
             <Row>
               <Col sm={8}>
-                  <h5>{currentUser.username}</h5>
+                  <h5>{review.user.userName}</h5>
                 <p>{review.description}</p>
-                {}
-                
+                {console.log(productReviews)}
+                {console.log(review.user.userName)}
                 {stars.map((star, index) => index < review.rating && (
                     <FaStar color={starColors.orange}/>
                 )  

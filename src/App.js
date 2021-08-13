@@ -54,6 +54,11 @@ function App() {
     window.localStorage.setItem('saved-currentProduct', JSON.stringify(valuesToSave))
   },[productReviews, currentProduct])
 
+  useEffect( () =>{
+    getUsersCart()
+  }, [token])
+
+
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
     setToken(token);
@@ -79,6 +84,7 @@ function App() {
       `https://localhost:44394/api/reviews/${productId}`
     );
     setProductReviews(response.data);
+    console.log(productReviews)
   };
 
   const getCategories = async () => {
@@ -102,11 +108,17 @@ function App() {
   };
 
   const getUsersCart = async () => {
-    let response = await axios.get("https://localhost:44394/api/shoppingcart", {
-      headers: { Authorization: "Bearer " + token },
-    });
-    setShoppingCart(response.data);
-  };
+    let response = await axios.get(`https://localhost:44394/api/shoppingcart`, {headers: {Authorization: 'Bearer ' + token}})
+    setShoppingCart(response.data)
+  }
+
+  const increaseQuantity = async (quantity, shoppingCartId) => {
+    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
+  }
+  const decreaseQuantity = async (quantity, shoppingCartId) => {
+    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
+  }
+
 
   return (
     
@@ -139,8 +151,11 @@ function App() {
 
               <ShoppingCart
                 {...props}
+                decreaseQuantity={decreaseQuantity}
+                increaseQuantity={increaseQuantity}
+                getUsersCart={getUsersCart}
+                user={currentUser}
                 shoppingCart={shoppingCart}
-                allProducts={allProducts}
               />
                 );
               }
