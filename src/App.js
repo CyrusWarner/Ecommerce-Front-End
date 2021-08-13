@@ -52,7 +52,21 @@ function App() {
     let response = await axios.get(`https://localhost:44394/api/reviews/${productId}`)
     setProductReviews(response.data)
 
+  const getCategories = async () => {
+    let response = await axios.get("https://localhost:44394/api/category/")
+    if(response.data.length !== 0){
+      setCategories(response.data)
+    }
+  }
 
+  const userCurrentCategoryId = (categoryId) => {
+    let intCategoryId = Number(`${categoryId}`)
+    categoryId = intCategoryId
+    setCurrentCategoryId(categoryId)
+  }
+
+  const setFilteredCategories = (categoryId) => {
+    setCurrentCategoryId(categoryId)
   }
 
   return (
@@ -63,7 +77,7 @@ function App() {
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
-        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} />} /> 
+        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} setSearchFilteredProducts={setSearchFilteredProducts} getAllProducts={getAllProducts}/>} setFilteredCategories={setFilteredCategories} /> 
         <Route path="/user/createproduct" render={props => {
           if(!currentUser){
             return <Redirect to="/login" />;
@@ -79,5 +93,5 @@ function App() {
     </Router>
   );
 }
-
+}
 export default App;
