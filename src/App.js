@@ -70,7 +70,6 @@ function App() {
   const userCurrentCategoryId = (categoryId) => {
     let intCategoryId = Number(`${categoryId}`)
     categoryId = intCategoryId
-
     setCurrentCategoryId(categoryId)
   }
 
@@ -83,6 +82,9 @@ function App() {
     setShoppingCart(response.data)
   }
 
+  const setFilteredCategories = (categoryId) => {
+    setCurrentCategoryId(categoryId)
+  }
 
   return (
     <Router>
@@ -95,7 +97,7 @@ function App() {
         <Route path="/user/shoppingcart"  render={props => <ShoppingCart {...props} shoppingCart={shoppingCart} allProducts={allProducts}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
-        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} setSearchFilteredProducts={setSearchFilteredProducts} getAllProducts={getAllProducts}/>} /> 
+        <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} setSearchFilteredProducts={setSearchFilteredProducts} getAllProducts={getAllProducts}/>} setFilteredCategories={setFilteredCategories} /> 
         <Route path="/user/createproduct" render={props => {
           if(!currentUser){
             return <Redirect to="/login" />;

@@ -1,7 +1,7 @@
 import React from 'react';  
 import { Container, Row, Card, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Categories from '../Categories/categories';
+// import FilteredCategories from '../Categories/filteredCategories';
 import SearchBar from '../SearchBar/searchBar';
 
 const ShowAllProducts = (props) => {
@@ -19,7 +19,7 @@ const ShowAllProducts = (props) => {
             <Row>
                 <Col sm={4}>
                 <h1>All Products</h1>
-            <Categories categories={categories}  />
+            {/* <FilteredCategories categories={categories} allProducts={allProducts}  /> */}
             
                 </Col>
                 <Col sm={8}></Col>
