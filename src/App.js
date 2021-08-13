@@ -130,8 +130,11 @@ function App() {
             render={(props) => (
               <ShoppingCart
                 {...props}
+                decreaseQuantity={decreaseQuantity}
+                increaseQuantity={increaseQuantity}
+                getUsersCart={getUsersCart}
+                user={currentUser}
                 shoppingCart={shoppingCart}
-                allProducts={allProducts}
               />
             )}
           />
