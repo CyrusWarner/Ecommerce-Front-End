@@ -95,14 +95,6 @@ function App() {
     setShoppingCart(response.data);
   };
 
-  let response = await axios.get("https://localhost:44394/api/shoppingcart", {headers: {Authorization: 'Bearer ' + token}})
-    setShoppingCart(response.data)
-  }
-
-  const setFilteredCategories = (categoryId) => {
-    setCurrentCategoryId(categoryId)
-  }
-
   return (
     <Router>
       <div>
