@@ -8,15 +8,14 @@ const Categories  = (props) => {
     }
     return(
         <React.Fragment>
-                <Container>Categories
-                    <select className="custom-select" onChange={(event) => {onChangeComboBox(event);}} >
+            <h5>Categories </h5>
+                    <select className="form-select" onChange={(event) => {onChangeComboBox(event);}} >
                             {categories.map((category) => {
                                 return(
                                 <option key={category.categoryId} value={category.categoryId}>{category.categoryName}</option>
                                 )
                             })}
                     </select>
-                    </Container>
         </React.Fragment>
     )
 }

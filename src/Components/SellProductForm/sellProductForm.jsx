@@ -54,22 +54,22 @@ const SellProductForm = (props) => {
                 <Col sm={8}>        
                     <Form onSubmit={handleSubmit}>
                         <div>
-                    <Form.Label> Product Name
+                    <h5> Product Name
                     <Form.Control value={eachEntry.Name} onChange={handleChange} name="Name" placeholder="Product name..."></Form.Control>
-                    </Form.Label>
+                    </h5>
                     </div>
                     <div>
-                    <Form.Label> Product Description
+                    <h5> Product Description
                     <Form.Control value={eachEntry.Description} onChange={handleChange} name="Description"placeholder="Product description..."></Form.Control>
-                    </Form.Label>
+                    </h5>
                     </div>
                     <div>
-                    <Form.Label> Product Price
+                    <h5> Product Price
                     <Form.Control value={eachEntry.Price} onChange={handleChange} name="Price" placeholder ="Product Price"></Form.Control>
-                    </Form.Label>
+                    </h5>
                     </div>
                     <Categories categories={props.categories} userCurrentCategoryId={userCurrentCategoryId}/>
-                    <Button type="submit">Submit New Product</Button>
+                    <Button className="mt-2" type="submit">Submit New Product</Button>
                     </Form>
                 </Col>
                 <Col sm={4}></Col>
