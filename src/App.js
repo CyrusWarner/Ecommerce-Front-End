@@ -44,7 +44,9 @@ function App() {
       const user = jwtDecode(jwt);
       setCurrentUser({ user });
       setLoading(true)
-    } catch {}
+    } catch {
+      setLoading(true)
+    }
   }, []);
 
   useEffect(() => {

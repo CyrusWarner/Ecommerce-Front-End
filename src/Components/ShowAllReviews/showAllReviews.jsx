@@ -3,7 +3,6 @@ import { Container, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 const ShowAllReviews = (props) => {
   let productReviews = props.productReviews;
-  let currentUser = props.currentUser.user
   const stars = Array(5).fill(0);
   return (
     <div>
