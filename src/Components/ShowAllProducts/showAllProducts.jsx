@@ -20,7 +20,7 @@ const ShowAllProducts = (props) => {
             <Row>
                 <Col sm={4}></Col>
                 <h1>All Products</h1>
-            <FilteredCategories categories={categories} allProducts={allProducts} userCurrentCategoryId={userCurrentCategoryId} setFilteredCategories={setFilteredCategories}/>
+            <FilteredCategories categories={categories} allProducts={allProducts} userCurrentCategoryId={userCurrentCategoryId} setFilteredCategories={setFilteredCategories} getAllProducts={getAllProducts}/>
                 <Col sm={8}></Col>
             </Row>
         </Container>
