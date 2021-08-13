@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Button } from 'react-bootstrap';
 import { useHistory} from 'react-router-dom';
 
 
@@ -39,9 +39,16 @@ const logIn = async () => {
                 <div>
                     <h1>Login</h1>
                     <form onSubmit={handleSubmit}>
-                    <input className="form-control" name="username" placeholder="Username..." onChange={handleChange}></input>
-                    <input className="form-control" name="password" placeholder="Password..." onChange={handleChange}></input>
-                    <button>Login</button>
+                      <div>
+                        <label>Username</label>
+                    <input className="form-control" name="username" placeholder="Please enter your username..." onChange={handleChange}></input>
+                    </div>
+                    <div>
+                      <label>Password:</label>
+                    <input className="form-control" name="password" placeholder="Please enter your password..." onChange={handleChange}></input>
+                    <Button type="submit" className="mt-2">Login</Button>
+                    </div>
+                    
                     </form>
                     </div>
                 </Col>

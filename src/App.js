@@ -26,8 +26,15 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [currentCategoryId, setCurrentCategoryId] = useState(1);
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    const currentProduct = window.localStorage.getItem('saved-currentProduct')
+    const savedData = JSON.parse(currentProduct)
+    if (savedData !== null) {
+      setCurrentProduct(savedData.savedProduct)
+      setProductReviews(savedData.savedReviews)
+    }
     const jwt = localStorage.getItem("token");
     setToken(jwt);
     getAllProducts();
@@ -36,8 +43,16 @@ function App() {
     try {
       const user = jwtDecode(jwt);
       setCurrentUser({ user });
+      setLoading(true)
     } catch {}
   }, []);
+
+  useEffect(() => {
+    let savedProduct = currentProduct
+    let savedReviews = productReviews
+    const valuesToSave = {savedProduct, savedReviews}
+    window.localStorage.setItem('saved-currentProduct', JSON.stringify(valuesToSave))
+  },[productReviews, currentProduct])
 
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
@@ -74,15 +89,13 @@ function App() {
   };
 
   const userCurrentCategoryId = (categoryId) => {
-    let intCategoryId = Number(`${categoryId}`)
+    let intCategoryId = Number(`${categoryId}`);
     setCurrentCategoryId(intCategoryId);
   };
 
   const setFilteredCategories = (filteredProducts) => {
-    console.log(filteredProducts)
-    setAllProducts(filteredProducts)
+    setAllProducts(filteredProducts);
   };
-
 
   const setSearchFilteredProducts = (products) => {
     setAllProducts(products);
@@ -96,7 +109,9 @@ function App() {
   };
 
   return (
+    
     <Router>
+      {loading &&
       <div>
         <NavigationBar currentUser={currentUser} />
         <Switch>
@@ -116,15 +131,21 @@ function App() {
           />
           <Route
             path="/user/shoppingcart"
-            render={(props) => (
+            render={(props) => {
+              if (!currentUser) {
+                return <Redirect to="/login" />;
+              } else {
+                return (
+
               <ShoppingCart
                 {...props}
                 shoppingCart={shoppingCart}
                 allProducts={allProducts}
               />
-            )}
+                );
+              }
+            }}
           />
-          {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
           <Route
             path="/Login"
             render={(props) => (
@@ -145,7 +166,7 @@ function App() {
                 userCurrentCategoryId={userCurrentCategoryId}
                 setFilteredCategories={setFilteredCategories}
               />
-            )} 
+            )}
           />
           <Route
             path="/user/createproduct"
@@ -169,25 +190,31 @@ function App() {
           />
           <Route
             path="/viewproduct"
-            render={(props) => (
-              <ShowProduct
-                {...props}
-                currentToken={token}
-                currentUser={currentUser}
-                currentProduct={currentProduct}
-                productReviews={productReviews}
-                getProductReviews={getProductReviews}
-                
-              />
-            )}
+            render={(props) => {
+              if (!currentUser) {
+                return <Redirect to="/login" />;
+              } else {
+                return (
+                  <ShowProduct
+                    {...props}
+                    currentToken={token}
+                    currentUser={currentUser}
+                    currentProduct={currentProduct}
+                    productReviews={productReviews}
+                    getProductReviews={getProductReviews}
+                  />
+                );
+              }
+            }}
           />
           {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         </Switch>
         <Footer />
-
       </div>
+          }
     </Router>
-  );
+  );   
 }
+
 
 export default App;

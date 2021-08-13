@@ -1,6 +1,6 @@
 import React, {useState} from 'react';  
 import axios from 'axios';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Button } from 'react-bootstrap';
 import { useHistory} from 'react-router-dom';
 
 const SignUpForm = () => {
@@ -28,7 +28,7 @@ const SignUpForm = () => {
     const signUp = async () => {
         let userData = eachEntry;
         let response = await axios.post("https://localhost:44394/api/authentication", userData);
-        console.log(response)
+        setEachEntry(initialUserInfo)
         if (response.data.length !== 0){
             console.log("hello");
             history.push("/Login")
@@ -43,13 +43,31 @@ const SignUpForm = () => {
                 <div>
                     <h1>Signup</h1>
                     <form onSubmit={handleSubmit}>
-                    <input name="firstname" placeholder="First name..." onChange={handleChange}></input>
-                    <input  name="lastname" placeholder="Last name..." onChange={handleChange}></input>
-                    <input  name="username" placeholder="Username..." onChange={handleChange}></input>
-                    <input  name="email" placeholder="Email..." onChange={handleChange}></input>
-                    <input  name="password" placeholder="Password..." onChange={handleChange}></input>
-                    <input  name="phonenumber" placeholder="Phone number..." onChange={handleChange}></input>
-                    <button type="submit">Sign Up</button>
+                        <div>
+                            <label>First Name</label>
+                    <input  className="form-control" value={eachEntry.firstname} name="firstname" placeholder="First name..." onChange={handleChange}></input>
+                    </div>
+                    <label>Username:</label>
+                    <div>
+                    <input  className="form-control" value={eachEntry.lastname} name="lastname" placeholder="Last name..." onChange={handleChange}></input>
+                    </div>
+                    <label>Email:</label>
+                    <div>
+                    <input  className="form-control" value={eachEntry.username} name="username" placeholder="Username..." onChange={handleChange}></input>
+                    </div>
+                    <label>Password:</label>
+                    <div>
+                    <input  className="form-control" value={eachEntry.email} name="email" placeholder="Email..." onChange={handleChange}></input>
+                    </div>
+                    <label>Password:</label>
+                    <div>
+                    <input  className="form-control" value={eachEntry.password} name="password" placeholder="Password..." onChange={handleChange}></input>
+                    </div>
+                    <label>Phone Number:</label>
+                    <div>
+                    <input  className="form-control" value={eachEntry.phonenumber} name="phonenumber" placeholder="Phone number..." onChange={handleChange}></input>
+                    </div>
+                    <Button className="mt-2" type="submit">Sign Up</Button>
                     </form>
                     </div>
                 </Col>
