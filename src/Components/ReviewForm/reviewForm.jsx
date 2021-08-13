@@ -16,7 +16,7 @@ const ReviewForm = (props) => {
     },
   };
   const stars = Array(5).fill(0);
-  const [currentRating, setCurrentRating] = useState(0);
+  const [currentRating, setCurrentRating] = useState(1);
   const [hoverValue, setHoverValue] = useState(undefined);
   const currentToken = props.currentToken;
   const currentProductId = props.currentProduct.productId;
