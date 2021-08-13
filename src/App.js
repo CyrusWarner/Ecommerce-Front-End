@@ -15,7 +15,6 @@ import Home from "./Components/Home/home";
 import jwtDecode from "jwt-decode";
 import ShoppingCart from "./Components/ShoppingCart/shoppingCart";
 import axios from "axios";
-import Footer from "./Components/Footer/footer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -226,7 +225,6 @@ function App() {
           />
           {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         </Switch>
-        <Footer />
       </div>
           }
     </Router>
