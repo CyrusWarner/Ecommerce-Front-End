@@ -5,7 +5,6 @@ const ShowAllReviews = (props) => {
   let productReviews = props.productReviews;
   let currentUser = props.currentUser.user
   const stars = Array(5).fill(0);
-  console.log(currentUser)
   return (
     <div>
       {" "}

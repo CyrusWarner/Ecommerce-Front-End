@@ -25,9 +25,10 @@ const ReviewForm = (props) => {
   const initialReview = {
     description: "",
     userId: userId,
-    productId: currentProductId,
+    productId: null,
   };
   const [eachEntry, setEachEntry] = useState(initialReview);
+  
 
   const handleChange = (event) => {
     setEachEntry({ ...eachEntry, [event.target.name]: event.target.value });
@@ -50,7 +51,7 @@ const ReviewForm = (props) => {
   const submitReview = async () => {
     let review = eachEntry;
     review.rating = currentRating;
-    debugger
+    review.productId = currentProductId
     await axios.post("https://localhost:44394/api/reviews/", review, {
       headers: { Authorization: "Bearer " + currentToken },
     });

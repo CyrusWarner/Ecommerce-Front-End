@@ -11,12 +11,13 @@ const SellProductForm = (props) => {
     let getAllProducts = props.getAllProducts;
     let userCurrentCategoryId = props.userCurrentCategoryId;
     let currentCategoryId = props.currentCategoryId;
+    console.log(currentCategoryId)
     if(props.currentUser !== undefined) {
         id = props.currentUser.user.id;
         
     }
     const initialInput = {
-        AverageRating: 1,
+        AverageRating: 5,
         CategoryId: currentCategoryId,
         Description: "",
         Name: "",
@@ -37,7 +38,6 @@ const SellProductForm = (props) => {
         let intPriceProductData = Number(`${productData.Price}`)
         // if (intPriceProductdata == NaN || intPriceProductData == 0){} ADD LOGIC HERE FOR ALERTING A USER THAT THEY NEED TO ENTER AN INTEGER
         productData.Price = intPriceProductData
-        console.log(productData);
         await axios.post("https://localhost:44394/api/product", productData, { headers: {Authorization: 'Bearer ' + currentToken}}) //Creates a new product
         getAllProducts();
     }

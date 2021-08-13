@@ -47,9 +47,10 @@ function App() {
     }
     
   }
-  const createCurrentProduct = (product) => {
-    console.log(product)
-    setCurrentProduct(product)
+  const createCurrentProduct = async (product) => {
+    let response = await axios.get(`https://localhost:44394/api/product/${product.productId}`)
+    let currentProduct = response.data
+    setCurrentProduct(currentProduct)
   }
 
   const getProductReviews = async (productId) => {
