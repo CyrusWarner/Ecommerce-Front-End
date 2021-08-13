@@ -50,6 +50,7 @@ const ReviewForm = (props) => {
   const submitReview = async () => {
     let review = eachEntry;
     review.rating = currentRating;
+    debugger
     await axios.post("https://localhost:44394/api/reviews/", review, {
       headers: { Authorization: "Bearer " + currentToken },
     });
