@@ -39,6 +39,10 @@ function App() {
     } catch {}
   }, []);
 
+  useEffect( () =>{
+    getUsersCart()
+  }, [token])
+
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
     setToken(token);
@@ -90,11 +94,17 @@ function App() {
   };
 
   const getUsersCart = async () => {
-    let response = await axios.get("https://localhost:44394/api/shoppingcart", {
-      headers: { Authorization: "Bearer " + token },
-    });
-    setShoppingCart(response.data);
-  };
+    let response = await axios.get(`https://localhost:44394/api/shoppingcart`, {headers: {Authorization: 'Bearer ' + token}})
+    setShoppingCart(response.data)
+  }
+
+  const increaseQuantity = async (quantity, shoppingCartId) => {
+    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
+  }
+  const decreaseQuantity = async (quantity, shoppingCartId) => {
+    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
+  }
+
 
   return (
     <Router>
