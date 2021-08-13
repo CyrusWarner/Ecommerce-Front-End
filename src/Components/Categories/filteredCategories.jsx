@@ -1,28 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 
 const FilteredCategories  = (props) => {
-    // let setFilteredCategories = props.setFilteredCategories;
-    const allProducts = props.allProducts;
     let categories = props.categories
-    console.log(categories)
+    let allProducts = props.allProducts
+    let setFilteredCategories = props.setFilteredCategories
     const onChangeComboBox = (event) => {
+        let filteredProducts = [];
         const selectedId = event.target.value
-        // props.userCurrentCategoryId(selectedId);
-    //     let filteredProducts = [];
-    //     allProducts.forEach((product) => {
-    // if (product.categoryId.includes(selectedId)) {
-    //     filteredProducts.push(product);
-    //   }
-    // });
-    // console.log(filteredProducts)
-    // if(currentSearchText !== ""){
-    //     setSearchFilteredProducts(filteredProducts);
-    // }
-    // else {
-    //     getAllProducts();
-    // }
-    // }
+        let intSelectedId = Number(`${selectedId}`)
+        allProducts.forEach((product) => {
+            if(product.categoryId === intSelectedId) {
+              filteredProducts.push(product);
+            } 
+        })
+        setFilteredCategories(filteredProducts)
+
+    }
     return(
         <React.Fragment>
                 <Container>Categories
@@ -36,7 +30,6 @@ const FilteredCategories  = (props) => {
                     </Container>
         </React.Fragment>
     )
-}
 }
 
 export default FilteredCategories;
