@@ -8,6 +8,7 @@ const ShowProduct = (props) => {
   const currentToken = props.currentToken;
   const getProductReviews = props.getProductReviews
   let productReviews = props.productReviews;
+
   return (
     <React.Fragment>
       <Container>
