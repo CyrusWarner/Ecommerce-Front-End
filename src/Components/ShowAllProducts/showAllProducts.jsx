@@ -30,10 +30,7 @@ const ShowAllProducts = (props) => {
                 <Row className="d-flex justify-content-center">
                     {allProducts.map((product) =>{
                         return (
-                            <Card
-                            className="card-container border border-primary "
-                            style={{ width: "18rem", margin: "1rem" }}
-                          >
+                            <Card className="card-container border border-primary " style={{ width: "18rem", margin: "1rem" }}>
                             <Card.Body className="text-center">
                               <Card.Title>{product.name}</Card.Title>
                               <Card.Text>{product.description}</Card.Text>
