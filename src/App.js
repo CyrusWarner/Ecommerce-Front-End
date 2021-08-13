@@ -36,6 +36,10 @@ function App() {
     catch {}
   }, [])
 
+  useEffect( () =>{
+    getUsersCart()
+  }, [token])
+
   const setUserToken = (token) => {
     localStorage.setItem('token', token);
     setToken(token)
@@ -79,8 +83,15 @@ function App() {
   }
 
   const getUsersCart = async () => {
-    let response = await axios.get("https://localhost:44394/api/shoppingcart", {headers: {Authorization: 'Bearer ' + token}})
+    let response = await axios.get(`https://localhost:44394/api/shoppingcart`, {headers: {Authorization: 'Bearer ' + token}})
     setShoppingCart(response.data)
+  }
+
+  const increaseQuantity = async (quantity, shoppingCartId) => {
+    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
+  }
+  const decreaseQuantity = async (quantity, shoppingCartId) => {
+    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
 
 
@@ -92,7 +103,7 @@ function App() {
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken} />} />
-        <Route path="/user/shoppingcart"  render={props => <ShoppingCart {...props} shoppingCart={shoppingCart} allProducts={allProducts}/>} />
+        <Route path="/user/shoppingcart"  render={props => <ShoppingCart {...props} getUsersCart={getUsersCart} shoppingCart={shoppingCart} user={currentUser} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
         <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} setSearchFilteredProducts={setSearchFilteredProducts} getAllProducts={getAllProducts}/>} /> 
