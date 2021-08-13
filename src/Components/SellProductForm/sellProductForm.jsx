@@ -7,7 +7,6 @@ const SellProductForm = (props) => {
     //CATEGORYID IS GOING TO CHANGE WHEN PROPS ARE TAKEN IN WHEN A CATEGORY IS SELECTED WE WILL REPLACE 1 WITH THAT SPECIFIC CATEGORIESID
     //ADD CONDITIONAL FOR IF A USER IS LOGGED IN AND ON SELL PRODUCT AND REFRESHES THE PAGE TO PREVENT WEBSITE FROM BREAKING
     let id;
-    console.log(props)
     let currentToken = props.currentToken;
     let getAllProducts = props.getAllProducts;
     let userCurrentCategoryId = props.userCurrentCategoryId;
