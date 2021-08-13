@@ -8,6 +8,7 @@ import SellProductForm from './Components/SellProductForm/sellProductForm';
 import ShowProduct from './Components/ShowProduct/showProduct';
 import Home from './Components/Home/home';
 import jwtDecode from 'jwt-decode';
+import ShoppingCart from './Components/ShoppingCart/shoppingCart';
 import axios from 'axios';
 import Footer from './Components/Footer/footer';
 
@@ -83,6 +84,9 @@ function App() {
       <Switch>
         <Route path="/" exact render={props => <Home {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> 
         <Route path="/Signup"  render={props => <SignUpForm {...props} />} />
+        <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken} />} />
+        <Route path="/user/shoppingcart"  render={props => <ShoppingCart {...props} jwt={localStorage.token}/>} />
+        {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         <Route path="/Login"  render={props => <LoginForm {...props} setUserToken={setUserToken}  />} />
         <Route path="/products"  render={props => <ShowAllProducts {...props} createCurrentProduct={createCurrentProduct} allProducts={allProducts} getProductReviews={getProductReviews} categories={categories} setSearchFilteredProducts={setSearchFilteredProducts} getAllProducts={getAllProducts}/>} /> 
         <Route path="/user/createproduct" render={props => {
