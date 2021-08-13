@@ -38,7 +38,7 @@ const SellProductForm = (props) => {
         let intPriceProductData = Number(`${productData.Price}`)
         // if (intPriceProductdata == NaN || intPriceProductData == 0){} ADD LOGIC HERE FOR ALERTING A USER THAT THEY NEED TO ENTER AN INTEGER
         productData.Price = intPriceProductData
-        debugger
+        console.log(productData);
         await axios.post("https://localhost:44394/api/product", productData, { headers: {Authorization: 'Bearer ' + currentToken}}) //Creates a new product
         getAllProducts();
     }

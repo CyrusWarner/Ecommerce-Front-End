@@ -9,6 +9,7 @@ import ShowProduct from './Components/ShowProduct/showProduct';
 import Home from './Components/Home/home';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
+import Footer from './Components/Footer/footer';
 
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
         <Route path="/viewproduct" render={props => <ShowProduct {...props} currentToken={token} currentUser={currentUser} currentProduct={currentProduct} productReviews={productReviews} getProductReviews={getProductReviews}/>} />
         {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
       </Switch>
+      <Footer />
       </div>
     </Router>
   );
