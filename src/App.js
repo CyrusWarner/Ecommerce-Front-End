@@ -25,7 +25,7 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [currentCategoryId, setCurrentCategoryId] = useState(1);
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const currentProduct = window.localStorage.getItem('saved-currentProduct')
@@ -42,9 +42,9 @@ function App() {
     try {
       const user = jwtDecode(jwt);
       setCurrentUser({ user });
-      setLoading(true)
+      setLoading(false)
     } catch {
-      setLoading(true)
+      setLoading(false)
     }
   }, []);
 
@@ -124,7 +124,7 @@ function App() {
   return (
     
     <Router>
-      {loading &&
+      {!loading &&
       <div>
         <NavigationBar currentUser={currentUser} />
         <Switch>
