@@ -1,6 +1,7 @@
 import React from "react";
 import ReviewForm from "../ReviewForm/reviewForm";
 import { Col, Container, Row } from "react-bootstrap";
+import './showProduct.css'
 import ShowAllReviews from './../ShowAllReviews/showAllReviews';
 const ShowProduct = (props) => {
   const { name, description } = props.currentProduct;

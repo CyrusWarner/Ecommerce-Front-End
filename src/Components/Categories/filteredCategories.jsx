@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import './categories.css'
 import { Container } from 'react-bootstrap';
 
 const FilteredCategories  = (props) => {
@@ -26,8 +27,9 @@ const FilteredCategories  = (props) => {
     },[filteredProducts])
     return(
         <React.Fragment>
-                <Container>Categories
-                    <select className="custom-select" onChange={(event) => {onChangeComboBox(event);}} >
+                <Container>
+                    <h5 className="title"> Search By Category</h5>
+                    <select className="form-select" onChange={(event) => {onChangeComboBox(event);}} >
                         <option key={categories.length} value={categories.length + 1}>All</option>
                             {categories.map((category) => {
                                 return(

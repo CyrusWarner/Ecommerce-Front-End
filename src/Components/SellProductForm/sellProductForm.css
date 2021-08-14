@@ -1,0 +1,31 @@
+.title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+    position: relative;
+    color: #f2f5f7;
+}
+
+.title:after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background: crimson;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}
+
+.form-control {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px crimson!important;
+}
+.form-control:focus {
+    border-color: crimson !important; 
+  }
+
+.productButton {
+    background-color: crimson;
+    color: white;
+    transition-delay: 50ms;
+}
+
