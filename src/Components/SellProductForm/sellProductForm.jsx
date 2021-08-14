@@ -1,4 +1,5 @@
 import axios from 'axios';
+import './sellProductForm.css'
 import React, {useState} from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import Categories from '../Categories/categories';
@@ -44,34 +45,35 @@ const SellProductForm = (props) => {
         <Container>
             <Row>
                 <Col sm={4}>
-                <h1 className="mb-3">Sell A Product</h1>
+                <h1 className="title mb-3">Sell A Product</h1>
                 </Col>
                 <Col sm={8}></Col>
             </Row>
         </Container>
         <Container>
             <Row>
-                <Col sm={8}>        
+                <Col sm={4}>        
                     <Form onSubmit={handleSubmit}>
                         <div>
-                    <h5> Product Name
-                    <Form.Control value={eachEntry.Name} onChange={handleChange} name="Name" placeholder="Product name..."></Form.Control>
-                    </h5>
+                    <h5 className="title"> Product Name</h5>
+                    <input className=" form-control" value={eachEntry.Name} onChange={handleChange} name="Name" placeholder="Product name..."></input>
+                    
                     </div>
                     <div>
-                    <h5> Product Description
-                    <Form.Control value={eachEntry.Description} onChange={handleChange} name="Description"placeholder="Product description..."></Form.Control>
-                    </h5>
+                    <h5 className="title"> Product Description</h5>
+                    <input className=" form-control" value={eachEntry.Description} onChange={handleChange} name="Description"placeholder="Product description..."></input>
+                    
                     </div>
                     <div>
-                    <h5> Product Price
-                    <Form.Control value={eachEntry.Price} onChange={handleChange} name="Price" placeholder ="Product Price"></Form.Control>
-                    </h5>
+                    <h5 className="title"> Product Price</h5>
+                    <input className=" form-control" value={eachEntry.Price} onChange={handleChange} name="Price" placeholder ="Product Price"></input>
+                    
                     </div>
                     <Categories categories={props.categories} userCurrentCategoryId={userCurrentCategoryId}/>
-                    <Button className="mt-2" type="submit">Submit New Product</Button>
+                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2" type="submit">Submit New Product</Button>
                     </Form>
                 </Col>
+                <Col sm={4}></Col>
                 <Col sm={4}></Col>
             </Row>
         </Container>

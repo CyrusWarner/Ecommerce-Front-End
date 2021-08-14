@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Container } from 'react-bootstrap';
+import './categories.css'
 const Categories  = (props) => {
     let categories = props.categories
     const onChangeComboBox = (event) => {
@@ -8,7 +9,7 @@ const Categories  = (props) => {
     }
     return(
         <React.Fragment>
-            <h5>Categories </h5>
+            <h5 className="title">Categories </h5>
                     <select className="form-select" onChange={(event) => {onChangeComboBox(event);}} >
                             {categories.map((category) => {
                                 return(
