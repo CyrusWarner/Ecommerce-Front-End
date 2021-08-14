@@ -11,8 +11,7 @@ const LoginForm = (props) => {
 }
   const history = useHistory()
   const [logInInfo, setLogInInfo] = useState(logInValues);
-  
-
+  const [logInError, setLoginError] = useState("")  
 const handleChange = (event) => {
   setLogInInfo({ ...logInInfo, [event.target.name]: event.target.value });
 }
@@ -23,9 +22,13 @@ const handleSubmit = (event) => {
 
 const logIn = async () => {
   let userData = logInInfo;
-  let response = await axios.post("https://localhost:44394/api/authentication/login", userData);
-  props.setUserToken(response.data.token)
-  if (response.data.length !== 0){
+  let res = await axios.post("https://localhost:44394/api/authentication/login", userData).catch(function(error) {
+    if (error.response) {
+      setLoginError("Either your username or password is incorrect")
+    }
+  });
+  if (res !== undefined){
+    props.setUserToken(res.data.token)
     history.push("/")
   }
 }
@@ -40,8 +43,10 @@ const logIn = async () => {
                     <h1>Login</h1>
                     <form onSubmit={handleSubmit}>
                       <div>
+                      <div className="text-center" style={{color: "yellow"}}>{logInError}</div>
                         <label>Username</label>
                     <input className="form-control" name="username" placeholder="Please enter your username..." onChange={handleChange}></input>
+                    
                     </div>
                     <div>
                       <label>Password:</label>

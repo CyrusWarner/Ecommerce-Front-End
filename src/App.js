@@ -60,7 +60,9 @@ function App() {
   },[productReviews, currentProduct])
 
   useEffect( () =>{
-    getUsersCart()
+    if(localStorage.token){
+      getUsersCart()
+    }
   }, [token])
 
 
