@@ -5,10 +5,7 @@ import './navigationBar.css';
 
 const NavigationBar = (props) => {
       let currentUser = props.currentUser
-      const logout = () => {
-        localStorage.clear();
-        window.location.href = "/login";
-      }
+      let logout = props.logout
     return (
         <Navbar className="color-nav">
         {/* <Navbar.Brand>Star Wars Ecommerce</Navbar.Brand> */}
@@ -28,12 +25,6 @@ const NavigationBar = (props) => {
             {!currentUser &&
             <Nav.Link className="customNavLink" as={Link} to="/Login"><h4 className="linkText">Login</h4></Nav.Link>
             }
-          </Nav>
-          <Form className="d-flex">
-
-          </Form>
-          <Nav>
-        
           </Nav>
         </Navbar.Collapse>
       </Navbar>

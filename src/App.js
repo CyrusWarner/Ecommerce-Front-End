@@ -34,13 +34,18 @@ function App() {
       setCurrentProduct(savedData.savedProduct)
       setProductReviews(savedData.savedReviews)
     }
-    const jwt = localStorage.getItem("token");
-    setToken(jwt);
+    const jwtToken = localStorage.getItem("token");
+    setToken(jwtToken);
     getAllProducts();
     getCategories();
 
     try {
-      const user = jwtDecode(jwt);
+      debugger
+      const user = jwtDecode(jwtToken);
+      let currentDate = new Date();
+      if (user.exp * 1000 < currentDate.getTime()) {
+        logout();
+      }
       setCurrentUser({ user });
       setLoading(false)
     } catch {
@@ -65,6 +70,11 @@ function App() {
     setToken(token);
     window.location = "/";
   };
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/login";
+  }
 
   const getAllProducts = async () => {
     let response = await axios.get("https://localhost:44394/api/product");
@@ -126,7 +136,7 @@ function App() {
     <Router>
       {!loading &&
       <div>
-        <NavigationBar currentUser={currentUser} />
+        <NavigationBar currentUser={currentUser} logout={logout} />
         <Switch>
           <Route
             path="/"
