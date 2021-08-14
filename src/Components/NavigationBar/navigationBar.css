@@ -6,3 +6,10 @@
 .userAction {
     text-align: right;
 }
+
+.customNavLink:hover {
+    padding-bottom: 1px !important;
+    color: crimson !important;
+    border-bottom: 3px  solid crimson !important;
+    bottom: -3px !important;
+}
