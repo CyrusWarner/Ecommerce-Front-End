@@ -40,7 +40,6 @@ function App() {
     getCategories();
 
     try {
-      debugger
       const user = jwtDecode(jwtToken);
       let currentDate = new Date();
       if (user.exp * 1000 < currentDate.getTime()) {
