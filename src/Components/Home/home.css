@@ -1,4 +1,111 @@
-.homeMessage {
-    text-align: center;
-    margin-top: 15%;
+/* @import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One'); */
+
+body {
+  position: relative;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Pathway Gothic One', sans-serif;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  vertical-align: bottom;
+}
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #ccc;
+  background-blend-mode: multiply;
+  background-image: url("https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fade-out {
+  position: absolute;
+  width: 100%;
+  min-height: 30vh;
+  top: -25px;
+  background-image: linear-gradient(0deg, transparent, black 75%);
+  z-index: 1;
+}
+
+.star-wars {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 800px;
+  color: #feda4a;
+  font-size: 600%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  perspective: 400px;
+  text-align: justify;
+}
+
+
+@media only screen and (max-width: 1280px) {
+  .star-wars {
+    font-size: 450%;
+    line-height: 120%;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .star-wars {
+    font-size: 250%;
+    line-height: 110%;
+  }
+}
+
+.skew-wrapper {
+  position: relative;
+  top: 9999px;
+  transform-origin: 50% 100%;
+  animation: drift 80s linear;
+}
+
+.skew-wrapper .intro {
+  margin-bottom: 10rem;
+}
+
+.skew-wrapper > .title {
+  font-size: 90%;
+  text-align: center;
+}
+
+.skew-wrapper > .title h1 {
+  margin: 0 0 4rem;
+  text-transform: uppercase;
+}
+
+@keyframes drift {
+  0% {
+    top: 0;
+    transform: rotateX(20deg)  translateZ(0);
+    opacity: 1;
+  }
+  95% {
+    opacity:1
+  }
+  100% { 
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+    opacity: 0;
+  }
 }
