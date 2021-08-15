@@ -1,22 +1,25 @@
 import React from 'react';  
 import { Link } from 'react-router-dom';
-import { Navbar,Nav } from 'react-bootstrap';
+import { Navbar,Nav, Container } from 'react-bootstrap';
 import './navigationBar.css';
 
 const NavigationBar = (props) => {
-      let currentUser = props.currentUser
+      let currentUser = props.currentUser.user
       let logout = props.logout
     return (
-        <Navbar className="color-nav">
-        {/* <Navbar.Brand>Star Wars Ecommerce</Navbar.Brand> */}
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav style={{ maxHeight: '100px' }} navbarScroll >
-            <Nav.Link className="customNavLink" as={Link} to="/" ><h4 className="linkText">Home</h4></Nav.Link>
-            <Nav.Link className="customNavLink" as={Link} to="/products"><h4 className="linkText">View Products</h4></Nav.Link>
-            <Nav.Link className="customNavLink" as={Link} to="/user/shoppingcart"><h4 className="linkText">Shopping Cart</h4></Nav.Link>
-            <Nav.Link className="customNavLink" as={Link} to="/user/createproduct"><h4 className="linkText">Sell A Product</h4></Nav.Link>
-            {currentUser &&
+        <Navbar className="color-nav" expand="lg">
+  <Container>
+    {currentUser &&
+    <Navbar.Brand > <h4 className="linkText">Welcome {currentUser.username}!</h4></Navbar.Brand>
+    }
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse  id="basic-navbar-nav">
+      <Nav className="me-auto">
+      <Nav.Link  className="customNavLink" as={Link} to="/" ><h4 className="linkText">Home</h4></Nav.Link>
+       <Nav.Link  className="customNavLink" as={Link} to="/products"><h4 className="linkText">View Products</h4></Nav.Link>
+      <Nav.Link  className="customNavLink" as={Link} to="/user/shoppingcart"><h4 className="linkText">Shopping Cart</h4></Nav.Link>
+      <Nav.Link  className="customNavLink" as={Link} to="/user/createproduct"><h4 className="linkText">Sell A Product</h4></Nav.Link>
+          {currentUser &&
             <Nav.Link className="customNavLink" as={Link} onClick={logout}><h4 className="linkText">Logout</h4></Nav.Link> 
             }
             {!currentUser &&
@@ -25,10 +28,11 @@ const NavigationBar = (props) => {
             {!currentUser &&
             <Nav.Link className="customNavLink" as={Link} to="/Login"><h4 className="linkText">Login</h4></Nav.Link>
             }
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    )
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
+    ) 
 }
 
 export default NavigationBar
