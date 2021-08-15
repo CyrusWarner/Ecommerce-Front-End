@@ -4,13 +4,13 @@ import { Navbar,Nav, Container } from 'react-bootstrap';
 import './navigationBar.css';
 
 const NavigationBar = (props) => {
-      let currentUser = props.currentUser.user
+      let currentUser = props.currentUser
       let logout = props.logout
     return (
         <Navbar className="color-nav" expand="lg">
   <Container>
     {currentUser &&
-    <Navbar.Brand > <h4 className="linkText">Welcome {currentUser.username}!</h4></Navbar.Brand>
+    <Navbar.Brand > <h4 className="linkText">Welcome {currentUser.user.username}!</h4></Navbar.Brand>
     }
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse  id="basic-navbar-nav">
