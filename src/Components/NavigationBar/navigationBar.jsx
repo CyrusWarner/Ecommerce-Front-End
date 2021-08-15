@@ -5,6 +5,7 @@ import './navigationBar.css';
 
 const NavigationBar = (props) => {
       let currentUser = props.currentUser
+      let getUsersCart = props.getUsersCart
       let logout = props.logout
     return (
         <Navbar className="color-nav" expand="lg">
@@ -17,7 +18,7 @@ const NavigationBar = (props) => {
       <Nav className="me-auto">
       <Nav.Link  className="customNavLink" as={Link} to="/" ><h4 className="linkText">Home</h4></Nav.Link>
        <Nav.Link  className="customNavLink" as={Link} to="/products"><h4 className="linkText">View Products</h4></Nav.Link>
-      <Nav.Link  className="customNavLink" as={Link} to="/user/shoppingcart"><h4 className="linkText">Shopping Cart</h4></Nav.Link>
+      <Nav.Link  onClick = {() => (getUsersCart())} className="customNavLink" as={Link} to="/user/shoppingcart"><h4 className="linkText">Shopping Cart</h4></Nav.Link>
       <Nav.Link  className="customNavLink" as={Link} to="/user/createproduct"><h4 className="linkText">Sell A Product</h4></Nav.Link>
           {currentUser &&
             <Nav.Link className="customNavLink" as={Link} onClick={logout}><h4 className="linkText">Logout</h4></Nav.Link> 

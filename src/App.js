@@ -41,8 +41,9 @@ function App() {
 
     try {
       const user = jwtDecode(jwtToken);
-      let currentDate = new Date();
-      if (user.exp * 1000 < currentDate.getTime()) {
+      const expirationTime = (user.exp * 1000) - 60000
+      if (Date.now() >= expirationTime) {
+        console.log('here')
         logout();
       }
       setCurrentUser({ user });
@@ -58,13 +59,6 @@ function App() {
     const valuesToSave = {savedProduct, savedReviews}
     window.localStorage.setItem('saved-currentProduct', JSON.stringify(valuesToSave))
   },[productReviews, currentProduct])
-
-  useEffect( () =>{
-    if(localStorage.token){
-      getUsersCart()
-    }
-  }, [token])
-
 
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
@@ -137,7 +131,7 @@ function App() {
     <Router>
       {!loading &&
       <div>
-        <NavigationBar currentUser={currentUser} logout={logout} />
+        <NavigationBar currentUser={currentUser} logout={logout} getUsersCart={getUsersCart} />
         <Switch>
           <Route
             path="/"
