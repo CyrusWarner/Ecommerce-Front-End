@@ -1,37 +1,52 @@
-.title {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  display: inline-block;
+.name {
   position: relative;
-  color: #f2f5f7;
+  color: black;
+  top: 50%;
 }
-.item .card {
-  position: relative;
-  border: 1px solid gray;
-  padding: 1rem;
-  margin-bottom: 1rem;
+
+
+.name:after {
+  content: '';
+  height: 2px;
+  width: 100%;
+  background: crimson;
+  position: absolute;
+  left: 0;
+  top: 2.5rem
 }
-.itemBox .item{
-    background: white;
-    color: white;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    display: inline-block;
+.itemBox {
+    background-color: white;
+    position: relative;
+    height: auto;
+    border: 1px solid gray;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px crimson;
 }
 .details{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
 }
 .total {
   display: flex;
   align-items: center;
   color: red;
+
 }
-.underline{
-    width: 200px;
-    height: 3px;
-    margin: 20px auto;
-    border: 0;
-    background: #002395;
+.description {
+  display: flex;
+  justify-content: center;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  
 }
+
+.pricing {
+  display: flex;
+  justify-content: center;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  
+}
+
+
