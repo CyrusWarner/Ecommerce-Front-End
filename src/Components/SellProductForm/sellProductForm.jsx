@@ -34,15 +34,15 @@ const SellProductForm = (props) => {
         const descriptionError = {};
         const productPriceError = {};
         let isValid = true;
-        if (eachEntry.Name.trim().length == 0) {
+        if (eachEntry.Name.trim().length === 0) {
             nameError.productNameEmpty = "Product name is required"
             isValid = false;
         }
-        if (eachEntry.Description.trim().length == 0) {
+        if (eachEntry.Description.trim().length === 0) {
             descriptionError.descriptionEmpty = "Product description is required"
             isValid = false;
         }
-        if (eachEntry.Price == 0) {
+        if (eachEntry.Price === 0) {
             productPriceError.productPriceCannotEqualZero = "Product price cannot be 0"
             isValid = false;
         }

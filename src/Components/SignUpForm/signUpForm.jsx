@@ -27,23 +27,23 @@ const SignUpForm = () => {
         const emailError = {};
         const passwordError = {};
         let isValid = true;
-        if (eachEntry.firstname.trim().length == 0 ){
+        if (eachEntry.firstname.trim().length === 0 ){
             firstNameError.firstNameEmpty = "First name is required";
             isValid = false;
         }
-        if(eachEntry.lastname.trim().length == 0){
+        if(eachEntry.lastname.trim().length === 0){
             lastNameError.lastNameEmpty = "last name is required";
             isValid = false;
         }
-        if(eachEntry.username.trim().length == 0) {
+        if(eachEntry.username.trim().length === 0) {
             userNameError.userNameEmpty = "username is required"
             isValid = false;
         }
-        if(eachEntry.email.trim().length == 0){
+        if(eachEntry.email.trim().length === 0){
             emailError.emailEmpty = "email is required"
             isValid = false;
         }
-        if(eachEntry.password.trim().length == 0){
+        if(eachEntry.password.trim().length === 0){
             passwordError.passwordEmpty = "password is required"
             isValid = false;
         }

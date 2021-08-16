@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Table } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import "./shoppingCart.css"
 
