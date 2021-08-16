@@ -1,0 +1,37 @@
+.title {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  position: relative;
+  color: #f2f5f7;
+}
+.item .card {
+  position: relative;
+  border: 1px solid gray;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.itemBox .item{
+    background: white;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    display: inline-block;
+}
+.details{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.total {
+  display: flex;
+  align-items: center;
+  color: red;
+}
+.underline{
+    width: 200px;
+    height: 3px;
+    margin: 20px auto;
+    border: 0;
+    background: #002395;
+}

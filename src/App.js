@@ -26,6 +26,7 @@ function App() {
   const [currentCategoryId, setCurrentCategoryId] = useState(1);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [loading, setLoading] = useState(true)
+  
 
   useEffect(() => {
     const currentProduct = window.localStorage.getItem('saved-currentProduct')
@@ -41,8 +42,9 @@ function App() {
 
     try {
       const user = jwtDecode(jwtToken);
-      let currentDate = new Date();
-      if (user.exp * 1000 < currentDate.getTime()) {
+      const expirationTime = (user.exp * 1000) - 60000
+      if (Date.now() >= expirationTime) {
+        console.log('here')
         logout();
       }
       setCurrentUser({ user });
@@ -59,12 +61,14 @@ function App() {
     window.localStorage.setItem('saved-currentProduct', JSON.stringify(valuesToSave))
   },[productReviews, currentProduct])
 
-  useEffect( () =>{
-    if(localStorage.token){
-      getUsersCart()
-    }
-  }, [token])
+  
 
+  const addItemToCart = async (item) => {
+    let itemToAdd = {
+      productId: item.productId,
+    }
+    let response = await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} )
+  }
 
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
@@ -125,10 +129,10 @@ function App() {
   }
 
   const increaseQuantity = async (quantity, shoppingCartId) => {
-    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
+     await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
   const decreaseQuantity = async (quantity, shoppingCartId) => {
-    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
+     await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
 
 
@@ -137,7 +141,7 @@ function App() {
     <Router>
       {!loading &&
       <div>
-        <NavigationBar currentUser={currentUser} logout={logout} />
+        <NavigationBar currentUser={currentUser} logout={logout} getUsersCart={getUsersCart} />
         <Switch>
           <Route
             path="/"
@@ -229,6 +233,7 @@ function App() {
                     currentProduct={currentProduct}
                     productReviews={productReviews}
                     getProductReviews={getProductReviews}
+                    addItemToCart={addItemToCart}
                   />
                 );
               }
