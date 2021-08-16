@@ -1,28 +1,32 @@
 import React from "react";
+import './showAllReviews.css';
 import { Container, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 const ShowAllReviews = (props) => {
   let productReviews = props.productReviews;
+
   const stars = Array(5).fill(0);
   return (
-    <div>
+    <div class="console">
       {" "}
       {productReviews.map((review) => {
         return (
           <Container>
-            <Row>
+            <div>
+            <Row sm={8}>
               <Col sm={8}>
-                  <h5>{review.user.userName}</h5>
-                <p>{review.description}</p>
-                {console.log(productReviews)}
-                {console.log(review.user.userName)}
-                {stars.map((star, index) => index < review.rating && (
-                    <FaStar color={starColors.orange}/>
-                )  
-                )}
+                <div class="crt">
+                  <h5 >{review.user.userName}</h5>
+                  <p>{review.description}</p>
+                  {stars.map((star, index) => index < review.rating && (
+                      <FaStar class="stars"/>
+                      )  
+                      )}
+                </div>
               </Col>
-              <Col sm={4}></Col>
+              <Col sm={2}></Col>
             </Row>
+            </div>
           </Container>
         );
       })}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import './reviewForm.css';
 import React, { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
@@ -63,8 +64,9 @@ const ReviewForm = (props) => {
         <Col sm={8}>
           <div>
             <form onSubmit={handleSubmit}>
-              <div>
+              <div >
                 <input
+                  class="monitor"
                   type="text"
                   name="description"
                   placeholder="Review Comment"
@@ -91,7 +93,7 @@ const ReviewForm = (props) => {
                 );
               })}
               <div>
-                <button type="submit"> submit </button>
+                <button class="button" type="submit"> X-mit </button>
               </div>
             </form>
           </div>
