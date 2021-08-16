@@ -15,7 +15,6 @@ import Home from "./Components/Home/home";
 import jwtDecode from "jwt-decode";
 import ShoppingCart from "./Components/ShoppingCart/shoppingCart";
 import axios from "axios";
-import Footer from "./Components/Footer/footer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -26,7 +25,7 @@ function App() {
   const [categories, setCategories] = useState([]);
   const [currentCategoryId, setCurrentCategoryId] = useState(1);
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const currentProduct = window.localStorage.getItem('saved-currentProduct')
@@ -35,17 +34,22 @@ function App() {
       setCurrentProduct(savedData.savedProduct)
       setProductReviews(savedData.savedReviews)
     }
-    const jwt = localStorage.getItem("token");
-    setToken(jwt);
+    const jwtToken = localStorage.getItem("token");
+    setToken(jwtToken);
     getAllProducts();
     getCategories();
 
     try {
-      const user = jwtDecode(jwt);
+      const user = jwtDecode(jwtToken);
+      const expirationTime = (user.exp * 1000) - 60000
+      if (Date.now() >= expirationTime) {
+        console.log('here')
+        logout();
+      }
       setCurrentUser({ user });
-      setLoading(true)
+      setLoading(false)
     } catch {
-      setLoading(true)
+      setLoading(false)
     }
   }, []);
 
@@ -72,6 +76,11 @@ function App() {
     setToken(token);
     window.location = "/";
   };
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/login";
+  }
 
   const getAllProducts = async () => {
     let response = await axios.get("https://localhost:44394/api/product");
@@ -121,19 +130,19 @@ function App() {
   }
 
   const increaseQuantity = async (quantity, shoppingCartId) => {
-    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
+     await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
   const decreaseQuantity = async (quantity, shoppingCartId) => {
-    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
+     await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
 
 
   return (
     
     <Router>
-      {loading &&
+      {!loading &&
       <div>
-        <NavigationBar currentUser={currentUser} />
+        <NavigationBar currentUser={currentUser} logout={logout} getUsersCart={getUsersCart} />
         <Switch>
           <Route
             path="/"
@@ -233,7 +242,6 @@ function App() {
           />
           {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
         </Switch>
-        <Footer />
       </div>
           }
     </Router>

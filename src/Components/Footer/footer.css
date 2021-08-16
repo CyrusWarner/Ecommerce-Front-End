@@ -1,9 +1,11 @@
 .footer {
-    text-align: center;
-    font-size: 30px;
-    color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #FFE81F;
-    position: relative;
-    overflow: hidden;
-    margin-top: 68%;
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    font-style: oblique;
 }

@@ -1,0 +1,30 @@
+.title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+    position: relative;
+    color: #f2f5f7;
+}
+
+.title:after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background: crimson;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}
+
+.customCard {
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px crimson;
+}
+
+.titleSeperator {
+    width: 200px;
+    height: 3px;
+    margin: 20px auto;
+    border: 0;
+    background: #002395;
+}

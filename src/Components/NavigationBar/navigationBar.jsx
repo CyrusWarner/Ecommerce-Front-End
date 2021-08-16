@@ -1,46 +1,39 @@
 import React from 'react';  
 import { Link } from 'react-router-dom';
-import { Navbar,Nav, Form  } from 'react-bootstrap';
+import { Navbar,Nav, Container } from 'react-bootstrap';
+import './navigationBar.css';
+
 const NavigationBar = (props) => {
       let currentUser = props.currentUser
-      const logout = () => {
-        localStorage.clear();
-    // you can also like localStorage.removeItem('Token');
-        window.location.href = "/login";
-      }
+      let getUsersCart = props.getUsersCart
+      let logout = props.logout
     return (
-        <Navbar bg="light" expand="lg">
-  <Navbar.Brand className="ms-2">Star Wars Ecommerce</Navbar.Brand>
-  <Navbar.Toggle aria-controls="navbarScroll" />
-  <Navbar.Collapse id="navbarScroll">
-    <Nav
-      className="mr-auto my-2 my-lg-0"
-      style={{ maxHeight: '100px' }}
-        navbarScroll
-    >
-      <Nav.Link as={Link} to="/" >Home</Nav.Link>
-      <Nav.Link as={Link} to="/products">View Products</Nav.Link>
-      <Nav.Link as={Link} to="/user/shoppingcart">Shopping Cart</Nav.Link>
-      <Nav.Link as={Link} to="/user/createproduct">Sell A Product</Nav.Link>
-      {currentUser &&
-      <Nav.Link as={Link} onClick={logout}>Logout</Nav.Link> 
-      }
-      {!currentUser &&
-      <Nav.Link as={Link} to="/Signup">Signup</Nav.Link>
-      }
-      {!currentUser &&
-      <Nav.Link as={Link} to="/Login">Login</Nav.Link>
-      }
-    </Nav>
-    <Form className="d-flex">
-
-    </Form>
-    <Nav>
-   
-    </Nav>
-  </Navbar.Collapse>
+        <Navbar className="color-nav" expand="lg">
+  <Container>
+    {currentUser &&
+    <Navbar.Brand > <h4 className="linkText">Welcome {currentUser.user.username}!</h4></Navbar.Brand>
+    }
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse  id="basic-navbar-nav">
+      <Nav className="me-auto">
+      <Nav.Link  className="customNavLink" as={Link} to="/" ><h4 className="linkText">Home</h4></Nav.Link>
+       <Nav.Link  className="customNavLink" as={Link} to="/products"><h4 className="linkText">View Products</h4></Nav.Link>
+      <Nav.Link  onClick = {() => (getUsersCart())} className="customNavLink" as={Link} to="/user/shoppingcart"><h4 className="linkText">Shopping Cart</h4></Nav.Link>
+      <Nav.Link  className="customNavLink" as={Link} to="/user/createproduct"><h4 className="linkText">Sell A Product</h4></Nav.Link>
+          {currentUser &&
+            <Nav.Link className="customNavLink" as={Link} onClick={logout}><h4 className="linkText">Logout</h4></Nav.Link> 
+            }
+            {!currentUser &&
+            <Nav.Link className="customNavLink" as={Link} to="/Signup"><h4 className="linkText">Signup</h4></Nav.Link>
+            }
+            {!currentUser &&
+            <Nav.Link className="customNavLink" as={Link} to="/Login"><h4 className="linkText">Login</h4></Nav.Link>
+            }
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
 </Navbar>
-    )
+    ) 
 }
 
 export default NavigationBar
