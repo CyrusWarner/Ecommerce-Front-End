@@ -119,10 +119,10 @@ function App() {
   }
 
   const increaseQuantity = async (quantity, shoppingCartId) => {
-    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
+     await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity+1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
   const decreaseQuantity = async (quantity, shoppingCartId) => {
-    let response = await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
+     await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
 
 
