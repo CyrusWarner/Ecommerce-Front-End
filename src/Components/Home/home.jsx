@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../Footer/footer';
 import './home.css';
-import { FaJediOrder } from 'react-icons/fa';
 import ParticlesBackground from '../ParticlesBackground/particlesBackground';
 
 const Home = () => {
@@ -26,7 +25,6 @@ const Home = () => {
       </section>
     </div>
       
-      <FaJediOrder size="35rem" color="red" />
 
       <ParticlesBackground />
     <Footer />
