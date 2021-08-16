@@ -19,6 +19,7 @@ const SellProductForm = (props) => {
         Description: "",
         Name: "",
         Price: 0,
+        image: null,
         UserId: id
     }
     const [eachEntry, setEachEntry] = useState(initialInput)
