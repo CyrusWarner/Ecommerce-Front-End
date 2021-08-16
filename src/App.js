@@ -197,7 +197,6 @@ function App() {
                 getAllProducts={getAllProducts}
                 userCurrentCategoryId={userCurrentCategoryId}
                 setFilteredCategories={setFilteredCategories}
-                addItemToCart={addItemToCart}
               />
             )}
           />
@@ -235,6 +234,7 @@ function App() {
                     currentProduct={currentProduct}
                     productReviews={productReviews}
                     getProductReviews={getProductReviews}
+                    addItemToCart={addItemToCart}
                   />
                 );
               }
