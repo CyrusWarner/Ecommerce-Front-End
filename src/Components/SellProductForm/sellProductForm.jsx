@@ -73,16 +73,18 @@ const SellProductForm = (props) => {
         <React.Fragment>
         <Container>
             <Row>
+                <Col sm={4}></Col>
                 <Col sm={4}>
                 <h1 className="title mb-3">Sell A Product</h1>
                 </Col>
-                <Col sm={8}></Col>
+                <Col sm={4}></Col>
             </Row>
         </Container>
         <Container>
             <Row>
-                <Col sm={4}>        
-                    <Form onSubmit={handleSubmit}>
+                <Col sm={4}></Col>
+                <Col sm={4}>
+                <Form onSubmit={handleSubmit}>
                         <div>
                     <h5 className="title"> Product Name</h5>
                     <input className=" form-control" value={eachEntry.Name} onChange={handleChange} name="Name" placeholder="Product name..."></input>
@@ -108,7 +110,6 @@ const SellProductForm = (props) => {
                     <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2" type="submit">Submit New Product</Button>
                     </Form>
                 </Col>
-                <Col sm={4}></Col>
                 <Col sm={4}></Col>
             </Row>
         </Container>
