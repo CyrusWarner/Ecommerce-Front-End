@@ -31,8 +31,20 @@ const ShowAllProducts = (props) => {
 
   return (
     <React.Fragment>
-       <Container> 
-       <Container>
+      <Container>
+        <Row>
+          <Col sm={4}>
+            <h1 className="title">All Products</h1>
+          </Col>
+          <SearchBar
+            allProducts={allProducts}
+            setSearchFilteredProducts={setSearchFilteredProducts}
+            getAllProducts={getAllProducts}
+          />
+          <Col sm={8}></Col>
+        </Row>
+      </Container>
+      <Container>
         <h5 className="title"> Search By Category</h5>
         <select
           className="form-select mb-2"
@@ -52,21 +64,6 @@ const ShowAllProducts = (props) => {
           })}
         </select>
       </Container> 
-       </Container> 
-      <Container>
-        <Row>
-          <Col sm={4}>
-            <h1 className="title">All Products</h1>
-          </Col>
-          <SearchBar
-            allProducts={allProducts}
-            setSearchFilteredProducts={setSearchFilteredProducts}
-            getAllProducts={getAllProducts}
-          />
-          <Col sm={8}></Col>
-        </Row>
-      </Container>
-
       <Container fluid>
         <Row className="d-flex justify-content-center">
           {filteredProducts.map((product) => {
