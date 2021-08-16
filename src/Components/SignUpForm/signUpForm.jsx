@@ -93,21 +93,21 @@ const SignUpForm = () => {
                         return <div style={{color: "yellow"}}>{firstNameError[key]} </div>
                     })}
                     </div>
-                    <h5 className="signupTitle">Username:</h5>
+                    <h5 className="signupTitle">Last Name:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.lastname} name="lastname" placeholder="Last name..." onChange={handleChange}></input>
                     {Object.keys(lastNameError).map((key) => {
                         return <div style={{color: "yellow"}}>{lastNameError[key]} </div>
                     })}
                     </div>
-                    <h5 className="signupTitle">Email:</h5>
+                    <h5 className="signupTitle">Username:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.username} name="username" placeholder="Username..." onChange={handleChange}></input>
                     {Object.keys(userNameError).map((key) => {
                         return <div style={{color: "yellow"}}>{userNameError[key]} </div>
                     })}
                     </div>
-                    <h5 className="signupTitle">Password:</h5>
+                    <h5 className="signupTitle">Email:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.email} name="email" placeholder="Email..." onChange={handleChange}></input>
                     {Object.keys(emailError).map((key) => {
