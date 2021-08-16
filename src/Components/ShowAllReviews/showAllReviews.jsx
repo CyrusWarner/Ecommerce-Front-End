@@ -34,15 +34,5 @@ const ShowAllReviews = (props) => {
   );
 };
 export default ShowAllReviews;
-const starColors = {
-    orange: "#FFBA5A",
-    grey: "#a9a9a9",
-  };
 
-  const styles = {
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      // alignItems: "center"
-    },
-  };
+

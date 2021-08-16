@@ -10,7 +10,7 @@ body {
 
 canvas {
   display: block;
-  position: fixed;
+  position: relative;
   top: 0;
   bottom: 0;
   vertical-align: bottom;

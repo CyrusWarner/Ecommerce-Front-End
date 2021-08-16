@@ -26,6 +26,7 @@ function App() {
   const [currentCategoryId, setCurrentCategoryId] = useState(1);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [loading, setLoading] = useState(true)
+  
 
   useEffect(() => {
     const currentProduct = window.localStorage.getItem('saved-currentProduct')
@@ -60,9 +61,7 @@ function App() {
     window.localStorage.setItem('saved-currentProduct', JSON.stringify(valuesToSave))
   },[productReviews, currentProduct])
 
-  useEffect( () =>{
-    getUsersCart()
-  }, [token])
+  
 
   const addItemToCart = async (item) => {
     let itemToAdd = {
@@ -197,7 +196,6 @@ function App() {
                 getAllProducts={getAllProducts}
                 userCurrentCategoryId={userCurrentCategoryId}
                 setFilteredCategories={setFilteredCategories}
-                addItemToCart={addItemToCart}
               />
             )}
           />
@@ -235,6 +233,7 @@ function App() {
                     currentProduct={currentProduct}
                     productReviews={productReviews}
                     getProductReviews={getProductReviews}
+                    addItemToCart={addItemToCart}
                   />
                 );
               }

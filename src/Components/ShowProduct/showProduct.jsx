@@ -1,6 +1,6 @@
 import React from "react";
 import ReviewForm from "../ReviewForm/reviewForm";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import ShowAllReviews from './../ShowAllReviews/showAllReviews';
 import "./showProduct.css";
 const ShowProduct = (props) => {
@@ -15,8 +15,12 @@ const ShowProduct = (props) => {
       <Container>
         <Row>
           <Col id="neonText" sm={8}>
-            <h1 >{name}</h1>
-            <h3>{description}</h3>
+            <h1>{name}</h1>
+            <p>{description}</p>
+            <Button onClick={() => props.addItemToCart(props.currentProduct)} style={{
+                        backgroundColor: "crimson",
+                        borderColor: "crimson",
+                      }}>Add to Cart</Button>
           </Col>
           <Col sm={4}></Col>
         </Row>

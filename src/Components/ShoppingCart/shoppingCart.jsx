@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Table } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import "./shoppingCart.css"
 
@@ -14,10 +14,10 @@ const ShoppingCart = (props) => {
 
   return (
     <Container>
-      <Row>
+      <Row className="d-flex justify-content-center">
         <Col></Col>
-        <Col className="cart">
-        <h1>{user.user.username}'s Shopping Cart!</h1>
+        <Col>
+        <div className="title"><h1>{user.user.username}'s Shopping Cart!</h1></div>
         {/* <Table>
           <thead>
             <th>Product</th>
@@ -46,13 +46,14 @@ const ShoppingCart = (props) => {
                     ${item.product.price}
                 </td>
                 <td>${item.product.price * item.quantity}<br/></td> */
-                <div className="item" key={item.id}>
+                <div className="item card" key={item.id}>
                     <div className="itemBox">
                         <div className="details">
                             <h2>{item.product.name}</h2>
                             <span>${item.product.price} Each</span>
                         </div>
-                        <p>Sold by: {item.product.user.userName}</p>
+                        <h5>Sold by: {item.product.user.userName}</h5>
+                        <hr className="underline"></hr>
                         <p>{item.product.description}</p>
                         <div className="amount">
                         <FaMinus onClick={async () => { await props.decreaseQuantity(item.quantity, item.shoppingCartId); setQuantityDidChange(!quantityDidChange)}} style={{padding: "2px", cursor: "pointer" }}/>

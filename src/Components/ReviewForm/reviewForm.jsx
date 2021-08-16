@@ -13,7 +13,6 @@ const ReviewForm = (props) => {
     container: {
       display: "flex",
       flexDirection: "column",
-      // alignItems: "center"
     },
   };
   const stars = Array(5).fill(0);
@@ -29,6 +28,17 @@ const ReviewForm = (props) => {
     productId: null,
   };
   const [eachEntry, setEachEntry] = useState(initialReview);
+  const [reviewError, setReviewError] = useState({});
+  const reviewFormValidation = () => {
+    let reviewError = {};
+    let isValid = true;
+    if (eachEntry.description.trim().length === 0){
+      reviewError.descriptionError = "Please enter a description for your rating";
+      isValid=false;
+    }
+    setReviewError(reviewError);
+    return isValid;
+  }
   
 
   const handleChange = (event) => {
@@ -50,13 +60,17 @@ const ReviewForm = (props) => {
     submitReview();
   };
   const submitReview = async () => {
+    const isValid = reviewFormValidation()
     let review = eachEntry;
     review.rating = currentRating;
     review.productId = currentProductId
-    await axios.post("https://localhost:44394/api/reviews/", review, {
-      headers: { Authorization: "Bearer " + currentToken },
-    });
-    getProductReviews(currentProductId);
+    if (isValid){
+      await axios.post("https://localhost:44394/api/reviews/", review, {
+        headers: { Authorization: "Bearer " + currentToken },
+      });
+      getProductReviews(currentProductId);
+    }
+
   };
   return (
     <Container>
@@ -72,6 +86,9 @@ const ReviewForm = (props) => {
                   placeholder="Review Comment"
                   onChange={handleChange}
                 />
+                {Object.keys(reviewError).map((key) => {
+                        return <div style={{color: "yellow"}}>{reviewError[key]} </div>
+                    })}
               </div>
               <div style={styles.container}></div>
               <div style={styles.stars}></div>

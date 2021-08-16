@@ -72,13 +72,12 @@ const ShowAllProducts = (props) => {
                         borderColor: "crimson",
                       }}
                       onClick={() => [
-                        (createCurrentProduct(product),
-                        getProductReviews(product.productId)),
+                        createCurrentProduct(product),
+                        getProductReviews(product.productId),
                       ]}
                     >
                       View product
                     </Button>
-                    <Button onClick={() => props.addItemToCart(product)}>Add to Cart</Button>
                   </Link>
                 </Card.Body>
               </Card>
