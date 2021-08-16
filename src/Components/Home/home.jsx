@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../Footer/footer';
 import './home.css';
 import { FaJediOrder } from 'react-icons/fa';
-// import ParticlesBackground from '../ParticlesBackground/particlesBackground';
+import ParticlesBackground from '../ParticlesBackground/particlesBackground';
 
 const Home = () => {
   return ( 
@@ -17,7 +17,7 @@ const Home = () => {
             <h1>In our store you can find merchandise related to Star Wars</h1>
           </div>
           <p>Episode IV</p>
-          <p>A NEW HOPE</p>
+          <p>A New Home</p>
           <p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.</p>     
         <p>During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.</p>
         <p>Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy…</p>
@@ -28,7 +28,7 @@ const Home = () => {
       
       <FaJediOrder size="35rem" color="red" />
 
-      {/* <ParticlesBackground /> */}
+      <ParticlesBackground />
     <Footer />
     </React.Fragment>
 
