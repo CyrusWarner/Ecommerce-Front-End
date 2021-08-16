@@ -1,26 +1,58 @@
-import React from "react";
+import React, {useState} from "react";
 import { Container, Row, Card, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaStar, FaDollarSign } from "react-icons/fa";
-import FilteredCategories from "../Categories/filteredCategories";
 import SearchBar from "../SearchBar/searchBar";
 import "./showAllProducts.css";
 
 const ShowAllProducts = (props) => {
-
   const stars = Array(5).fill(0);
-
   let allProducts = props.allProducts;
   let createCurrentProduct = props.createCurrentProduct;
   let getAllProducts = props.getAllProducts;
   let getProductReviews = props.getProductReviews;
-  let userCurrentCategoryId = props.userCurrentCategoryId;
   let categories = props.categories;
-  let setFilteredCategories = props.setFilteredCategories;
   let setSearchFilteredProducts = props.setSearchFilteredProducts;
+  const [currentCategoryId, setCurrentCategoryId] = useState(0);
+  const onChangeComboBox = (event) => {
+    const id = event.target.value;
+    let intSelectedId = Number(`${id}`);
+    setCurrentCategoryId(intSelectedId)
+  }
+    const filteredProducts = allProducts.filter(function(product) {
+      if (currentCategoryId == 0){
+        return allProducts;
+      }
+      else{
+        return product.categoryId === currentCategoryId;
+      }
+  })
+
 
   return (
     <React.Fragment>
+       <Container> 
+       <Container>
+        <h5 className="title"> Search By Category</h5>
+        <select
+          className="form-select mb-2"
+          onChange={(event) => {
+            onChangeComboBox(event);
+          }}
+        >
+          <option key={categories.length} value={0}>
+            All
+          </option>
+          {categories.map((category) => {
+            return (
+              <option key={category.categoryId} value={category.categoryId}>
+                {category.categoryName}
+              </option>
+            );
+          })}
+        </select>
+      </Container> 
+       </Container> 
       <Container>
         <Row>
           <Col sm={4}>
@@ -31,20 +63,13 @@ const ShowAllProducts = (props) => {
             setSearchFilteredProducts={setSearchFilteredProducts}
             getAllProducts={getAllProducts}
           />
-          <FilteredCategories
-            categories={categories}
-            allProducts={allProducts}
-            userCurrentCategoryId={userCurrentCategoryId}
-            setFilteredCategories={setFilteredCategories}
-            getAllProducts={getAllProducts}
-          />
           <Col sm={8}></Col>
         </Row>
       </Container>
 
       <Container fluid>
         <Row className="d-flex justify-content-center">
-          {allProducts.map((product) => {
+          {filteredProducts.map((product) => {
             return (
               <Card
                 className="customCard card-container border"
