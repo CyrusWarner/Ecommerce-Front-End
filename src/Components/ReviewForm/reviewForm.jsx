@@ -75,6 +75,7 @@ const ReviewForm = (props) => {
   return (
     <Container>
       <Row>
+      <Col sm={2}></Col>
         <Col sm={8}>
           <div>
             <form onSubmit={handleSubmit}>
@@ -84,12 +85,15 @@ const ReviewForm = (props) => {
                   type="text"
                   name="description"
                   placeholder="Review Comment"
-                  onChange={handleChange}
-                />
-                {Object.keys(reviewError).map((key) => {
+                  onChange={handleChange}/>
+              </div>
+              <div>
+                <div>
+                  {Object.keys(reviewError).map((key) => {
                         return <div style={{color: "yellow"}}>{reviewError[key]} </div>
                     })}
-              </div>
+                </div>
+              
               <div style={styles.container}></div>
               <div style={styles.stars}></div>
               {stars.map((_, index) => {
@@ -109,13 +113,14 @@ const ReviewForm = (props) => {
                   />
                 );
               })}
+              </div>
               <div>
                 <button class="button" type="submit"> X-mit </button>
               </div>
             </form>
           </div>
         </Col>
-        <Col sm={4}></Col>
+        <Col sm={2}></Col>
       </Row>
     </Container>
   );

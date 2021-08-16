@@ -1,13 +1,13 @@
-.space {
+/* .space {
     background-color: black;
-}
+} */
 
 .monitor {
     border-radius: 100px;
   background-color: black;
   background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
   height: 320px;
-  width: 320px;
+  width: 640px;
   margin: 10px;
   padding: 3rem;
   color: rgb(3, 199, 134);
