@@ -26,7 +26,7 @@ const FilteredCategories = (props) => {
       <Container>
         <h5 className="title"> Search By Category</h5>
         <select
-          className="form-select"
+          className="form-select mb-2"
           onChange={(event) => {
             onChangeComboBox(event);
           }}

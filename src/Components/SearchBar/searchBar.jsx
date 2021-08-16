@@ -26,8 +26,8 @@ const SearchBar = (props) => {
     <React.Fragment>
       <Container>
         <Row>
-          <Col></Col>
-          <Col>
+          <Col sm={3}></Col>
+          <Col sm={6}>
             <input
               name="search"
               onChange={(event) => handleChange(event.target.value)}
@@ -35,7 +35,7 @@ const SearchBar = (props) => {
               className="form-control"
             ></input>
           </Col>
-          <Col></Col>
+          <Col sm={3}></Col>
         </Row>
       </Container>
     </React.Fragment>

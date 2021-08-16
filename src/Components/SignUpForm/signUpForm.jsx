@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import { useHistory} from 'react-router-dom';
+import './signUpForm.css';
 
 const SignUpForm = () => {
     const initialUserInfo = {
@@ -83,48 +84,48 @@ const SignUpForm = () => {
                 <Col></Col>
                 <Col>
                 <div>
-                    <h1>Signup</h1>
+                    <h1 className="title">Signup</h1>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <label>First Name</label>
-                    <input  className="form-control" value={eachEntry.firstname} name="firstname" placeholder="First name..." onChange={handleChange}></input>
+                            <h5 className="signupTitle">First Name:</h5>
+                    <input  className="form-control " value={eachEntry.firstname} name="firstname" placeholder="First name..." onChange={handleChange}></input>
                     {Object.keys(firstNameError).map((key) => {
                         return <div style={{color: "yellow"}}>{firstNameError[key]} </div>
                     })}
                     </div>
-                    <label>Username:</label>
+                    <h5 className="signupTitle">Username:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.lastname} name="lastname" placeholder="Last name..." onChange={handleChange}></input>
                     {Object.keys(lastNameError).map((key) => {
                         return <div style={{color: "yellow"}}>{lastNameError[key]} </div>
                     })}
                     </div>
-                    <label>Email:</label>
+                    <h5 className="signupTitle">Email:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.username} name="username" placeholder="Username..." onChange={handleChange}></input>
                     {Object.keys(userNameError).map((key) => {
                         return <div style={{color: "yellow"}}>{userNameError[key]} </div>
                     })}
                     </div>
-                    <label>Password:</label>
+                    <h5 className="signupTitle">Password:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.email} name="email" placeholder="Email..." onChange={handleChange}></input>
                     {Object.keys(emailError).map((key) => {
                         return <div style={{color: "yellow"}}>{emailError[key]} </div>
                     })}
                     </div>
-                    <label>Password:</label>
+                    <h5 className="signupTitle">Password:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.password} name="password" placeholder="Password..." onChange={handleChange}></input>
                     {Object.keys(passwordError).map((key) => {
                         return <div style={{color: "yellow"}}>{passwordError[key]} </div>
                     })}
                     </div>
-                    <label>Phone Number:</label>
+                    <h5 className="signupTitle">Phone Number:</h5>
                     <div>
                     <input  className="form-control" value={eachEntry.phonenumber} name="phonenumber" placeholder="Phone number..." onChange={handleChange}></input>
                     </div>
-                    <Button className="mt-2" type="submit">Sign Up</Button>
+                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2" type="submit">Sign Up</Button>
                     </form>
                     </div>
                 </Col>

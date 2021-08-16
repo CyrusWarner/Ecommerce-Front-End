@@ -18,7 +18,7 @@
 
 .customCard {
     border-radius: 10px;
-    box-shadow: 3px 3px 15px crimson;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 20px #2E67F8!important;
 }
 
 .titleSeperator {

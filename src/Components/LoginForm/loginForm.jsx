@@ -40,20 +40,18 @@ const logIn = async () => {
                 <Col></Col>
                 <Col>
                 <div>
-                    <h1>Login</h1>
+                    <h1 className="title">Login</h1>
                     <form onSubmit={handleSubmit}>
                       <div>
                       <div className="text-center" style={{color: "yellow"}}>{logInError}</div>
-                        <label>Username</label>
+                        <h5 className="signupTitle">Username:</h5>
                     <input className="form-control" name="username" placeholder="Please enter your username..." onChange={handleChange}></input>
-                    
                     </div>
                     <div>
-                      <label>Password:</label>
+                      <h5 className="signupTitle">Password:</h5>
                     <input className="form-control" name="password" placeholder="Please enter your password..." onChange={handleChange}></input>
-                    <Button type="submit" className="mt-2">Login</Button>
+                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} type="submit" className="mt-2">Login</Button>
                     </div>
-                    
                     </form>
                     </div>
                 </Col>
