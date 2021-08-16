@@ -1,0 +1,36 @@
+#neonText {
+    text-align: center;
+animation: flicker 1.5s infinite alternate;
+color: rgb(165, 202, 245); 
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100%{
+        text-shadow:
+        0 0 7px rgb(165, 202, 245),
+        0 0 10px rgb(165, 202, 245),
+        0 0 21px rgb(165, 202, 245),
+        0 0 42px rgb(0, 110, 255),
+        0 0 82px rgb(0, 110, 255),
+        0 0 92px rgb(0, 110, 255),
+        0 0 102px rgb(0, 110, 255),
+        0 0 151px rgb(0, 110, 255);  
+    }
+    20%, 24%, 55% {
+        text-shadow:none;
+    }
+}
+/* #neonText::after {
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 400px;
+    width: 800px;
+    height: 90px;
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+  } */
+.space {
+    background-image: url(../earth.jpeg);
+    height: 400px;
+}

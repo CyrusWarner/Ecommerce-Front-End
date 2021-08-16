@@ -29,7 +29,8 @@ const ReviewForm = (props) => {
         getProductReviews(currentProductId)
     }
     return ( 
-        <Container>
+        <Container >
+            <div>
             <Row>
             <Col sm={8}>
             <div>
@@ -46,8 +47,9 @@ const ReviewForm = (props) => {
             </Col>
             <Col sm={4}></Col>
         
-    </Row>
-    </Container>
+            </Row>
+            </div>
+        </Container>
      );
 }
  
