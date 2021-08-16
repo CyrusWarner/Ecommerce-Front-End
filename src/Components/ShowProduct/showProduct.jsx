@@ -17,7 +17,10 @@ const ShowProduct = (props) => {
           <Col sm={8}>
             <h1>{name}</h1>
             <p>{description}</p>
-            <Button onClick={() => props.addItemToCart(props.currentProduct)}>Add to Cart</Button>
+            <Button onClick={() => props.addItemToCart(props.currentProduct)} style={{
+                        backgroundColor: "crimson",
+                        borderColor: "crimson",
+                      }}>Add to Cart</Button>
           </Col>
           <Col sm={4}></Col>
         </Row>

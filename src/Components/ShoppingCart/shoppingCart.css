@@ -5,7 +5,7 @@
   position: relative;
   color: #f2f5f7;
 }
-.item {
+.item .card {
   position: relative;
   border: 1px solid gray;
   padding: 1rem;
