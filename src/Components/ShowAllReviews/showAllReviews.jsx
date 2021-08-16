@@ -7,13 +7,15 @@ const ShowAllReviews = (props) => {
 
   const stars = Array(5).fill(0);
   return (
-    <div class="console">
+    <div >
       {" "}
       {productReviews.map((review) => {
         return (
           <Container>
             <div>
+            
             <Row sm={8}>
+            <Col sm={2}></Col>
               <Col sm={8}>
                 <div class="crt">
                   <h5 >{review.user.userName}</h5>

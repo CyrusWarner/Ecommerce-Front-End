@@ -12,8 +12,9 @@ const ShowProduct = (props) => {
   return (
     <React.Fragment>
       <div >
-      <Container>
+      <Container >
         <Row>
+        <Col sm={2}></Col>
           <Col id="neonText" sm={8}>
             <h1>{name}</h1>
             <p>{description}</p>
@@ -22,12 +23,13 @@ const ShowProduct = (props) => {
                         borderColor: "crimson",
                       }}>Add to Cart</Button>
           </Col>
-          <Col sm={4}></Col>
+          <Col sm={2}></Col>
         </Row>
-      </Container>
-      </div>
-        <ShowAllReviews productReviews={productReviews} currentUser={currentUser}/>
+
         <ReviewForm getProductReviews={getProductReviews} currentToken={currentToken} currentUser={currentUser} currentProduct={props.currentProduct}/>
+        <ShowAllReviews productReviews={productReviews} currentUser={currentUser}/>
+        </Container>
+      </div>
     </React.Fragment>
   );
 };
