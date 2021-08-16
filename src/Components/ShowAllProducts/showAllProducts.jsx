@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar/searchBar";
 import "./showAllProducts.css";
 
 const ShowAllProducts = (props) => {
+
   const stars = Array(5).fill(0);
 
   let allProducts = props.allProducts;
@@ -71,8 +72,8 @@ const ShowAllProducts = (props) => {
                         borderColor: "crimson",
                       }}
                       onClick={() => [
-                        (createCurrentProduct(product),
-                        getProductReviews(product.productId)),
+                        createCurrentProduct(product),
+                        getProductReviews(product.productId),
                       ]}
                     >
                       View product

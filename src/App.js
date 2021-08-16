@@ -26,6 +26,7 @@ function App() {
   const [currentCategoryId, setCurrentCategoryId] = useState(1);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [loading, setLoading] = useState(true)
+  
 
   useEffect(() => {
     const currentProduct = window.localStorage.getItem('saved-currentProduct')
@@ -59,6 +60,15 @@ function App() {
     const valuesToSave = {savedProduct, savedReviews}
     window.localStorage.setItem('saved-currentProduct', JSON.stringify(valuesToSave))
   },[productReviews, currentProduct])
+
+  
+
+  const addItemToCart = async (item) => {
+    let itemToAdd = {
+      productId: item.productId,
+    }
+    let response = await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} )
+  }
 
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
@@ -223,6 +233,7 @@ function App() {
                     currentProduct={currentProduct}
                     productReviews={productReviews}
                     getProductReviews={getProductReviews}
+                    addItemToCart={addItemToCart}
                   />
                 );
               }
