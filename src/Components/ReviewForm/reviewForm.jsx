@@ -76,19 +76,19 @@ const ReviewForm = (props) => {
     <Container>
       <Row>
       <Col sm={2}></Col>
-        <Col sm={8}>
+        <Col class="d-flex justify-content-center" sm={8}>
           <div>
             <form onSubmit={handleSubmit}>
               <div >
                 <input
-                  class="monitor"
+                  className="monitor"
                   type="text"
                   name="description"
                   placeholder="Review Comment"
                   onChange={handleChange}/>
               </div>
               <div>
-              <div class="starRating">
+              <div className="starRating">
                   {Object.keys(reviewError).map((key) => {
                         return <div style={{color: "yellow"}}>{reviewError[key]} </div>
                     })}
@@ -100,6 +100,7 @@ const ReviewForm = (props) => {
                     name="rating"
                     key={index}
                     style={{ cursor: "pointer" }}
+                    size="2rem"
                     color={
                       (hoverValue || currentRating) > index
                         ? starColors.orange
@@ -112,10 +113,11 @@ const ReviewForm = (props) => {
                 );
               })}
               </div>
+              </div>
               <div>
-                <button class="button" type="submit"> Submit </button>
+                <button className="button" type="submit"> Submit </button>
               </div>
-              </div>
+              
             </form>
           </div>
         </Col>

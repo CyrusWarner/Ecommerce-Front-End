@@ -7,17 +7,19 @@ const ShowAllReviews = (props) => {
 
   const stars = Array(5).fill(0);
   return (
-    <div >
+    <Container >
+      <Row>
+        
       {" "}
       {productReviews.map((review) => {
         return (
           <Container>
             <div>
             
-            <Row sm={8}>
+            <Row>
             <Col sm={2}></Col>
-              <Col sm={8}>
-                <div class="crt">
+              <Col className="d-flex justify-content-center" sm={8}>
+                <div className="crt">
                   <h5 >{review.user.userName}</h5>
                   <p>{review.description}</p>
                   {stars.map((star, index) => index < review.rating && (
@@ -32,7 +34,8 @@ const ShowAllReviews = (props) => {
           </Container>
         );
       })}
-    </div>
+      </Row>
+    </Container>
   );
 };
 export default ShowAllReviews;

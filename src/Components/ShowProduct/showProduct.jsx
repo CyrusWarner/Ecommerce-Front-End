@@ -12,7 +12,7 @@ const ShowProduct = (props) => {
   return (
     <React.Fragment>
       <div >
-      <Container class="space">
+      <Container>
         <Row>
         <Col sm={2}></Col>
           <Col id="neonText" sm={8}>
@@ -25,7 +25,6 @@ const ShowProduct = (props) => {
           </Col>
           <Col sm={2}></Col>
         </Row>
-
         <ReviewForm getProductReviews={getProductReviews} currentToken={currentToken} currentUser={currentUser} currentProduct={props.currentProduct}/>
         <ShowAllReviews productReviews={productReviews} currentUser={currentUser}/>
         </Container>
