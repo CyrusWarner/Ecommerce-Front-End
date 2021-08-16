@@ -12,7 +12,7 @@ const ShowProduct = (props) => {
   return (
     <React.Fragment>
       <div >
-      <Container >
+      <Container class="space">
         <Row>
         <Col sm={2}></Col>
           <Col id="neonText" sm={8}>

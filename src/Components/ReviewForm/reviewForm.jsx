@@ -88,12 +88,10 @@ const ReviewForm = (props) => {
                   onChange={handleChange}/>
               </div>
               <div>
-                <div>
+              <div class="starRating">
                   {Object.keys(reviewError).map((key) => {
                         return <div style={{color: "yellow"}}>{reviewError[key]} </div>
                     })}
-                </div>
-              
               <div style={styles.container}></div>
               <div style={styles.stars}></div>
               {stars.map((_, index) => {
@@ -115,7 +113,8 @@ const ReviewForm = (props) => {
               })}
               </div>
               <div>
-                <button class="button" type="submit"> X-mit </button>
+                <button class="button" type="submit"> Submit </button>
+              </div>
               </div>
             </form>
           </div>
