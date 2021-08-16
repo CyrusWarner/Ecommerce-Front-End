@@ -1,7 +1,7 @@
 .name {
   position: relative;
   color: black;
-  top: 50%;
+  margin-top: .5rem;
 }
 
 
@@ -12,7 +12,8 @@
   background: crimson;
   position: absolute;
   left: 0;
-  top: 2.5rem
+  top: 97%;
+
 }
 .itemBox {
     background-color: white;
@@ -22,6 +23,7 @@
     margin-bottom: 2rem;
     border-radius: 10px;
     box-shadow: 3px 3px 15px crimson;
+    padding-left: 1rem;
 }
 .details{
   display: flex;
@@ -30,9 +32,16 @@
 .total {
   display: flex;
   align-items: center;
-  color: red;
+  color: crimson;
 
 }
+.image{
+  display: flex;
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+}
+
 .description {
   display: flex;
   justify-content: center;
