@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import { Container } from 'react-bootstrap';
+import React from 'react';
 import './categories.css'
 const Categories  = (props) => {
     let categories = props.categories

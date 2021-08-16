@@ -71,8 +71,8 @@ const ShowAllProducts = (props) => {
                         borderColor: "crimson",
                       }}
                       onClick={() => [
-                        (createCurrentProduct(product),
-                        getProductReviews(product.productId)),
+                        createCurrentProduct(product),
+                        getProductReviews(product.productId),
                       ]}
                     >
                       View product
