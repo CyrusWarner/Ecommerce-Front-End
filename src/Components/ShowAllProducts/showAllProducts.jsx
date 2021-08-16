@@ -78,7 +78,6 @@ const ShowAllProducts = (props) => {
                     >
                       View product
                     </Button>
-                    <Button onClick={() => props.addItemToCart(product)}>Add to Cart</Button>
                   </Link>
                 </Card.Body>
               </Card>
