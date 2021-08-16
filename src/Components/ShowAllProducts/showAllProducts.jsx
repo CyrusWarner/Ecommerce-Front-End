@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar/searchBar";
 import "./showAllProducts.css";
 
 const ShowAllProducts = (props) => {
+
   const stars = Array(5).fill(0);
 
   let allProducts = props.allProducts;
@@ -77,6 +78,7 @@ const ShowAllProducts = (props) => {
                     >
                       View product
                     </Button>
+                    <Button onClick={() => props.addItemToCart(product)}>Add to Cart</Button>
                   </Link>
                 </Card.Body>
               </Card>

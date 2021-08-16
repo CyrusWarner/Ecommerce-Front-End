@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import "./shoppingCart.css"
 
 const ShoppingCart = (props) => {
   let shoppingCart = props.shoppingCart;
@@ -15,24 +16,24 @@ const ShoppingCart = (props) => {
     <Container>
       <Row>
         <Col></Col>
-        <Col>
+        <Col className="cart">
         <h1>{user.user.username}'s Shopping Cart!</h1>
-        <Table>
+        {/* <Table>
           <thead>
             <th>Product</th>
             <th>Quantity</th>
             <th>Price</th>
             <th>Total</th>
           </thead>
-        <tbody>
+        <tbody> */}
           
         
           {shoppingCart.map((item) => {
             total += item.product.price * item.quantity;
             return (
               
-              <tr>
-                <td><div>
+              // <tr>
+                /* <td><div>
                   {item.product.name}<br/>
                   Sold by: {item.product.user.userName}
                 </div></td>
@@ -44,28 +45,48 @@ const ShoppingCart = (props) => {
                 <td>
                     ${item.product.price}
                 </td>
-                <td>${item.product.price * item.quantity}<br/></td>
-                
-                
-              </tr>
-              
+                <td>${item.product.price * item.quantity}<br/></td> */
+                <div className="item" key={item.id}>
+                    <div className="itemBox">
+                        <div className="details">
+                            <h2>{item.product.name}</h2>
+                            <span>${item.product.price} Each</span>
+                        </div>
+                        <p>Sold by: {item.product.user.userName}</p>
+                        <p>{item.product.description}</p>
+                        <div className="amount">
+                        <FaMinus onClick={async () => { await props.decreaseQuantity(item.quantity, item.shoppingCartId); setQuantityDidChange(!quantityDidChange)}} style={{padding: "2px", cursor: "pointer" }}/>
+                            <span className="quantity">{item.quantity}</span>
+                        <FaPlus onClick={async () => {await props.increaseQuantity(item.quantity, item.shoppingCartId); setQuantityDidChange(!quantityDidChange)}} style={{padding: "2px", cursor: "pointer" }}/>
+                        </div>
+                    </div>
+                    {/* <div className="delete" >X</div> */}
+                </div>
             );
           })}
-          </tbody>
-          <tfoot>
-            <tf>
-            <tr>
-            
-              <td></td>
-              <td></td>
+          <div className="total">    
+            <h3>Total: ${total}</h3>
+          </div>
+                
+          {/* //     </tr>
               
-               <td className="text-right">Grand Total: {total}</td> 
+          //   );
+          // })}
+          // </tbody>
+          // <tfoot>
+          //   <tf>
+          //   <tr>
+            
+          //     <td></td>
+          //     <td></td>
+              
+          //      <td className="text-right">Grand Total: {}</td> 
             
 
-            </tr>
-            </tf>
-          </tfoot>
-          </Table>
+          //   </tr>
+          //   </tf>
+          // </tfoot>
+          // </Table> */}
         </Col>
         <Col></Col>
       </Row>
