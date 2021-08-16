@@ -60,6 +60,12 @@ function App() {
     getUsersCart()
   }, [token])
 
+  const addItemToCart = async (item) => {
+    let itemToAdd = {
+      productId: item.productId,
+    }
+    let response = await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} )
+  }
 
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
@@ -182,6 +188,7 @@ function App() {
                 getAllProducts={getAllProducts}
                 userCurrentCategoryId={userCurrentCategoryId}
                 setFilteredCategories={setFilteredCategories}
+                addItemToCart={addItemToCart}
               />
             )}
           />

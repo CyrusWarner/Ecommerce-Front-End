@@ -36,6 +36,7 @@ const ShowAllProducts = (props) => {
                               <Card.Text>Price: ${product.price}</Card.Text>
                               <Card.Text>Rating: {product.averageRating}</Card.Text>
                               <Link to="/viewproduct"><Button onClick={() => [(createCurrentProduct(product), getProductReviews(product.productId))]}>View product</Button></Link>
+                              <Button onClick={() => props.addItemToCart(product)}>Add to Cart</Button>
                             </Card.Body>
                           </Card>
                         )
