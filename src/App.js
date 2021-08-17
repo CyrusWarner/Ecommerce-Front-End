@@ -11,6 +11,7 @@ import SignUpForm from "./Components/SignUpForm/signUpForm";
 import ShowAllProducts from "./Components/ShowAllProducts/showAllProducts";
 import SellProductForm from "./Components/SellProductForm/sellProductForm";
 import ShowProduct from "./Components/ShowProduct/showProduct";
+import DisplayUserProducts from "./Components/DisplayUserProducts/displayUserProducts";
 import Home from "./Components/Home/home";
 import jwtDecode from "jwt-decode";
 import ShoppingCart from "./Components/ShoppingCart/shoppingCart";
@@ -19,6 +20,7 @@ import axios from "axios";
 function App() {
   const [currentUser, setCurrentUser] = useState();
   const [allProducts, setAllProducts] = useState([]);
+  const [userProducts, setUserProducts] = useState([]);
   const [currentProduct, setCurrentProduct] = useState([]);
   const [token, setToken] = useState();
   const [productReviews, setProductReviews] = useState([]);
@@ -92,6 +94,7 @@ function App() {
       `https://localhost:44394/api/product/${product.productId}`
     );
     let currentProduct = response.data;
+    console.log(currentProduct)
     setCurrentProduct(currentProduct);
   };
 
@@ -135,19 +138,31 @@ function App() {
      await axios.patch(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity: quantity-1} ,{headers: {Authorization: 'Bearer ' + token}})
   }
 
+  const getUsersProducts = async () => {
+    const userId = currentUser.user.id
+    let response = await axios.get(`https://localhost:44394/api/product/userProducts/${userId}`)
+    setUserProducts(response.data)
+  }
+
+  const deleteProduct = async (productId) => {
+    await axios.delete(`https://localhost:44394/api/product/${productId}`)
+    getUsersProducts();
+    getAllProducts();
+  }
+
 
   return (
     
     <Router>
       {!loading &&
       <div>
-        <NavigationBar currentUser={currentUser} logout={logout} getUsersCart={getUsersCart} />
+        <NavigationBar currentUser={currentUser} logout={logout} getUsersCart={getUsersCart} getUsersProducts={getUsersProducts} />
         <Switch>
           <Route
             path="/"
             exact
             render={(props) => (
-              <Home {...props} PASSINFOHERE={"SOMETHING HERE"} />
+              <Home {...props}  />
             )}
           />
           <Route path="/Signup" render={(props) => <SignUpForm {...props} />} />
@@ -239,7 +254,7 @@ function App() {
               }
             }}
           />
-          {/* <Route path="/" exact render={props => <COMPONENTNAMEHERE {...props} PASSINFOHERE={"SOMETHING HERE"}/>} /> */}
+          <Route path="/userProducts" exact render={props => <DisplayUserProducts {...props} currentUser={currentUser} userProducts = {userProducts} getUsersProducts={getUsersProducts} getAllProducts={getAllProducts} deleteProduct={deleteProduct}/>} />
         </Switch>
       </div>
           }
