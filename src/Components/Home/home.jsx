@@ -5,6 +5,7 @@ import ParticlesBackground from '../ParticlesBackground/particlesBackground';
 
 const Home = () => {
   return ( 
+    <div  className="homeBody">
     <React.Fragment>
       
       <div id="particles-js">
@@ -29,6 +30,7 @@ const Home = () => {
       <ParticlesBackground />
     <Footer />
     </React.Fragment>
+    </div>
 
    );
 }
