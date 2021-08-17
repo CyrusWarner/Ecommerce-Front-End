@@ -1,6 +1,6 @@
 import React from 'react';  
 import UserProductEdit from '../UserProductEdit/userProductEdit';
-import { Card, Container, Row, Button } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import { FaStar, FaDollarSign } from "react-icons/fa";
 import DeleteProductModal from '../DeleteProductModal/deleteProductModal';
 import { useEffect } from 'react';
@@ -15,6 +15,19 @@ const DisplayUserProducts = (props) => {
     const stars = Array(5).fill(0);
     return (
         <React.Fragment>
+          {userProducts.length === 0 &&
+          <React.Fragment>
+            <Container>
+              <Row>
+                <Col sm={3}></Col>
+                <Col sm={6}>
+              <h2 className=" d-flex justify-content-center text-center title">You Currently Have No Products</h2>
+              </Col>
+              <Col sm={3}></Col>
+              </Row>
+            </Container>
+             </React.Fragment>
+          }
             <Container className="d-flex justify-content-center">
                 <Row>
         {userProducts.map((product) => {

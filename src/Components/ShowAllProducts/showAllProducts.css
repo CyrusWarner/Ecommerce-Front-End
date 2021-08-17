@@ -22,12 +22,12 @@
 }
 
 .prodImg {
-    height: 350px;
+    height: 150px;
 }
 
 @media (max-width: 640px){
     .prodImg {
-        height: 300px;
+        height: 200px;
     }
   } 
 .titleSeperator {

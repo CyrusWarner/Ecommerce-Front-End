@@ -215,6 +215,7 @@ function App() {
                 getAllProducts={getAllProducts}
                 userCurrentCategoryId={userCurrentCategoryId}
                 setFilteredCategories={setFilteredCategories}
+                addItemToCart={addItemToCart}
               />
             )}
           />
