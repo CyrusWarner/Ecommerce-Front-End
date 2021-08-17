@@ -42,6 +42,8 @@
   position: relative;
   width: 10rem;
   height: 10rem;
+  max-width: fit-content;
+  max-height: fit-content;
 }
 
 .description {

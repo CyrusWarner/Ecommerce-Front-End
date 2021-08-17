@@ -1,7 +1,8 @@
 #neonText {
     text-align: center;
-animation: flicker 1.5s infinite alternate;
-color: rgb(165, 202, 245); 
+    animation: flicker 1.5s infinite alternate;
+    color: rgb(165, 202, 245); 
+    margin: 10px;
 }
 
 @keyframes flicker {
@@ -20,6 +21,7 @@ color: rgb(165, 202, 245);
         text-shadow:none;
     }
 }
+
 /* #neonText::after {
     content: "";
     position: absolute;
@@ -35,9 +37,9 @@ color: rgb(165, 202, 245);
     height: 400px;
 } */
 
-/* .space {
-    background-image: url(../images/lowEarthOrbitNASA.jpg);
-    height: 100%;
+/* .orbit {
+    background-image: url(../images/iss060e014848.jpg);
+    height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
