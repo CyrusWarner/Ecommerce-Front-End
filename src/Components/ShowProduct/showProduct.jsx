@@ -21,7 +21,7 @@ const ShowProduct = (props) => {
             <div id="neonText">
             <h1>{name}</h1>
             <h2>${price}</h2>
-            <h3>Category:{props.currentProduct.category.categoryName}</h3>
+            {/* <h3>Category:{props.currentProduct.category.categoryName}</h3> */}
             <h4>Description:{description}</h4>
             <p>{stars.map((star, index) => index < averageRating && (
                       <FaStar/>

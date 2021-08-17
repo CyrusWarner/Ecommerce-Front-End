@@ -74,12 +74,13 @@ const ReviewForm = (props) => {
   };
   return (
     <Container>
-      <Row>
-      <Col sm={2}></Col>
-        <Col sm={8}>
-          <div>
             <form onSubmit={handleSubmit}>
-              <div class="d-flex justify-content-center">
+              <Container>
+                <Row>
+                  <Col sm={1}>
+                  </Col>
+                  <Col sm={10}>
+                  <div className="d-flex justify-content-center">
                 <div className="monitorTerminal">
                 <input
                   className="monitor"
@@ -89,21 +90,27 @@ const ReviewForm = (props) => {
                   onChange={handleChange}/>
                   </div>
               </div>
-              <div class="d-flex align-items-center justify-content-center">
-                <div className="terminal d-flex align-items-center justify-content-center">
-              <div className="starRating">
+       
+                  </Col>
+                  <Col sm={1}></Col>
+                </Row>
+              </Container>
+              <Container>
+                <Row>
+                  <Col sm={1}></Col>
+                  <Col  sm={10}>
+                  <div class="d-flex justify-content-center">
+                <div className="terminal d-flex justify-content-center">
                   {Object.keys(reviewError).map((key) => {
                         return <div style={{color: "yellow"}}>{reviewError[key]} </div>
                     })}
-              <div style={styles.container}></div>
-              <div style={styles.stars}></div>
               {stars.map((_, index) => {
                 return (
+                  <React.Fragment>
+                  <div className="starRating"> 
                   <FaStar
-                    name="rating"
                     key={index}
                     style={{ cursor: "pointer" }}
-                    size="2rem"
                     color={
                       (hoverValue || currentRating) > index
                         ? starColors.orange
@@ -113,21 +120,30 @@ const ReviewForm = (props) => {
                     onMouseOver={() => handleMouseOver(index + 1)}
                     onMouseLeave={handleMouseLeave}
                   />
+                  </div>
+                  </React.Fragment>
                 );
               })}
+               </div>
               </div>
-              
-              <div>
-                <button className="button" type="submit" > Submit </button>
-              </div>
-              </div>
-              </div>
-              
+                  </Col>
+                  <Col sm={1}></Col>
+                </Row>
+              </Container>
+              <Container>
+                <Row>
+                  <Col sm={1}></Col>
+                  <Col className="d-flex justify-content-center" sm={10}> 
+                  <div className="terminal">
+                  <button className="button" type="submit" > Submit </button>
+                  </div>
+                  
+                  </Col>
+                  <Col sm={1}></Col>
+                </Row>
+              </Container>
+
             </form>
-          </div>
-        </Col>
-        <Col sm={2}></Col>
-      </Row>
     </Container>
   );
 };

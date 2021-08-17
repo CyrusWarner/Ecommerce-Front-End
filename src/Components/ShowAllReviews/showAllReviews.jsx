@@ -8,15 +8,15 @@ const ShowAllReviews = (props) => {
   return (
     <Container>
             <Row>
-            <Col sm={2}></Col>
-              <Col className="d-flex justify-content-center" sm={8}>
+            <Col sm={1}></Col>
+              <Col className="d-flex justify-content-center" sm={10}>
                 <div class="crtTerminal d-flex align-items-center justify-content-center">
                   <div class="crtBezel">
       {" "}
       {productReviews.map((review) => {
         return (
                 <div className="d-flex justify-content-center" >
-                <div className="crt">
+                <div className="crt mt-2">
                   <h5 id="blueText">{review.user.userName}</h5>
                   <p id="greenText">{review.description}</p>
                   {stars.map((star, index) => index < review.rating && (
@@ -31,7 +31,7 @@ const ShowAllReviews = (props) => {
       </div>
           </Col>
 
-              <Col sm={2}></Col>
+              <Col sm={1}></Col>
             </Row>
     </Container>
   );
