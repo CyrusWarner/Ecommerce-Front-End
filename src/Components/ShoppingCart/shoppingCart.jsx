@@ -74,10 +74,7 @@ const ShoppingCart = (props) => {
             }
             return (
               <React.Fragment>
-                <div
-                  className="d-flex justify-content-center"
-                  style={{ margin: "1rem" }}
-                >
+        
                   <Card
                     className="cardGlow"
                     style={{ width: "25rem", margin: "1rem" }}
@@ -135,10 +132,18 @@ const ShoppingCart = (props) => {
                         billingAddress
                         shippingAddress
                       />
-                      <FaTrashAlt className="trashIcon" onClick={async () => {await props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
+                      <Container>
+                        <Row>
+                          <Col></Col>
+                          <Col></Col>
+                          <Col className="d-flex justify-content-end">
+                            <FaTrashAlt className="trashIcon" onClick={async () => {await props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
+                          </Col>
+                        </Row>
+                      </Container>
                     </Card.Body>
                   </Card>
-                </div>
+                
               </React.Fragment>
             );
           })}
