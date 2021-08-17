@@ -12,7 +12,9 @@ const ShowProduct = (props) => {
   const stars = Array(5).fill(0);
   let productReviews = props.productReviews;
   return (
+    
     <React.Fragment>
+      {props.currentProduct.length !== 0 &&
       <div className="orbit">
       <Container>
         <Row>
@@ -39,6 +41,7 @@ const ShowProduct = (props) => {
         <ShowAllReviews productReviews={productReviews} currentUser={currentUser}/>
         </Container>
       </div>
+      }
     </React.Fragment>
   );
 };
