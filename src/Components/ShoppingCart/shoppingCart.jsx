@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import { FaPlus, FaMinus, FaDollarSign } from "react-icons/fa";
-import "./shoppingCart.css";
+
+import { FaPlus, FaMinus, FaDollarSign, FaTrashAlt } from "react-icons/fa";
+import "./shoppingCart.css"
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -10,14 +11,15 @@ const ShoppingCart = (props) => {
   let shoppingCart = props.shoppingCart;
   let user = props.user;
   const [quantityDidChange, setQuantityDidChange] = useState(false);
+  const [didDeleteProduct, setDidDeleteProduct] = useState(false);
   let total = 0;
   let product = props.currentProduct;
   shoppingCart.map((item) => {
-    total += item.product.price * item.quantity;
-  });
-  useEffect(() => {
-    props.getUsersCart();
-  }, [quantityDidChange]);
+    total += item.product.price * item.quantity
+  })
+  useEffect( () =>{
+    props.getUsersCart()
+  }, [quantityDidChange, didDeleteProduct])
 
   async function handleToken(token, addresses) {
     const response = await axios.post(
@@ -133,6 +135,7 @@ const ShoppingCart = (props) => {
                         billingAddress
                         shippingAddress
                       />
+                      <FaTrashAlt className="trashIcon" onClick={async () => {await props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
                     </Card.Body>
                   </Card>
                 </div>
