@@ -7,19 +7,14 @@ const ShowAllReviews = (props) => {
 
   const stars = Array(5).fill(0);
   return (
-    <Container >
-      <Row>
-        
+    <Container>
+            <Row>
+            <Col sm={2}></Col>
+              <Col sm={8}>
       {" "}
       {productReviews.map((review) => {
         return (
-          <Container>
-            <div>
-            
-            <Row>
-            <Col sm={2}></Col>
-              <Col className="d-flex justify-content-center" sm={8}>
-                <div>
+                <div className="d-flex justify-content-center" >
                 <div className="crt">
                   <h5 >{review.user.userName}</h5>
                   <p>{review.description}</p>
@@ -28,15 +23,13 @@ const ShowAllReviews = (props) => {
                       )  
                       )}
                 </div>
-                </div>
-              </Col>
-              <Col sm={2}></Col>
-            </Row>
-            </div>
-          </Container>
+                </div> 
         );
       })}
-      </Row>
+          </Col>
+
+              <Col sm={2}></Col>
+            </Row>
     </Container>
   );
 };
