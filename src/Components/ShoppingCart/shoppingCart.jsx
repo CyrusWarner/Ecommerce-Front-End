@@ -99,7 +99,7 @@ const ShoppingCart = (props) => {
         billingAddress
         shippingAddress
       />
-      <FaTrashAlt className="trashIcon" onClick={() => {props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
+      <FaTrashAlt className="trashIcon" onClick={async () => {await props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
   </Card.Body>
 </Card>
 
