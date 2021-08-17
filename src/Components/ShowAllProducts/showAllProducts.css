@@ -22,14 +22,14 @@
 }
 
 .prodImg {
-  display: flex;
-  position: relative;
-  width: 10rem;
-  height: 10rem;
-  max-width: fit-content;
-  max-height: fit-content;
+    height: 350px;
 }
 
+@media (max-width: 640px){
+    .prodImg {
+        height: 300px;
+    }
+  } 
 .titleSeperator {
     width: 200px;
     height: 3px;
