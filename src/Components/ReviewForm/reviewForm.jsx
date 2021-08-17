@@ -76,18 +76,21 @@ const ReviewForm = (props) => {
     <Container>
       <Row>
       <Col sm={2}></Col>
-        <Col class="d-flex justify-content-center" sm={8}>
+        <Col sm={8}>
           <div>
             <form onSubmit={handleSubmit}>
-              <div >
+              <div class="d-flex justify-content-center">
+                <div className="monitorTerminal">
                 <input
                   className="monitor"
                   type="text"
                   name="description"
                   placeholder="Review Comment"
                   onChange={handleChange}/>
+                  </div>
               </div>
-              <div>
+              <div class="d-flex align-items-center justify-content-center">
+                <div className="terminal d-flex align-items-center justify-content-center">
               <div className="starRating">
                   {Object.keys(reviewError).map((key) => {
                         return <div style={{color: "yellow"}}>{reviewError[key]} </div>
@@ -113,9 +116,11 @@ const ReviewForm = (props) => {
                 );
               })}
               </div>
-              </div>
+              
               <div>
                 <button className="button" type="submit"> Submit </button>
+              </div>
+              </div>
               </div>
               
             </form>

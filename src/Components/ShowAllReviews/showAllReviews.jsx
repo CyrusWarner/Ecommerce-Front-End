@@ -19,6 +19,7 @@ const ShowAllReviews = (props) => {
             <Row>
             <Col sm={2}></Col>
               <Col className="d-flex justify-content-center" sm={8}>
+                <div>
                 <div className="crt">
                   <h5 >{review.user.userName}</h5>
                   <p>{review.description}</p>
@@ -26,6 +27,7 @@ const ShowAllReviews = (props) => {
                       <FaStar class="stars"/>
                       )  
                       )}
+                </div>
                 </div>
               </Col>
               <Col sm={2}></Col>

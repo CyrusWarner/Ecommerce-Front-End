@@ -4,24 +4,27 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import ShowAllReviews from './../ShowAllReviews/showAllReviews';
 import "./showProduct.css";
 const ShowProduct = (props) => {
-  const { name, description } = props.currentProduct;
+  const { name, description, price } = props.currentProduct;
   const currentUser = props.currentUser;
   const currentToken = props.currentToken;
   const getProductReviews = props.getProductReviews
   let productReviews = props.productReviews;
   return (
     <React.Fragment>
-      <div >
+      <div className="orbit">
       <Container>
         <Row>
         <Col sm={2}></Col>
-          <Col id="neonText" sm={8}>
+          <Col className="d-flex justify-content-center" sm={8}>
+            <div id="neonText">
             <h1>{name}</h1>
+            <h2>${price}</h2>
             <p>{description}</p>
             <Button onClick={() => props.addItemToCart(props.currentProduct)} style={{
                         backgroundColor: "crimson",
                         borderColor: "crimson",
                       }}>Add to Cart</Button>
+                      </div>
           </Col>
           <Col sm={2}></Col>
         </Row>

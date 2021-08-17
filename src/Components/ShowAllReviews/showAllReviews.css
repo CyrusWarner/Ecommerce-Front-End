@@ -7,8 +7,8 @@
 
 .crt {
     /* border-radius: 25px; */
-  background-color: rgba(111, 112, 111, 0.75);
-  /* background-image: radial-gradient(rgba(40, 41, 40, 0.75), black 120%); */
+  background-color: rgba(157, 161, 157, 0.75);
+  background-image: linear-gradient(to left,rgba(40, 41, 40, 0.75), black 120%);
   height: 150px;
   width: 640px;
   margin: 0px;
@@ -20,10 +20,18 @@
   overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
-  border-bottom: dashed;
-  border-color: rgb(243, 243, 243);
+  /* border-bottom: dashed;
+  border-color: rgb(243, 243, 243); */
 }
 
 .stars {
     color: rgb(243, 243, 243);
+}
+
+.crtTerminal {
+    text-align: center;
+    /* border-style:solid; */
+    /* border-color:black; */
+    width: 350px;
+    background-color: rgb(56, 56, 56);
 }

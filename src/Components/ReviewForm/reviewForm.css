@@ -23,7 +23,7 @@
 }
 .button {
     padding: 5px 15px;
-    margin: 10px;
+    margin: 20px;
     font-size: 30px;
     text-align: center;
     cursor: pointer;
@@ -43,4 +43,20 @@
     background-color: red;
     box-shadow:rgb(80, 1, 1);
     transform: translateY(4px);
+}
+
+.terminal {
+    text-align: center;
+    border-style:solid;
+    border-color:black;
+    width: 350px;
+    background-color: rgb(56, 56, 56);
+}
+.monitorTerminal {
+    border-radius: 50px;
+    text-align: center;
+    border-style:solid;
+    border-color:black;
+    width: 680px;
+    background-color: rgb(56, 56, 56);
 }
