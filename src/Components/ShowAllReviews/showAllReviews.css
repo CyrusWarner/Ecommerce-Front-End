@@ -34,7 +34,7 @@
     /* background-image: linear-gradient(to left,rgba(40, 41, 40, 0.75), black 120%); */
     height: 290px;
     width: 640px;
-    overflow: auto;
+    /* overflow: auto; */
     border-radius: 50px;
     text-align: center;
     border-style:solid;
@@ -45,7 +45,8 @@
         background-image: linear-gradient(to left,rgba(40, 41, 40, 0.75), black 120%);
         height: 250px;
         width: 600px;
-        overflow: auto;
+        overflow:auto;
+        scroll-behavior: smooth;
         border-radius: 50px;
         text-align: center;
         border-style:solid;
