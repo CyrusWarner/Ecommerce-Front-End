@@ -67,14 +67,10 @@ const ShowAllProducts = (props) => {
       <Container fluid>
         <Row className="d-flex justify-content-center">
           {filteredProducts.map((product) => {
-            var image = new Image(),
-            containerWidth = null,
-            containerHeight = null;
+            var image = new Image()
+    
 
-            image.onload=function(){
-              containerWidth = image.width;
-              containerHeight = image.height;
-            }
+            
             if(product.image == null || product.image == ""){
               image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
             }

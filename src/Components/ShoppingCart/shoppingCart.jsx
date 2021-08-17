@@ -56,14 +56,16 @@ const ShoppingCart = (props) => {
             </Col>
           </Row>
         </Container>
+        <Container fluid>
+          <Row className="d-flex justify-content-center">
           {shoppingCart.map((item) => {
             
             
 
-            image.onload=function(){
-              containerWidth = image.width;
-              containerHeight = image.height;
-            }
+            // image.onload=function(){
+            //   containerWidth = image.width;
+            //   containerHeight = image.height;
+            // }
             if(item.product.image == null || item.product.image == ""){
               image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
             }
@@ -73,22 +75,11 @@ const ShoppingCart = (props) => {
             {total += item.product.price * item.quantity;}
             return (
               <React.Fragment> 
-                <Container>
-                  <Row>
-                    <Col sm={1}></Col>
-                    <Col sm={10}>
-                    <div className="mb-2 fs-5" style={{color: "white"}}>Sold by: {item.product.user.userName}</div>
-                    </Col>
-                    <Col sm={1}></Col>
-                  </Row>
-                </Container>
-              <Container> 
-                <Row>
-                  <Col sm={1}></Col>
-                  <Col sm={10}>
-                  <React.Fragment>
-                      <Card className=" cardGlow mb-4">
-                      <Card.Img className="image ms-1 mt-1" src={image.src}  responsive rounded />
+                
+              
+                  
+                      <Card className="cardGlow m-3" style={{ width: '25rem' }}>
+                      <Card.Img className="image" src={image.src} />
     <Card.Title className="fs-2 ms-3 mt-2">{item.product.name}</Card.Title>
   <Card.Body>
     <Card.Text>
@@ -113,14 +104,13 @@ const ShoppingCart = (props) => {
   </Card.Body>
 </Card>
 
-</React.Fragment>           
-                  </Col>
-                  <Col sm={1}></Col>
-</Row>
-</Container>
+          
+                  
 </React.Fragment>
             );
           })}
+            </Row>
+          </Container>
             </React.Fragment>
             );
           };                     
@@ -129,3 +119,12 @@ export default ShoppingCart;
                              
                            
         
+// <Container>
+{/* <Row>
+<Col sm={1}></Col>
+<Col sm={10}>
+<div className="mb-2 fs-5" style={{color: "white"}}>Sold by: {item.product.user.userName}</div>
+</Col>
+<Col sm={1}></Col>
+</Row>
+</Container> */}

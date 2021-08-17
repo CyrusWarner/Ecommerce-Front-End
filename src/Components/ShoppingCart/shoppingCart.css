@@ -40,11 +40,16 @@
 .image{
   display: flex;
   position: relative;
-  width: 10rem;
-  height: 10rem;
-  max-width: fit-content;
-  max-height: fit-content;
+  height: 450px;
+  /* max-width: fit-content;
+  max-height: fit-content; */
 }
+
+@media (max-width: 640px){
+  .image {
+      height: 300px;
+  }
+} 
 
 .description {
   display: flex;
