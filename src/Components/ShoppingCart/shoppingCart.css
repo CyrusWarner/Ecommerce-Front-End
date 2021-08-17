@@ -37,6 +37,13 @@
   align-items: center;
   color: white;
 }
+.trashIcon{
+  position: relative;
+  left: 60%;
+  color: crimson;
+  height: 14%;
+  cursor: pointer;
+}
 .image{
   display: flex;
   position: relative;

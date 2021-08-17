@@ -71,6 +71,10 @@ function App() {
     }
     let response = await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} )
   }
+  
+  const deleteItemFromCart = async (itemId) => {
+    let response = await axios.delete(`https://localhost:44394/api/shoppingcart/${itemId}`, {headers: {Authorization: 'Bearer ' + token}} )
+  }
 
   const setUserToken = (token) => {
     localStorage.setItem("token", token);
@@ -186,6 +190,7 @@ function App() {
                 getUsersCart={getUsersCart}
                 user={currentUser}
                 shoppingCart={shoppingCart}
+                deleteItemFromCart={deleteItemFromCart}
               />
                 );
               }

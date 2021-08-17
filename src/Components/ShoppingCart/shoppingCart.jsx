@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import { FaPlus, FaMinus, FaDollarSign } from "react-icons/fa";
+import { FaPlus, FaMinus, FaDollarSign, FaTrashAlt } from "react-icons/fa";
 import "./shoppingCart.css"
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
@@ -13,6 +13,7 @@ const ShoppingCart = (props) => {
   let shoppingCart = props.shoppingCart;
   let user = props.user;
   const [quantityDidChange, setQuantityDidChange] = useState(false);
+  const [didDeleteProduct, setDidDeleteProduct] = useState(false);
   let total = 0;
   let product = props.currentProduct;
   shoppingCart.map((item) => {
@@ -20,7 +21,7 @@ const ShoppingCart = (props) => {
   })
   useEffect( () =>{
     props.getUsersCart()
-  }, [quantityDidChange])
+  }, [quantityDidChange, didDeleteProduct])
 
 
 
@@ -75,9 +76,6 @@ const ShoppingCart = (props) => {
             {total += item.product.price * item.quantity;}
             return (
               <React.Fragment> 
-                
-              
-                  
                       <Card className="cardGlow m-3" style={{ width: '25rem' }}>
                       <Card.Img className="image" src={image.src} />
     <Card.Title className="fs-2 ms-3 mt-2">{item.product.name}</Card.Title>
@@ -101,6 +99,7 @@ const ShoppingCart = (props) => {
         billingAddress
         shippingAddress
       />
+      <FaTrashAlt className="trashIcon" onClick={() => {props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
   </Card.Body>
 </Card>
 

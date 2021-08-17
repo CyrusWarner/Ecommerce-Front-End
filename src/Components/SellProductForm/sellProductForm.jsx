@@ -29,6 +29,7 @@ const SellProductForm = (props) => {
 
     const sellProductFormValidation = () => {
         eachEntry.CategoryId= currentCategoryId;
+        {debugger}
         let intPriceProductData = Number(`${eachEntry.Price}`)
         eachEntry.Price = intPriceProductData
         const nameError = {};
