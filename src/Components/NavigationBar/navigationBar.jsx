@@ -6,8 +6,8 @@ import './navigationBar.css';
 const NavigationBar = (props) => {
   const {currentUser, getUsersCart, logout, getUsersProducts} = props
     return (
-        <Navbar className="color-nav" expand="lg">
-  <Container>
+        <Navbar className="color-nav"  expand="lg">
+  <Container className="h-100">
     {currentUser &&
     <Navbar.Brand > <h4 className="linkText">Welcome {currentUser.user.username}!</h4></Navbar.Brand>
     }

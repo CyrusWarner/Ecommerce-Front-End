@@ -1,11 +1,12 @@
 /* @import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One'); */
 
-body {
+.homeBody {
   position: relative;
   margin: 0;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   font-family: 'Pathway Gothic One', sans-serif;
+  overflow: hidden;
 }
 
 canvas {
@@ -13,7 +14,6 @@ canvas {
   position: relative;
   top: 0;
   bottom: 0;
-  vertical-align: bottom;
 }
 
 #particles-js {
