@@ -81,7 +81,7 @@ const ShowAllProducts = (props) => {
             return (
               <Card
                 className="customCard card-container border"
-                style={{ width: "18rem", margin: "1rem" }}
+                style={{ width: "20rem", margin: "1rem" }}
               >
                 <Card.Img className="prodImg" variant="top" src={image.src} />
                 <Card.Body className="text-center">
@@ -114,6 +114,10 @@ const ShowAllProducts = (props) => {
                       View product
                     </Button>
                   </Link>
+                  <Button className="ms-2" onClick={() => props.addItemToCart(product)} style={{
+                        backgroundColor: "crimson",
+                        borderColor: "crimson",
+                      }}>Add to Cart</Button>
                 </Card.Body>
               </Card>
             );
