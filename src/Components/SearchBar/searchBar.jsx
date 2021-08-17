@@ -32,7 +32,7 @@ const SearchBar = (props) => {
               name="search"
               onChange={(event) => handleChange(event.target.value)}
               placeholder="Search By Product Name..."
-              className="form-control"
+              className="form-control mb-3"
             ></input>
           </Col>
           <Col sm={3}></Col>

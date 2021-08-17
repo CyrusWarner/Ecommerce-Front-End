@@ -45,7 +45,9 @@ const ShowAllProducts = (props) => {
         </Row>
       </Container>
       <Container>
-        <h5 className="title"> Search By Category</h5>
+        <Row>
+          <Col sm={3}></Col>
+          <Col sm={6}>
         <select
           className="form-select mb-2"
           onChange={(event) => {
@@ -62,15 +64,16 @@ const ShowAllProducts = (props) => {
               </option>
             );
           })}
+          
         </select>
+        <Col sm={3}></Col>
+        </Col>
+        </Row>
       </Container> 
       <Container fluid>
-        <Row className="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center m-1">
           {filteredProducts.map((product) => {
             var image = new Image()
-    
-
-            
             if(product.image == null || product.image == ""){
               image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
             }

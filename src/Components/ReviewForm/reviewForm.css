@@ -63,11 +63,11 @@
 } 
 
 .button:hover {
-    background-color:rgb(160, 0, 0);
+    background-color:rgb(182, 119, 3);
 }
 
 .button:active {
-    background-color: red;
+    background-color:rgb(252, 208, 128);
     /* box-shadow:rgb(80, 1, 1);
     transform: translateY(4px); */
 }
