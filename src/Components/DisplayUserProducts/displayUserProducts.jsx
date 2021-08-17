@@ -3,9 +3,15 @@ import UserProductEdit from '../UserProductEdit/userProductEdit';
 import { Card, Container, Row, Button } from 'react-bootstrap';
 import { FaStar, FaDollarSign } from "react-icons/fa";
 import DeleteProductModal from '../DeleteProductModal/deleteProductModal';
+import { useEffect } from 'react';
 
 const DisplayUserProducts = (props) => {
-    const {userProducts, getUsersProducts, getAllProducts, deleteProduct} = props
+    const {userProducts, getUsersProducts, getAllProducts, deleteProduct, currentUser} = props
+
+    useEffect(() => {
+        getUsersProducts();
+    }, [])
+    
     const stars = Array(5).fill(0);
     return (
         <React.Fragment>
@@ -18,7 +24,6 @@ const DisplayUserProducts = (props) => {
                   <Card.Title>{product.name}</Card.Title>
                   <Card.Text>
                       <div>{product.description}</div>
-                    
                   </Card.Text>
                   <Card.Text className="fs-5"><FaDollarSign />{product.price}</Card.Text>  
                   <Card.Text>{stars.map(
