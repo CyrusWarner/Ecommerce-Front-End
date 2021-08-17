@@ -25,7 +25,7 @@ const ShowAllProducts = (props) => {
     setCurrentCategoryId(intSelectedId)
   }
     const filteredProducts = allProducts.filter(function(product) {
-      if (currentCategoryId == 0){
+      if (currentCategoryId === 0){
         return allProducts;
       }
       else{
