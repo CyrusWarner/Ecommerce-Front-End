@@ -67,14 +67,31 @@ const ShowAllProducts = (props) => {
       <Container fluid>
         <Row className="d-flex justify-content-center">
           {filteredProducts.map((product) => {
+            var image = new Image(),
+            containerWidth = null,
+            containerHeight = null;
+
+            image.onload=function(){
+              containerWidth = image.width;
+              containerHeight = image.height;
+            }
+            if(product.image == null || product.image == ""){
+              image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
+            }
+            else{
+              image.src = product.image; 
+            }
+            
             return (
               <Card
                 className="customCard card-container border"
                 style={{ width: "18rem", margin: "1rem" }}
               >
+                <Card.Img className="prodImg" variant="top" src={image.src} />
                 <Card.Body className="text-center">
                   <Card.Title className="fs-4">{product.name}</Card.Title>
                   <hr className="titleSeperator"></hr>
+                  
                   <Card.Text className="fs-5">{product.description}</Card.Text>
                   <Card.Text className="fs-5">
                     <FaDollarSign />

@@ -19,7 +19,7 @@ const SellProductForm = (props) => {
         Description: "",
         Name: "",
         Price: 0,
-        image: null,
+        Image: "",
         UserId: id
     }
     const [eachEntry, setEachEntry] = useState(initialInput)
@@ -58,6 +58,24 @@ const SellProductForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         submitProduct();
+    }
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        try{
+        reader.readAsDataURL(file)
+        }
+        catch{
+            eachEntry.Image = ""
+        }   
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = error => reject(error)
+    })
+
+    const handleFile = async (event) => {
+
+        let file = event.target.files[0]
+        let response = await toBase64(file);
+        eachEntry.Image = response
     }
 
     const submitProduct = async () => {
@@ -106,6 +124,10 @@ const SellProductForm = (props) => {
                     {Object.keys(productPriceError).map((key) => {
                         return <div style={{color: "yellow"}}>{productPriceError[key]} </div>
                     })}
+                    </div>
+                    <div>
+                    <h5 className="title"> Product Image</h5>
+                    <input className=" form-control" type="file" onChange={(event) => handleFile(event)} name="Image"></input>
                     </div>
                     <Categories categories={props.categories} userCurrentCategoryId={userCurrentCategoryId}/>
                     <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2" type="submit">Submit New Product</Button>

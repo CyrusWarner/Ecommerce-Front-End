@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Image, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { FaPlus, FaMinus, FaDollarSign } from "react-icons/fa";
 import "./shoppingCart.css"
 
@@ -15,7 +15,9 @@ const ShoppingCart = (props) => {
   useEffect( () =>{
     props.getUsersCart()
   }, [quantityDidChange])
-
+  var image = new Image(),
+    containerWidth = null,
+    containerHeight = null;
   return (
     <React.Fragment>
        <Container>
@@ -30,6 +32,19 @@ const ShoppingCart = (props) => {
           </Row>
         </Container>
           {shoppingCart.map((item) => {
+            
+            
+
+            image.onload=function(){
+              containerWidth = image.width;
+              containerHeight = image.height;
+            }
+            if(item.product.image == null || item.product.image == ""){
+              image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
+            }
+            else{
+              image.src = item.product.image; 
+            }
             {total += item.product.price * item.quantity;}
             return (
               <React.Fragment> 
@@ -48,7 +63,7 @@ const ShoppingCart = (props) => {
                   <Col sm={10}>
                   <React.Fragment>
                       <Card className=" cardGlow mb-4">
-                      <Image className="image ms-1 mt-1" src="https://upload.wikimedia.org/wikipedia/en/0/00/The_Child_aka_Baby_Yoda_%28Star_Wars%29.jpg" responsive rounded ></Image> 
+                      <Card.Img className="image ms-1 mt-1" src={image.src}  responsive rounded />
     <Card.Title className="fs-2 ms-3 mt-2">{item.product.name}</Card.Title>
   <Card.Body>
     <Card.Text>
