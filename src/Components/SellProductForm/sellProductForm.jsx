@@ -3,6 +3,7 @@ import './sellProductForm.css'
 import React, {useState} from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import Categories from '../Categories/categories';
+import imageToBase64 from 'image-to-base64/browser'
 //if (intPriceProductdata == NaN || intPriceProductData == 0){} ADD LOGIC HERE FOR ALERTING A USER THAT THEY NEED TO ENTER AN INTEGER
 const SellProductForm = (props) => {
     let id;
@@ -19,6 +20,7 @@ const SellProductForm = (props) => {
         Description: "",
         Name: "",
         Price: 0,
+        Image: null,
         UserId: id
     }
     const [eachEntry, setEachEntry] = useState(initialInput)
@@ -59,9 +61,24 @@ const SellProductForm = (props) => {
         submitProduct();
     }
 
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = error => reject(error)
+    })
+
+    const handleFile = async (event) => {
+        
+        let file = event.target.files[0]
+        let response = await toBase64(file);
+        eachEntry.Image = response
+    }
+
     const submitProduct = async () => {
         let productData = eachEntry
         const isValid = sellProductFormValidation();
+        console.log(productData);
         if(isValid){
             await axios.post("https://localhost:44394/api/product", productData, { headers: {Authorization: 'Bearer ' + currentToken}})
             getAllProducts();
@@ -105,6 +122,10 @@ const SellProductForm = (props) => {
                     {Object.keys(productPriceError).map((key) => {
                         return <div style={{color: "yellow"}}>{productPriceError[key]} </div>
                     })}
+                    </div>
+                    <div>
+                    <h5 className="title"> Product Image</h5>
+                    <input className=" form-control" type="file" onChange={(event) => handleFile(event)} name="Image"></input>
                     </div>
                     <Categories categories={props.categories} userCurrentCategoryId={userCurrentCategoryId}/>
                     <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2" type="submit">Submit New Product</Button>

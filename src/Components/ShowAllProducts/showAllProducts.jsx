@@ -14,6 +14,11 @@ const ShowAllProducts = (props) => {
   let categories = props.categories;
   let setSearchFilteredProducts = props.setSearchFilteredProducts;
   const [currentCategoryId, setCurrentCategoryId] = useState(0);
+
+  
+
+
+
   const onChangeComboBox = (event) => {
     const id = event.target.value;
     let intSelectedId = Number(`${id}`);
@@ -67,6 +72,15 @@ const ShowAllProducts = (props) => {
       <Container fluid>
         <Row className="d-flex justify-content-center">
           {filteredProducts.map((product) => {
+            var image = new Image(),
+            containerWidth = null,
+            containerHeight = null;
+        
+          image.onload=function(){
+            containerWidth = image.width;
+            containerHeight = image.height;
+            }
+          image.src = product.image; 
             return (
               <Card
                 className="customCard card-container border"
@@ -75,6 +89,7 @@ const ShowAllProducts = (props) => {
                 <Card.Body className="text-center">
                   <Card.Title className="fs-4">{product.name}</Card.Title>
                   <hr className="titleSeperator"></hr>
+                  <Card.Img src={image.src} ></Card.Img>
                   <Card.Text className="fs-5">{product.description}</Card.Text>
                   <Card.Text className="fs-5">
                     <FaDollarSign />
