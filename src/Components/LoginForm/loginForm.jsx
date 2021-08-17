@@ -37,8 +37,8 @@ const logIn = async () => {
   return ( 
     <Container>
             <Row>
-                <Col></Col>
-                <Col>
+                <Col sm={4}></Col>
+                <Col sm={4}>
                 <div>
                     <h1 className="title">Login</h1>
                     <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ const logIn = async () => {
                     </form>
                     </div>
                 </Col>
-                <Col></Col>
+                <Col sm={4}></Col>
             </Row>
         </Container>
    );

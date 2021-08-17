@@ -84,7 +84,7 @@ const ShowAllProducts = (props) => {
             return (
               <Card
                 className="customCard card-container border"
-                style={{ width: "20rem", margin: "1rem" }}
+                style={{ width: "22rem", margin: "1rem" }}
               >
                 <Card.Img className="prodImg" variant="top" src={image.src} />
                 <Card.Body className="text-center">
@@ -103,6 +103,7 @@ const ShowAllProducts = (props) => {
                       )
                   )}
                   <div className="mb-2"></div>
+                  <div className="d-flex justify-content-center">
                   <Link to="/viewproduct">
                     <Button
                       style={{
@@ -117,10 +118,11 @@ const ShowAllProducts = (props) => {
                       View product
                     </Button>
                   </Link>
-                  <Button className="ms-2" onClick={() => props.addItemToCart(product)} style={{
+                  <Button className="ms-1" onClick={() => props.addItemToCart(product)} style={{
                         backgroundColor: "crimson",
                         borderColor: "crimson",
                       }}>Add to Cart</Button>
+                      </div>
                 </Card.Body>
               </Card>
             );

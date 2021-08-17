@@ -81,8 +81,8 @@ const SignUpForm = () => {
         
         <Container>
             <Row>
-                <Col></Col>
-                <Col>
+                <Col sm={4}></Col>
+                <Col sm={4}>
                 <div>
                     <h1 className="title">Signup</h1>
                     <form onSubmit={handleSubmit}>
@@ -125,11 +125,11 @@ const SignUpForm = () => {
                     <div>
                     <input  className="form-control" value={eachEntry.phonenumber} name="phonenumber" placeholder="Phone number..." onChange={handleChange}></input>
                     </div>
-                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2" type="submit">Sign Up</Button>
+                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2 mb-1" type="submit">Sign Up</Button>
                     </form>
                     </div>
                 </Col>
-                <Col></Col>
+                <Col sm={4}></Col>
             </Row>
         </Container>
     )

@@ -16,8 +16,12 @@ const NavigationBar = (props) => {
       <Nav className="me-auto">
       <Nav.Link  className="customNavLink" as={Link} to="/" ><h4 className="linkText">Home</h4></Nav.Link>
        <Nav.Link  className="customNavLink" as={Link} to="/products"><h4 className="linkText">View Products</h4></Nav.Link>
+       {currentUser && 
+       <React.Fragment>
       <Nav.Link  onClick = {() => (getUsersCart())} className="customNavLink" as={Link} to="/user/shoppingcart"><h4 className="linkText">Shopping Cart</h4></Nav.Link>
       <Nav.Link  className="customNavLink" as={Link} to="/user/createproduct"><h4 className="linkText">Sell A Product</h4></Nav.Link>
+      </React.Fragment>
+       }
       {currentUser &&
             <Nav.Link className="customNavLink" as={Link} onClick={getUsersProducts} to="/userProducts"><h4 className="linkText">My Products</h4></Nav.Link> 
           }
