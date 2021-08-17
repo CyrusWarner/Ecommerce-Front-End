@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.17.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -19,6 +21,8 @@
     "react-particles-js": "^3.5.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^7.0.4",
     "save": "^2.4.0",
     "tsparticles": "^1.33.3",
     "web-vitals": "^1.1.2"

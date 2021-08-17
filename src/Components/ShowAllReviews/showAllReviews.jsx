@@ -4,35 +4,36 @@ import { Container, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 const ShowAllReviews = (props) => {
   let productReviews = props.productReviews;
-
   const stars = Array(5).fill(0);
   return (
-    <div >
+    <Container>
+            <Row>
+            <Col sm={1}></Col>
+              <Col className="d-flex justify-content-center" sm={10}>
+                <div class="crtTerminal d-flex align-items-center justify-content-center">
+                  <div class="crtBezel">
       {" "}
       {productReviews.map((review) => {
         return (
-          <Container>
-            <div>
-            
-            <Row sm={8}>
-            <Col sm={2}></Col>
-              <Col sm={8}>
-                <div class="crt">
-                  <h5 >{review.user.userName}</h5>
-                  <p>{review.description}</p>
+                <div className="d-flex justify-content-center" >
+                <div className="crt mt-2">
+                  <h5 id="blueText">{review.user.userName}</h5>
+                  <p id="greenText">{review.description}</p>
                   {stars.map((star, index) => index < review.rating && (
-                      <FaStar class="stars"/>
+                      <FaStar class="stars" color="orange"/>
                       )  
                       )}
                 </div>
-              </Col>
-              <Col sm={2}></Col>
-            </Row>
-            </div>
-          </Container>
+                </div> 
         );
       })}
-    </div>
+      </div>
+      </div>
+          </Col>
+
+              <Col sm={1}></Col>
+            </Row>
+    </Container>
   );
 };
 export default ShowAllReviews;
