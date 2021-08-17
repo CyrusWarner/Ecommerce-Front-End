@@ -4,15 +4,11 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import ShowAllReviews from './../ShowAllReviews/showAllReviews';
 import "./showProduct.css";
 const ShowProduct = (props) => {
-  const { name, description, price, category, averageRating } = props.currentProduct;
+  const { name, description, price, averageRating } = props.currentProduct;
   const currentUser = props.currentUser;
   const currentToken = props.currentToken;
   const getProductReviews = props.getProductReviews
   let productReviews = props.productReviews;
-  console.log(productReviews.length);
-  console.log(averageRating)
-  let averageReview = averageRating / productReviews.length
-    console.log(averageReview)
   return (
     <React.Fragment>
       <div className="orbit">
@@ -23,9 +19,9 @@ const ShowProduct = (props) => {
             <div id="neonText">
             <h1>{name}</h1>
             <h2>${price}</h2>
-            <h3>Category:{category.categoryName}</h3>
-            <p>Description:{description}</p>
-            <p>Average Review: {averageReview}</p>
+            <h3>Category:{props.currentProduct.category.categoryName}</h3>
+            <h4>Description:{description}</h4>
+            <p>Average Review:{averageRating} </p>
             <Button onClick={() => props.addItemToCart(props.currentProduct)} style={{
                         backgroundColor: "crimson",
                         borderColor: "crimson",

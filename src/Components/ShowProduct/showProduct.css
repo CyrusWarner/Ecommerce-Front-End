@@ -2,7 +2,7 @@
     text-align: center;
     animation: flicker 1.5s infinite alternate;
     color: rgb(165, 202, 245); 
-    margin: 50px;
+    margin: 10px;
 }
 
 @keyframes flicker {
@@ -37,10 +37,10 @@
     height: 400px;
 } */
 
-.orbit {
+/* .orbit {
     background-image: url(../images/iss060e014848.jpg);
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
