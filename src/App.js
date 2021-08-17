@@ -100,7 +100,6 @@ function App() {
       `https://localhost:44394/api/reviews/${productId}`
     );
     setProductReviews(response.data);
-    console.log(productReviews)
   };
 
   const getCategories = async () => {
