@@ -40,15 +40,13 @@
 .trashIcon{
   position: relative;
   color: crimson;
-  height: 150%;
+  height: 100%;
   cursor: pointer;
 }
 .image{
   display: flex;
   position: relative;
-  height: 450px;
-  /* max-width: fit-content;
-  max-height: fit-content; */
+  height: 400px;
 }
 
 @media (max-width: 640px){

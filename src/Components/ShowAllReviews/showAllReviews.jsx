@@ -10,8 +10,8 @@ const ShowAllReviews = (props) => {
             <Row>
             <Col sm={1}></Col>
               <Col className="d-flex justify-content-center" sm={10}>
-                <div class="crtTerminal d-flex align-items-center justify-content-center">
-                  <div class="crtBezel">
+                <div className="crtTerminal d-flex align-items-center justify-content-center">
+                  <div className="crtBezel">
       {" "}
       {productReviews.map((review) => {
         return (
@@ -20,7 +20,7 @@ const ShowAllReviews = (props) => {
                   <h5 id="blueText">{review.user.userName}</h5>
                   <p id="greenText">{review.description}</p>
                   {stars.map((star, index) => index < review.rating && (
-                      <FaStar class="stars" color="orange"/>
+                      <FaStar className="stars" color="orange"/>
                       )  
                       )}
                 </div>

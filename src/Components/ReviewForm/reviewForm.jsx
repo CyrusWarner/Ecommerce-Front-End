@@ -8,13 +8,6 @@ const ReviewForm = (props) => {
     orange: "#FFBA5A",
     grey: "#a9a9a9",
   };
-
-  const styles = {
-    container: {
-      display: "flex",
-      flexDirection: "column",
-    },
-  };
   const stars = Array(5).fill(0);
   const [currentRating, setCurrentRating] = useState(1);
   const [hoverValue, setHoverValue] = useState(undefined);
@@ -99,7 +92,7 @@ const ReviewForm = (props) => {
                 <Row>
                   <Col sm={1}></Col>
                   <Col  sm={10}>
-                  <div class="d-flex justify-content-center">
+                  <div className="d-flex justify-content-center">
                 <div className="terminal d-flex justify-content-center">
                   {Object.keys(reviewError).map((key) => {
                         return <div style={{color: "yellow"}}>{reviewError[key]} </div>

@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const DisplayUserProducts = (props) => {
     const {userProducts, getUsersProducts, getAllProducts, deleteProduct, currentUser} = props
-
+    let userName = currentUser.user.username
     useEffect(() => {
         getUsersProducts();
     }, [])
@@ -15,6 +15,17 @@ const DisplayUserProducts = (props) => {
     const stars = Array(5).fill(0);
     return (
         <React.Fragment>
+          <React.Fragment>
+            <Container>
+              <Row>
+                <Col sm={8}>
+                  <h1 className="title">{userName}'s Products</h1>
+
+                </Col>
+                <Col sm={4}></Col>
+              </Row>
+            </Container>
+          </React.Fragment>
           {userProducts.length === 0 &&
           <React.Fragment>
             <Container>
@@ -28,12 +39,20 @@ const DisplayUserProducts = (props) => {
             </Container>
              </React.Fragment>
           }
-            <Container className="d-flex justify-content-center">
-                <Row>
+            <Container>
+                <Row className="d-flex justify-content-center g-0">
         {userProducts.map((product) => {
+          var image = new Image()
+              if(product.image === null || product.image === ""){
+                image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
+              }
+              else{
+                image.src = product.image; 
+              }
             return (
-                <Card className="customCard card-container border m-3"  style={{ width: '18rem' }}>
+                <Card className="customCard card-container border m-4"  style={{ width: '25rem' }}>
                 <Card.Body>
+                <Card.Img className="image" src={image.src}/>
                   <Card.Title>{product.name}</Card.Title>
                   <Card.Text>
                       <div>{product.description}</div>

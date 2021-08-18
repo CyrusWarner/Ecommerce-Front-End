@@ -92,8 +92,7 @@ const SellProductForm = (props) => {
         <React.Fragment>
         <Container>
             <Row>
-                <Col sm={4}></Col>
-                <Col sm={4}>
+                <Col sm={8}>
                 <h1 className="title mb-3">Sell A Product</h1>
                 </Col>
                 <Col sm={4}></Col>
@@ -130,7 +129,7 @@ const SellProductForm = (props) => {
                     <input className=" form-control" type="file" onChange={(event) => handleFile(event)} name="Image"></input>
                     </div>
                     <Categories categories={props.categories} userCurrentCategoryId={userCurrentCategoryId}/>
-                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2" type="submit">Submit New Product</Button>
+                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} className="mt-2 mb-2" type="submit">Submit New Product</Button>
                     </Form>
                 </Col>
                 <Col sm={4}></Col>

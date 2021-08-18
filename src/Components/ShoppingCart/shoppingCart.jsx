@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 import { FaPlus, FaMinus, FaDollarSign, FaTrashAlt } from "react-icons/fa";
 import "./shoppingCart.css"
@@ -8,17 +8,15 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const ShoppingCart = (props) => {
-  let shoppingCart = props.shoppingCart;
-  let user = props.user;
+  const {shoppingCart , user, product, getUsersCart}  = props
   const [quantityDidChange, setQuantityDidChange] = useState(false);
   const [didDeleteProduct, setDidDeleteProduct] = useState(false);
   let total = 0;
-  let product = props.currentProduct;
   shoppingCart.map((item) => {
     total += item.product.price * item.quantity
   })
   useEffect( () =>{
-    props.getUsersCart()
+    getUsersCart()
   }, [quantityDidChange, didDeleteProduct])
 
   async function handleToken(token, addresses) {
@@ -35,10 +33,7 @@ const ShoppingCart = (props) => {
     }
   }
 
-  var image = new Image(),
-    containerWidth = null,
-    containerHeight = null;
-
+  var image = new Image()
   return (
     <React.Fragment>
       <Container>
@@ -57,21 +52,16 @@ const ShoppingCart = (props) => {
         </Row>
       </Container>
       <Container fluid>
-        <Row className="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center m-1">
           {shoppingCart.map((item) => {
-            // image.onload=function(){
-            //   containerWidth = image.width;
-            //   containerHeight = image.height;
-            // }
-            if (item.product.image == null || item.product.image == "") {
+            if (item.product.image === null || item.product.image === "") {
               image.src =
                 "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg";
             } else {
               image.src = item.product.image;
             }
-            {
-              total += item.product.price * item.quantity;
-            }
+            <div>{total += item.product.price * item.quantity }</div>
+
             return (
               <React.Fragment>
         
@@ -132,12 +122,12 @@ const ShoppingCart = (props) => {
                         billingAddress
                         shippingAddress
                       />
-                      <Container>
-                        <Row>
+                      <Container className="g-0">
+                        <Row className="g-0">
                           <Col></Col>
                           <Col></Col>
                           <Col className="d-flex justify-content-end">
-                            <FaTrashAlt className="trashIcon" onClick={async () => {await props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
+                            <FaTrashAlt size="1.75rem"className="trashIcon" onClick={async () => {await props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
                           </Col>
                         </Row>
                       </Container>
@@ -154,14 +144,14 @@ const ShoppingCart = (props) => {
 };
 export default ShoppingCart;
 
-// <Container>
-{
-  /* <Row>
-<Col sm={1}></Col>
-<Col sm={10}>
-<div className="mb-2 fs-5" style={{color: "white"}}>Sold by: {item.product.user.userName}</div>
-</Col>
-<Col sm={1}></Col>
-</Row>
-</Container> */
-}
+//  <Container>
+
+//   /* <Row>
+// <Col sm={1}></Col>
+// <Col sm={10}>
+// <div className="mb-2 fs-5" style={{color: "white"}}>Sold by: {item.product.user.userName}</div>
+// </Col>
+// <Col sm={1}></Col>
+// </Row>
+// </Container> 
+

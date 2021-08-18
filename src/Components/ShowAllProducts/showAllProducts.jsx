@@ -74,7 +74,7 @@ const ShowAllProducts = (props) => {
         <Row className="d-flex justify-content-center m-1">
           {filteredProducts.map((product) => {
             var image = new Image()
-            if(product.image == null || product.image == ""){
+            if(product.image === null || product.image === ""){
               image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
             }
             else{
@@ -84,7 +84,7 @@ const ShowAllProducts = (props) => {
             return (
               <Card
                 className="customCard card-container border"
-                style={{ width: "22rem", margin: "1rem" }}
+                style={{ width: "25rem", margin: "1rem" }}
               >
                 <Card.Img className="prodImg" variant="top" src={image.src} />
                 <Card.Body className="text-center">

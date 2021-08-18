@@ -69,11 +69,11 @@ function App() {
     let itemToAdd = {
       productId: item.productId,
     }
-    let response = await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} )
+    await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} )
   }
   
   const deleteItemFromCart = async (itemId) => {
-    let response = await axios.delete(`https://localhost:44394/api/shoppingcart/${itemId}`, {headers: {Authorization: 'Bearer ' + token}} )
+    await axios.delete(`https://localhost:44394/api/shoppingcart/${itemId}`, {headers: {Authorization: 'Bearer ' + token}} )
   }
 
   const setUserToken = (token) => {

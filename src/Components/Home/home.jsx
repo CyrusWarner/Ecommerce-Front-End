@@ -9,11 +9,11 @@ const Home = () => {
     <React.Fragment>
       
       <div id="particles-js">
-      <div class="fade-out"></div>
-      <section class="star-wars">
-        <div class="skew-wrapper">
-          <div class="title">
-            <p class="title">Welcome to Star Wars eCommerce!</p>
+      <div className="fade-out"></div>
+      <section className="star-wars">
+        <div className="skew-wrapper">
+          <div className="title">
+            <p className="title">Welcome to Star Wars eCommerce!</p>
             <h1>In our store you can find merchandise related to Star Wars</h1>
           <p>Episode IV</p>
           <p>A New Hope</p>
