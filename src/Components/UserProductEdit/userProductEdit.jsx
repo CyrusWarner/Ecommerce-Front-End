@@ -51,6 +51,9 @@ const UserProductEdit = (props) => {
             userId: userId,
             image: eachEntry.image
         }
+        let intPrice = Number(`${eachEntry.price}`);
+        data.price = intPrice
+        debugger
         await axios.put(`https://localhost:44394/api/product/${productId}`, data).then(res => {
             if(res.status === 200){
               getUsersProducts();
