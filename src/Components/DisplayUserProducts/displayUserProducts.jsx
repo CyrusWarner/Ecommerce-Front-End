@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';  
+import React, { useEffect } from 'react';  
 import UserProductEdit from '../UserProductEdit/userProductEdit';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { FaStar, FaDollarSign } from "react-icons/fa";
@@ -7,7 +7,7 @@ import DeleteProductModal from '../DeleteProductModal/deleteProductModal';
 const DisplayUserProducts = (props) => {
     const {userProducts, getUsersProducts, getAllProducts, deleteProduct, currentUser} = props
     let userName = currentUser.user.username
-    useLayoutEffect(() => {
+    useEffect(() => {
         getUsersProducts();
     }, [])
     
