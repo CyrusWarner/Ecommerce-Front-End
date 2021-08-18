@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 const ReviewForm = (props) => {
+  const {currentToken, currentProduct, currentUser, getProductReviews} = props;
   const starColors = {
     orange: "#FFBA5A",
     grey: "#a9a9a9",
@@ -11,10 +12,8 @@ const ReviewForm = (props) => {
   const stars = Array(5).fill(0);
   const [currentRating, setCurrentRating] = useState(1);
   const [hoverValue, setHoverValue] = useState(undefined);
-  const currentToken = props.currentToken;
-  const currentProductId = props.currentProduct.productId;
-  const userId = props.currentUser.user.id;
-  const getProductReviews = props.getProductReviews;
+  const currentProductId = currentProduct.productId;
+  const userId = currentUser.user.id;
   const initialReview = {
     description: "",
     userId: userId,

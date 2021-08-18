@@ -7,12 +7,7 @@ import "./showAllProducts.css";
 
 const ShowAllProducts = (props) => {
   const stars = Array(5).fill(0);
-  let allProducts = props.allProducts;
-  let createCurrentProduct = props.createCurrentProduct;
-  let getAllProducts = props.getAllProducts;
-  let getProductReviews = props.getProductReviews;
-  let categories = props.categories;
-  let setSearchFilteredProducts = props.setSearchFilteredProducts;
+  const {allProducts, createCurrentProduct, getAllProducts, getProductReviews, categories, setSearchFilteredProducts, addItemToCart, currentUser} = props;
   const [currentCategoryId, setCurrentCategoryId] = useState(0);
   const onChangeComboBox = (event) => {
     const id = event.target.value;
@@ -27,8 +22,6 @@ const ShowAllProducts = (props) => {
         return product.categoryId === currentCategoryId;
       }
   })
-
-
   return (
     <React.Fragment>
       <Container>
@@ -116,12 +109,14 @@ const ShowAllProducts = (props) => {
                       ]}
                     >
                       View product
-                    </Button>
+                    </Button> 
                   </Link>
-                  <Button className="ms-1" onClick={() => props.addItemToCart(product)} style={{
+                  {currentUser &&
+                  <Button className="ms-1" onClick={() => addItemToCart(product)} style={{
                         backgroundColor: "crimson",
                         borderColor: "crimson",
                       }}>Add to Cart</Button>
+                  }
                       </div>
                 </Card.Body>
               </Card>

@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 const DeleteProductModal = (props) => {
-    const {productId} = props.product
-    const deleteProduct = props.deleteProduct
-    const handleClose = () => setShow(false);
+    const {productId} = props.product;
+    const deleteProduct = props.deleteProduct;
+    const handleClose = () => 
+    setShow(false);
     const handleShow = () => setShow(true);
     const [show, setShow] = useState(false);
     return (

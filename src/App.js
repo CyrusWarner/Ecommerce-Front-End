@@ -15,6 +15,7 @@ import DisplayUserProducts from "./Components/DisplayUserProducts/displayUserPro
 import Home from "./Components/Home/home";
 import jwtDecode from "jwt-decode";
 import ShoppingCart from "./Components/ShoppingCart/shoppingCart";
+import { toast, ToastContainer } from 'react-toastify';
 import axios from "axios";
 
 function App() {
@@ -69,11 +70,28 @@ function App() {
     let itemToAdd = {
       productId: item.productId,
     }
-    await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} )
+    await axios.put("https://localhost:44394/api/shoppingcart/", itemToAdd, {headers: {Authorization: 'Bearer ' + token}} ).then(res => {
+      if(res.data.length !== 0){
+        toast.success('Product added to cart')
+      }
+    })
+    .catch(err => {
+      if(err){
+        toast.error('Product was unable to be added to your cart')
+      }
+      
+    })
   }
   
   const deleteItemFromCart = async (itemId) => {
-    await axios.delete(`https://localhost:44394/api/shoppingcart/${itemId}`, {headers: {Authorization: 'Bearer ' + token}} )
+    await axios.delete(`https://localhost:44394/api/shoppingcart/${itemId}`, {headers: {Authorization: 'Bearer ' + token}} ).then(res => {
+      if(res.status === 200){
+        toast.success('Product removed from your cart');
+      }
+    })
+    .catch(err => {
+      toast.error('Product was unable to be removed from your cart')
+    })
   }
 
   const setUserToken = (token) => {
@@ -88,17 +106,20 @@ function App() {
   }
 
   const getAllProducts = async () => {
-    let response = await axios.get("https://localhost:44394/api/product");
-    if (response.data.length !== 0) {
-      setAllProducts(response.data);
-    }
+      await axios.get("https://localhost:44394/api/product").then(res => {
+        if(res.status === 200){
+          setAllProducts(res.data);
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
   };
   const createCurrentProduct = async (product) => {
     let response = await axios.get(
       `https://localhost:44394/api/product/${product.productId}`
     );
     let currentProduct = response.data;
-    console.log(currentProduct)
     setCurrentProduct(currentProduct);
   };
 
@@ -148,15 +169,26 @@ function App() {
   }
 
   const deleteProduct = async (productId) => {
-    await axios.delete(`https://localhost:44394/api/product/${productId}`)
-    getUsersProducts();
-    getAllProducts();
+    await axios.delete(`https://localhost:44394/api/product/${productId}`).then(res => {
+      if(res.status === 200){
+        toast.success("Product was deleted successfully");
+        getUsersProducts();
+        getAllProducts();
+      }
+    })
+    .catch(err => {
+      if(err){
+        toast.error("Product was unable to be deleted successfully");
+      }
+    })
+
   }
 
 
   return (
-    
-    <Router>
+    <React.Fragment>
+      <ToastContainer autoClose={3000}/>
+    <Router> 
       {!loading &&
       <div>
         <NavigationBar currentUser={currentUser} logout={logout} getUsersCart={getUsersCart} getUsersProducts={getUsersProducts} />
@@ -216,6 +248,7 @@ function App() {
                 userCurrentCategoryId={userCurrentCategoryId}
                 setFilteredCategories={setFilteredCategories}
                 addItemToCart={addItemToCart}
+                currentUser={currentUser}
               />
             )}
           />
@@ -243,6 +276,7 @@ function App() {
             path="/viewproduct"
             render={(props) => {
               if (!currentUser) {
+                toast.error("Please login or signup first");
                 return <Redirect to="/login" />;
               } else {
                 return (
@@ -264,6 +298,7 @@ function App() {
       </div>
           }
     </Router>
+    </React.Fragment>
   );   
 }
 

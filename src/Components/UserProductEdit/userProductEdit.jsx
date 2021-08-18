@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify';
+
 const UserProductEdit = (props) => {
     const {product, getUsersProducts, getAllProducts} = props
     const [show, setShow] = useState(false);
@@ -28,7 +30,6 @@ const UserProductEdit = (props) => {
       let file = event.target.files[0]
       let response = await toBase64(file);
       eachEntry.image = response
-      debugger
   }
     const handleChange = (event) => {
         setEachEntry({...eachEntry, [event.target.name]: event.target.value});
@@ -50,10 +51,19 @@ const UserProductEdit = (props) => {
             userId: userId,
             image: eachEntry.image
         }
-        await axios.put(`https://localhost:44394/api/product/${productId}`, data)
-        getUsersProducts();
-        getAllProducts();
-        
+        await axios.put(`https://localhost:44394/api/product/${productId}`, data).then(res => {
+            if(res.status === 200){
+              getUsersProducts();
+              getAllProducts();
+              toast.success("Product Updated Successfully")
+            }
+        })
+        .catch(error => {
+          if(error){
+            toast.error("Product Was Unable To Be Updated")
+
+          }
+        })
     }
 
     return (

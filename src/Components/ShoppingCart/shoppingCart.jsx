@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const ShoppingCart = (props) => {
-  const {shoppingCart , user, product, getUsersCart}  = props
+  const {shoppingCart , user, product, getUsersCart, increaseQuantity, decreaseQuantity, deleteItemFromCart}  = props;
   const [quantityDidChange, setQuantityDidChange] = useState(false);
   const [didDeleteProduct, setDidDeleteProduct] = useState(false);
   let total = 0;
@@ -25,7 +25,6 @@ const ShoppingCart = (props) => {
       { token, product }
     );
     const { status } = response.data;
-    console.log("Response:", response.data);
     if (status === "success") {
       toast("Success! Check email for details", { type: "success" });
     } else {
@@ -87,7 +86,7 @@ const ShoppingCart = (props) => {
                           <FaPlus
                             size="1.5rem"
                             onClick={async () => {
-                              await props.increaseQuantity(
+                              await increaseQuantity(
                                 item.quantity,
                                 item.shoppingCartId
                               );
@@ -97,7 +96,7 @@ const ShoppingCart = (props) => {
                           <FaMinus
                             size="1.5rem"
                             onClick={async () => {
-                              await props.decreaseQuantity(
+                              await decreaseQuantity(
                                 item.quantity,
                                 item.shoppingCartId
                               );
@@ -127,7 +126,7 @@ const ShoppingCart = (props) => {
                           <Col></Col>
                           <Col></Col>
                           <Col className="d-flex justify-content-end">
-                            <FaTrashAlt size="1.75rem"className="trashIcon" onClick={async () => {await props.deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
+                            <FaTrashAlt size="1.75rem"className="trashIcon" onClick={async () => {await deleteItemFromCart(item.shoppingCartId); setDidDeleteProduct(!didDeleteProduct)}} />
                           </Col>
                         </Row>
                       </Container>

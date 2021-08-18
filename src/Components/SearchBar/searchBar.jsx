@@ -2,10 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const SearchBar = (props) => {
-  let setSearchFilteredProducts = props.setSearchFilteredProducts;
-  let getAllProducts = props.getAllProducts
-  const allProducts = props.allProducts;
-  //   setSearchFilteredProducts(filteredProducts);
+  const {setSearchFilteredProducts, getAllProducts, allProducts} = props;
   const handleChange = (currentSearchText) => {
     let filteredProducts = [];
     allProducts.forEach((product) => {

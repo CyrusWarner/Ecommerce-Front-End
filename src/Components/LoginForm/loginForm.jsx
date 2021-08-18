@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Col, Container, Row, Button } from 'react-bootstrap';
-import { useHistory} from 'react-router-dom';
+import { useHistory, Link} from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const LoginForm = (props) => {
+  const {setUserToken} = props
   const logInValues = {
     username: "",
     password: ""
 }
   const history = useHistory()
   const [logInInfo, setLogInInfo] = useState(logInValues);
-  const [logInError, setLoginError] = useState("")  
 const handleChange = (event) => {
   setLogInInfo({ ...logInInfo, [event.target.name]: event.target.value });
 }
@@ -24,11 +25,11 @@ const logIn = async () => {
   let userData = logInInfo;
   let res = await axios.post("https://localhost:44394/api/authentication/login", userData).catch(function(error) {
     if (error.response) {
-      setLoginError("Either your username or password is incorrect")
+      toast.error('Either your username or password is incorrect')
     }
   });
   if (res !== undefined){
-    props.setUserToken(res.data.token)
+    setUserToken(res.data.token)
     history.push("/")
   }
 }
@@ -43,7 +44,6 @@ const logIn = async () => {
                     <h1 className="title">Login</h1>
                     <form onSubmit={handleSubmit}>
                       <div>
-                      <div className="text-center" style={{color: "yellow"}}>{logInError}</div>
                         <h5 className="signupTitle">Username:</h5>
                     <input className="form-control" name="username" placeholder="Please enter your username..." onChange={handleChange}></input>
                     </div>
@@ -51,6 +51,9 @@ const logIn = async () => {
                       <h5 className="signupTitle">Password:</h5>
                     <input className="form-control" name="password" placeholder="Please enter your password..." onChange={handleChange}></input>
                     <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} type="submit" className="mt-2">Login</Button>
+                    <Link to="/Signup">
+                    <Button style={{backgroundColor: "crimson", borderColor: "crimson"}} type="submit" className="mt-2 ms-2">Signup</Button>
+                    </Link>
                     </div>
                     </form>
                     </div>

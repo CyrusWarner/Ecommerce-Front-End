@@ -6,15 +6,11 @@ import "./showProduct.css";
 import { FaStar } from "react-icons/fa";
 const ShowProduct = (props) => {
   const { name, description, price, averageRating } = props.currentProduct;
-  const currentUser = props.currentUser;
-  const currentToken = props.currentToken;
-  const getProductReviews = props.getProductReviews
+  const {currentUser, currentToken, getProductReviews, productReviews, addItemToCart, currentProduct} = props;
   const stars = Array(5).fill(0);
-  let productReviews = props.productReviews;
   return (
-    
     <React.Fragment>
-      {props.currentProduct.length !== 0 &&
+      {currentProduct.length !== 0 &&
       <div className="orbit">
       <Container>
         <Row>
@@ -23,13 +19,13 @@ const ShowProduct = (props) => {
             <div id="neonText">
             <h1>{name}</h1>
             <h2>${price}</h2>
-            <h3>Category:{props.currentProduct.category.categoryName}</h3>
+            <h3>Category:{currentProduct.category.categoryName}</h3>
             <h4>Description:{description}</h4>
             <p>{stars.map((star, index) => index < averageRating && (
                       <FaStar/>
                       )  
                       )}</p>
-            <Button onClick={() => props.addItemToCart(props.currentProduct)} style={{
+            <Button onClick={() => addItemToCart(props.currentProduct)} style={{
                         backgroundColor: "crimson",
                         borderColor: "crimson",
                       }}>Add to Cart</Button>

@@ -3,13 +3,11 @@ import './sellProductForm.css'
 import React, {useState} from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import Categories from '../Categories/categories';
+import { toast, ToastContainer } from 'react-toastify';
 //if (intPriceProductdata == NaN || intPriceProductData == 0){} ADD LOGIC HERE FOR ALERTING A USER THAT THEY NEED TO ENTER AN INTEGER
 const SellProductForm = (props) => {
+    const {currentToken, getAllProducts, userCurrentCategoryId, currentCategoryId} = props;
     let id;
-    let currentToken = props.currentToken;
-    let getAllProducts = props.getAllProducts;
-    let userCurrentCategoryId = props.userCurrentCategoryId;
-    let currentCategoryId = props.currentCategoryId;
     if(props.currentUser !== undefined) {
         id = props.currentUser.user.id; 
     }
@@ -82,11 +80,21 @@ const SellProductForm = (props) => {
         let productData = eachEntry
         const isValid = sellProductFormValidation();
         if(isValid){
-            await axios.post("https://localhost:44394/api/product", productData, { headers: {Authorization: 'Bearer ' + currentToken}})
-            getAllProducts();
-            setEachEntry(initialInput)
+            await axios.post("https://localhost:44394/api/product", productData, { headers: {Authorization: 'Bearer ' + currentToken}}).then(res => {
+            if(res.data.length !== 0){
+                getAllProducts();
+                setEachEntry(initialInput);
+                toast.success('Product has been uploaded successfully');
+            }
+            })
+            .catch(error => {
+                if (error){
+                    toast.error('Product was unable to be uploaded succesfully');
+                }
+
+            })
+
         }
-        
     }
     return (
         <React.Fragment>
@@ -94,6 +102,7 @@ const SellProductForm = (props) => {
             <Row>
                 <Col sm={8}>
                 <h1 className="title mb-3">Sell A Product</h1>
+                <ToastContainer />
                 </Col>
                 <Col sm={4}></Col>
             </Row>

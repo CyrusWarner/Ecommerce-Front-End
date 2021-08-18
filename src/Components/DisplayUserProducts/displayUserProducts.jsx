@@ -1,14 +1,13 @@
-import React from 'react';  
+import React, { useLayoutEffect } from 'react';  
 import UserProductEdit from '../UserProductEdit/userProductEdit';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { FaStar, FaDollarSign } from "react-icons/fa";
 import DeleteProductModal from '../DeleteProductModal/deleteProductModal';
-import { useEffect } from 'react';
 
 const DisplayUserProducts = (props) => {
     const {userProducts, getUsersProducts, getAllProducts, deleteProduct, currentUser} = props
     let userName = currentUser.user.username
-    useEffect(() => {
+    useLayoutEffect(() => {
         getUsersProducts();
     }, [])
     
@@ -52,7 +51,7 @@ const DisplayUserProducts = (props) => {
             return (
                 <Card className="customCard card-container border m-4"  style={{ width: '25rem' }}>
                 <Card.Body>
-                <Card.Img className="image" src={image.src}/>
+                <Card.Img className="image" src={image.src} style={{height: '20rem'}}/>
                   <Card.Title>{product.name}</Card.Title>
                   <Card.Text>
                       <div>{product.description}</div>
@@ -67,7 +66,7 @@ const DisplayUserProducts = (props) => {
                   <div>
                       <Row>
                   <UserProductEdit product={product} getUsersProducts={getUsersProducts} getAllProducts={getAllProducts}/>
-                  <DeleteProductModal product={product} deleteProduct={deleteProduct}/>
+                  <DeleteProductModal product={product} deleteProduct={deleteProduct} getAllProducts={getAllProducts}/>
                   </Row>
                   </div>
 
