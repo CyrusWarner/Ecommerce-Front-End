@@ -38,7 +38,7 @@ const DisplayUserProducts = (props) => {
             </Container>
              </React.Fragment>
           }
-            <Container>
+            <Container fluid>
                 <Row className="d-flex justify-content-center g-0">
         {userProducts.map((product) => {
           var image = new Image()
