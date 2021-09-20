@@ -1,6 +1,8 @@
 # Star Wars Ecommerce Front-End
 ## Implementation of a Star Wars themed ecommerce web application
 
+![](/Images/ShoppingCart.png)
+
 Creates a pleasing user interface for Star Wars fans looking for a way to sell Star Wars products online
 
 ## Table of Contents
@@ -111,10 +113,6 @@ BUGGED =    :warning:
 ---
 
 ![](/Images/SellProduct.png)
-
----
-
-![](/Images/ShoppingCart.png)
 
 ---
 
