@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# Star Wars Ecommerce Front-End
+## Implementation of a Star Wars themed ecommerce web application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](/Images/ShoppingCart.png)
 
-## Available Scripts
+Creates a pleasing user interface for Star Wars fans looking for a way to sell Star Wars products online
 
-In the project directory, you can run:
+## Table of Contents
+- [Project Status](#project-status)
+   - [Goals](#goals)
+   - [Task List](#task-list)
+   - [Future Tasks](#future-tasks)
+- [Technologies](#technologies)
+- [Bugs](#bugs)
+- [Images](#Images)
 
-### `npm start`
+---
+## Project Status :green_circle:
+### Goals
+- Enable a user to register for the website
+- Enable a user to login to the website
+- Enable a user to sell a Star Wars product
+- Enable a user to view all  products
+- Enable a user to review a product
+- Enable a user to view all the products they are selling
+- Enable a user to remove or update a product they are selling
+- Enable a user to view all the products in their cart
+- Enable a user to remove a product from their cart
+- Enable a user to purchase a product
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Task List: 
+:heavy_check_mark: Create a pleasing User Interface 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+:heavy_check_mark: Enable a user to chat within the web application
 
-### `npm test`
+:heavy_check_mark: Enable a user to email another application user
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+:heavy_check_mark: Enable a user to view their tasks displayed on a calendar or a table view
 
-### `npm run build`
+:heavy_check_mark: Enable a user to add a new member to their board, Change a users role, and remove a member from a board
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+:heavy_check_mark: Enable a user to upload a .csv file to bulk update their events and bugs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+:heavy_check_mark: Enable a user to mark a bug as complete or in complete
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+:heavy_check_mark: Enable a user to take notes within the application
 
-### `npm run eject`
+:heavy_check_mark: Added copy functionality for a users email in email section of a board
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!--- 
+Emojis for the Task List:
+DONE =      :heavy_check_mark:
+NOT DONE =  :x:
+WIP =       :recycle:
+BUGGED =    :warning:
+ --->
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Future Tasks  
+:x: Add ability to add multiple images for a product
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+:x: Add a settings option to allow users to change their password or delete their account
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+:x: Add a graph for users to see how much money they are making from the products they are selling
 
-## Learn More
+---
+## Technologies
+- Visual Studio Code
+- ASP.NET Core Web API
+- React
+- React Bootstrap
+- Bootstrap
+- Git / GitHub
+- Toastify API
+- ParticlesJS API
+- Stripe API
+- React Icons
+---
+## Design
+### Home
+- Implemented particles JS background with moving Star Wars background found on Codepen.
+- Implemented a footer displaying all contributors to the project
+### Sell a product
+- Implemented a form so a user can create a new product with a image
+### View products
+- Implemented a search for products and filter by category of products
+- Implemented a React Bootstrap card to display product images, product reviews with star rating, and product description
+- Implemented a button for each product to allow a user to quickly add the item to their cart
+### My products
+- Implented a modal for updating a users products
+- Implemented a modal for removing a users products
+### View a product 
+- Implemented a form to allow a user to add a new review
+- Implemented a display for all reviews
+- Implemented a Star Wars themed display for reviews and product title
+### Shopping Cart
+- Implemented a display for all of a users products they are purchasing using React Bootstrap
+- Implemented stripe API to allow a user to purchase a product
+- Implemented functionality for changing the quantity of products they are purchasing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
+## Bugs
+- Uploading photo for a product:
+   - Currently when there are many photos in the Back-End the API calls are taking alot more time then it needs.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+## Images
+![](/Images/AllProducts.png)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![](/Images/Product.png)
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![](/Images/SellProduct.png)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![](/Images/UserProducts.png)
