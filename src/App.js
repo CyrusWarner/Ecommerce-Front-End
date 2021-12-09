@@ -146,8 +146,8 @@ function App() {
     setAllProducts(filteredProducts);
   };
 
-  const setSearchFilteredProducts = (products) => {
-    setAllProducts(products);
+  const setSearchFilteredProducts = (filteredProducts) => {
+    setAllProducts(filteredProducts);
   };
 
   const getUsersCart = async () => {

@@ -1,10 +1,9 @@
 import React from 'react';
 import './categories.css'
-const Categories  = (props) => {
-    let categories = props.categories
+const Categories  = ({categories, userCurrentCategoryId}) => {
     const onChangeComboBox = (event) => {
         const selectedId = event.target.value
-        props.userCurrentCategoryId(selectedId);
+        userCurrentCategoryId(selectedId);
     }
     return(
         <React.Fragment>

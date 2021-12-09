@@ -5,10 +5,21 @@ import { FaStar, FaDollarSign } from "react-icons/fa";
 import SearchBar from "../SearchBar/searchBar";
 import "./showAllProducts.css";
 
-const ShowAllProducts = (props) => {
+const ShowAllProducts = 
+({
+  allProducts,
+  createCurrentProduct, 
+  getAllProducts, 
+  getProductReviews, 
+  categories, 
+  setSearchFilteredProducts,
+  addItemToCart, 
+  currentUser
+}) => {
+
   const stars = Array(5).fill(0);
-  const {allProducts, createCurrentProduct, getAllProducts, getProductReviews, categories, setSearchFilteredProducts, addItemToCart, currentUser} = props;
   const [currentCategoryId, setCurrentCategoryId] = useState(0);
+
   const onChangeComboBox = (event) => {
     const id = event.target.value;
     let intSelectedId = Number(`${id}`);
@@ -66,8 +77,8 @@ const ShowAllProducts = (props) => {
       <Container fluid>
         <Row className="d-flex justify-content-center m-1">
           {filteredProducts.map((product) => {
-            var image = new Image()
-            if(product.image === null || product.image === ""){
+            let image = new Image()
+            if(!product.image){
               image.src = "https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg"
             }
             else{

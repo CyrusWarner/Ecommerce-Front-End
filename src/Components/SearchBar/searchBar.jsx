@@ -1,22 +1,16 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
-const SearchBar = (props) => {
-  const {setSearchFilteredProducts, getAllProducts, allProducts} = props;
-  const handleChange = (currentSearchText) => {
-    let filteredProducts = [];
-    allProducts.forEach((product) => {
-      if (product.name.toLowerCase().includes(currentSearchText.toLowerCase())) {
-        filteredProducts.push(product);
-      }
-    });
-    if(currentSearchText !== ""){
+import { filterArrayOfProducts } from "../../Helpers/FilterData";
+const SearchBar = ({setSearchFilteredProducts, getAllProducts, allProducts}) => {
+  // handles the search when a user enters a search term
+  const handleSearch = (searchTerm) => {
+    let filteredProducts = filterArrayOfProducts(allProducts, searchTerm)
+    if(searchTerm){
         setSearchFilteredProducts(filteredProducts);
     }
     else {
         getAllProducts();
     }
-    
   };
 
   return (
@@ -27,7 +21,7 @@ const SearchBar = (props) => {
           <Col sm={6}>
             <input
               name="search"
-              onChange={(event) => handleChange(event.target.value)}
+              onChange={(event) => handleSearch(event.target.value)}
               placeholder="Search By Product Name..."
               className="form-control mb-3"
             ></input>
